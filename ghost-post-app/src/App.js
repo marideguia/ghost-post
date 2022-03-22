@@ -1,8 +1,7 @@
 import Header from './components/Header'
 import Navbar from './components/Navbar'
-import Comment from './components/Comment'
-import Questions from './components/Questions'
-import QSearch from './components/QSearch'
+import Posts from './components/Posts'
+import PSearch from './components/PSearch'
 
 
 
@@ -14,8 +13,8 @@ const App = () => {
         <div className = "column-container">
           <Header title="Senior Capstone Session 1"/>
           <div className = "q-container">       
-            <Questions />
-            <QSearch />
+            <Posts />
+            <PSearch />
           </div>
           
         </div>

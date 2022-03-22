@@ -8,7 +8,7 @@ const Header = ({title}) => {
         {title}
       </h1>
       <div className="bell">
-        <FaRegBell onClick={() => console.log("notification bell clicked")}></FaRegBell>
+        <FaRegBell onClick={() => console.log("notification bell clicked")} style={{cursor:'pointer'}} />
       </div>
     </header>
   )
