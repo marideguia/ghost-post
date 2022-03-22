@@ -1,8 +1,19 @@
+import { FaRegBell } from 'react-icons/fa'
 
-const Header = () => {
+
+const Header = ({title}) => {
   return (
-    <div>Header</div>
+    <header className="QsHeader">
+      <h1>
+        {title}
+      </h1>
+      <div className="bell">
+        <FaRegBell onClick={() => console.log("notification bell clicked")}></FaRegBell>
+      </div>
+    </header>
   )
 }
+
+
 
 export default Header
