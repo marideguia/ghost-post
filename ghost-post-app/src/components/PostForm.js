@@ -39,8 +39,8 @@ const PostForm = ({
         {hasCancelButton && (
           <button 
             type="button" 
-            className="comment-form-button comment-form-cancel-button"
-            onclick={handleCancel}
+            className="post-form-button post-form-cancel-button"
+            onClick={handleCancel}
           >
             Cancel
           </button>

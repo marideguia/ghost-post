@@ -3,11 +3,12 @@ import {
   getPosts as getPostsApi,
   createPost as createPostApi,
   deletePost as deletePostApi,
-  updatePost as updatePostApi
-} from "../api"
+  updatePost as updatePostApi,
+  upvotePost as upvotePostApi,
+  removeUpvote as removeUpvoteApi
+} from "../api.js"
 import Post from "./Post.js"
-import PostForm from "./PostForm"
-
+import PostForm from "./PostForm.js"
 
 const Posts = ({currentUserID}) => {
   // Store and set posts
@@ -37,6 +38,7 @@ const Posts = ({currentUserID}) => {
     })
   )
 
+  // Prompt user confirt and remove post from display
   const deletePost = (postID) => {
     if (window.confirm('Are you sure you want to remove post?')) {
       deletePostApi(postID).then( () => {
@@ -47,6 +49,42 @@ const Posts = ({currentUserID}) => {
       })
     }
   }
+
+  // Update post's Upvote list with user like
+  const upvotePost=(postID, userID) => {
+    upvotePostApi(postID, userID).then( () => {
+      const updatedPosts = posts.map(post => {
+        if (post.PostID === postID) {          
+          const newUpvotes = post.Upvotes
+          newUpvotes.push(userID)
+          console.log('post upvoted', userID, postID,newUpvotes)
+          return {...post, Upvotes: newUpvotes}
+        }
+        return post
+      })
+      setPosts(updatedPosts)
+      // setActivePost(null)
+    })
+  }
+
+  // Filter out upvote and update posts
+  const removeUpvote=(postID, userID) => {
+    removeUpvoteApi(postID, userID).then( () => {
+      // find post
+      const updatedPosts = posts.map(post => {
+        if (post.PostID === postID) {
+          // remove upvote from list
+          const newUpvotes = post.Upvotes.filter( (upvote) => upvote !== userID)
+          console.log('post upvote removed', userID, postID, newUpvotes)
+          return {...post, Upvotes: newUpvotes}
+        }
+        return post
+      })
+      setPosts(updatedPosts)
+      // setActivePost(null)
+    })
+  }
+
 
   const updatePost =(text,postID) => {
     updatePostApi(text,postID).then( () => {
@@ -94,6 +132,8 @@ const Posts = ({currentUserID}) => {
             setActivePost={setActivePost}
             addPost={addPost}
             updatePost={updatePost}
+            upvotePost={upvotePost}
+            removeUpvote={removeUpvote}
           />
         ))}
       </div>
