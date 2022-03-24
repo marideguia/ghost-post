@@ -63,11 +63,15 @@ export const createPost = async(text, parentID = null) => {
 export const updatePost = async (text) => {
     return { text }
 }
+  
+export const deletePost = async () => {
+    return {}
+}
 
 export const upvotePost = async (upvotes) => {
     return { upvotes }
 }
-  
-export const deletePost = async () => {
+
+export const removeUpvote = async () => {
     return {}
 }

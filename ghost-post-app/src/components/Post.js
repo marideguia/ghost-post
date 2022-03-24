@@ -11,7 +11,8 @@ const Post = ({
   parentID=null, // root comments always null
   addPost,
   updatePost,
-  upvotePost
+  upvotePost,
+  removeUpvote
 }) => {
   // const fiveMinutes=300000
   // // true if post was created more than five minutes ago
@@ -51,12 +52,12 @@ const Post = ({
           {canUpvote ? (
             <FaArrowUp 
             onClick={() => upvotePost(post.PostID, currentUserID)}
-              // (post) => upvotePost(post.PostID, currentUserID)}
             style={{cursor: 'pointer'}}
             />            
           ) : (
-            <FaArrowUp               
-              style={{color: 'green'}}
+            <FaArrowUp     
+              onClick={() => removeUpvote(post.PostID, currentUserID)}          
+              style={{color: 'green', cursor: 'pointer'}}
             /> 
           )}
           <label>{numUpvotes}</label>
@@ -151,6 +152,7 @@ const Post = ({
               setActivePost={setActivePost}
               updatePost={updatePost}
               upvotePost={upvotePost}
+              removeUpvote={removeUpvote}
             />
           ))}
         </div>
