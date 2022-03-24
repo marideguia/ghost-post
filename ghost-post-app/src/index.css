@@ -51,7 +51,6 @@ code {
 /* .post {
   /* border: solid 1px black; */
 /* } */
-
 .root-post {
   background-color: blanchedalmond;
   display: flex;
@@ -89,6 +88,39 @@ code {
 }
 
 /* POSTS.JS STYLES */
+.posts {
+  background-color: aliceblue;
+}
+
+.posts-title {
+  background-color: red;
+}
+
+.posts-form {
+  background-color: bisque;
+}
+
+.posts-form-title {
+  background-color: steelblue;
+}
+
+.posts-container {
+  background-color: lightpink;
+}
+
 .posts-container {
   border: solid black 2px;
+}
+
+/* POSTFORM.JS STYLES */
+.post-form-textarea {
+  background-color: blueviolet;
+}
+
+.post-form-button {
+  color: steelblue;
+}
+
+.post-form-button post-form-cancel-button {
+  color: steelblue;
 }

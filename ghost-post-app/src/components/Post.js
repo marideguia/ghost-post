@@ -11,18 +11,25 @@ const Post = ({
   parentID=null, // root comments always null
   addPost,
   updatePost,
+  upvotePost
 }) => {
-  const fiveMinutes=300000
-  // true if post was created more than five minutes ago
-  const timePassed = ( new Date() - (post.CreatedAt) ) > fiveMinutes
-  // Can only reply if user has a user id
+  // const fiveMinutes=300000
+  // // true if post was created more than five minutes ago
+  // const timePassed = ( new Date() - (post.CreatedAt) ) > fiveMinutes
+  // // Can only reply if user has a user id
   const canReply= Boolean(currentUserID)
   // Can only edit post if user is the creator of the post and less than 5 minutes have passed since creation
-  const canEdit = currentUserID === post.UserID && !timePassed
+  const canEdit = currentUserID === post.UserID 
+    // && !timePassed
   // Can only delete post if user is the creator of the post and less than 5 minutes have passed since creation
   const canDelete = canEdit
+  // length of Upvotes array
+  const numUpvotes = post.Upvotes.length
+  // True if user can upvote post - userID is not in the upvotes array
+  const canUpvote = !(post.Upvotes).includes(currentUserID)
   // Format post creation date
   const createdAt = new Date(post.CreatedAt).toLocaleDateString()
+  
   // User is replying
   const isReplying = 
     activePost && 
@@ -39,12 +46,23 @@ const Post = ({
     <div className="post">      
       <div className="root-post">
         {/* Post voting */}
+
         <div className="post-upvote">
-          <FaArrowUp/>
-          <label>{post.UpvoteCount}</label>
+          {canUpvote ? (
+            <FaArrowUp 
+            onClick={() => upvotePost(post.PostID, currentUserID)}
+              // (post) => upvotePost(post.PostID, currentUserID)}
+            style={{cursor: 'pointer'}}
+            />            
+          ) : (
+            <FaArrowUp               
+              style={{color: 'green'}}
+            /> 
+          )}
+          <label>{numUpvotes}</label>
         </div>
 
-        {/* Post content */}
+        {/* Post content - date, text, reply, edit, delete functions*/}
         <div className="post-content">
           <div>
             {createdAt}
@@ -55,19 +73,10 @@ const Post = ({
             <div className="post-text">{post.Text}</div>
           )}
 
-          {/* Render post editing form */}
-          {isEditing && (
-            <PostForm submitLabel="Update" 
-              hasCancelButton
-              initialText={post.Text} 
-              handleSubmit={(text) => updatePost(text, post.PostID)} 
-              handleCancel={() => setActivePost(null)}
-            />
-          )}
-
           {/* Render appropriate post actions */}
           <div className="post-actions">
             {/* conditional short circuits only render actions when condition is valid */}
+            
             {/* Reply action */}
             {canReply && (
               <div 
@@ -103,19 +112,30 @@ const Post = ({
             )}
           </div> {/* End post-actions div */}
 
+          {/* Render post editing form */}
+          {isEditing && (
+            <PostForm submitLabel="Update" 
+              hasCancelButton
+              initialText={post.Text} 
+              handleSubmit={(text) => updatePost(text, post.PostID)} 
+              handleCancel={() => setActivePost(null)}
+            />
+          )}
+
           {/* Render reply form if user is replying */}
           {isReplying && (
             <PostForm 
-              submitLabel="reply" 
+              submitLabel="Reply" 
               handleSubmit={(text) => addPost(text, replyID)}
+              hasCancelButton
+              handleCancel={() => setActivePost(null)}             
             />
-          )}
+          )}          
         </div> {/* End post-contents div */}
       </div> {/* End root-post div */}
 
       {/* Rendering replies to 2nd tier */}
-      {/* conditional statement short circuit renders replies only if > 0 exist */}
-      
+      {/* conditional statement short circuit renders replies only if > 0 exist */}      
       {replies.length > 0 && (
         <div className="replies">
           {replies.map( (reply) => (
@@ -130,13 +150,12 @@ const Post = ({
               activePost={activePost}
               setActivePost={setActivePost}
               updatePost={updatePost}
+              upvotePost={upvotePost}
             />
           ))}
         </div>
-      )}    
-      
-    {/* end "post" element */}
-    </div> 
+      )}  
+    </div> /* end "post" element */
   )
 }
 
