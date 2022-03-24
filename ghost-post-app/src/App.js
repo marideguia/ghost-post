@@ -3,8 +3,6 @@ import Navbar from './components/Navbar'
 import Posts from './components/Posts'
 import PSearch from './components/PSearch'
 
-
-
 const App = () => {
   return (
     <div className="App">
@@ -12,8 +10,8 @@ const App = () => {
         <Navbar />
         <div className = "column-container">
           <Header title="Senior Capstone Session 1"/>
-          <div className = "q-container">       
-            <Posts />
+          <div className = "p-container">       
+            <Posts currentUserID="1"/>
             <PSearch />
           </div>
           

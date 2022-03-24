@@ -12,6 +12,7 @@ code {
     monospace;
 }
 
+/* HEADER.JS STYLES */
 .container {
   background-color: aqua;
   display: flex;
@@ -23,18 +24,18 @@ code {
   flex-direction: column;
 }
 
-.QsHeader {
+.sHeader {
   /* background-color: aqua; */
   display: flex;
   margin: 0px 10px;
 }
 
-.q-container {
+.p-container {
   background-color: blue;
   display: flex;
 }
 
-.QSearch {
+.PSearch {
   background-color: blueviolet;
   display: flex;
   flex-direction: column;
@@ -44,4 +45,82 @@ code {
 .bell {
   /* background-color: aquamarine; */
   margin: auto 25px;
+}
+
+/* POST.JS STYLES */
+/* .post {
+  /* border: solid 1px black; */
+/* } */
+.root-post {
+  background-color: blanchedalmond;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 2px;
+}
+
+.post-upvote {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: brown;
+}
+
+.post-content {
+  background-color: aqua;
+  margin: 0px 5px;
+}
+
+.post-actions {
+  display: flex;
+}
+
+.post-action {
+  margin: 2px 5px;
+}
+
+.replies {
+  margin: 0px 20px;
+}
+
+.comment-actions {
+  display: flex;
+}
+
+/* POSTS.JS STYLES */
+.posts {
+  background-color: aliceblue;
+}
+
+.posts-title {
+  background-color: red;
+}
+
+.posts-form {
+  background-color: bisque;
+}
+
+.posts-form-title {
+  background-color: steelblue;
+}
+
+.posts-container {
+  background-color: lightpink;
+}
+
+.posts-container {
+  border: solid black 2px;
+}
+
+/* POSTFORM.JS STYLES */
+.post-form-textarea {
+  background-color: blueviolet;
+}
+
+.post-form-button {
+  color: steelblue;
+}
+
+.post-form-button post-form-cancel-button {
+  color: steelblue;
 }

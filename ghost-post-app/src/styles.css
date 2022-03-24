@@ -1,0 +1,80 @@
+.app {
+    font-family: sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+    height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #fff;
+    background-color: #3b62ff;
+    background-image: url("./components/background.png");
+  }
+
+  input[type="text"],
+  input[type="password"] {
+    height: 25px;
+    border: 1px solid rgb(0, 0, 0);
+  }
+  
+  input[type="submit"] {
+    margin-top: 10px;
+    cursor: pointer;
+    font-size: 15px;
+    background: #0049C6;
+    border: 1px solid #0049C6;
+    color: #fff;
+    padding: 10px 20px;
+  }
+  
+  input[type="submit"]:hover {
+    background: #1b85ff;
+  }
+
+  input[type="button"]{
+    margin-top: 10px;
+    cursor: pointer;
+    font-size: 15px;
+    background: #0049C6;
+    border: 1px solid #0049C6;
+    color: #fff;
+    padding: 10px 20px;
+  }
+
+  input[type="button"]:hover{
+    background: #1b85ff;
+  }
+
+  
+  .button-container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  /* .login-form {
+    background-color: rgb(163, 17, 17);
+    padding: 2rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  } */
+  
+  .list-container {
+    display: flex;
+  }
+  
+  .error {
+    color: red;
+    font-size: 12px;
+  }
+  
+  .title {
+    font-size: 25px;
+    margin-bottom: 20px;
+  }
+  
+  .input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 10px;
+  }
