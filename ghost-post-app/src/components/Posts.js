@@ -9,6 +9,7 @@ import {
 } from "../api.js"
 import Post from "./Post.js"
 import PostForm from "./PostForm.js"
+import Header from "./Header.js"
 
 const Posts = ({currentUserID}) => {
   // Store and set posts
@@ -85,7 +86,6 @@ const Posts = ({currentUserID}) => {
     })
   }
 
-
   const updatePost =(text,postID) => {
     updatePostApi(text,postID).then( () => {
       const updatedPosts = posts.map(post => {
@@ -106,7 +106,11 @@ const Posts = ({currentUserID}) => {
   }, [])
 
   return (
-    // Display of submitted posts
+    // Display of submitted posts    
+    <div className = "column-container">
+      <Header title="Senior Capstone Session 1"/>
+      <div className = "p-container">
+
     <div className="posts">
       <h3 className="posts-title">Posts</h3>
 
@@ -137,6 +141,8 @@ const Posts = ({currentUserID}) => {
           />
         ))}
       </div>
+    </div>
+    </div>
     </div>
   )
 }
