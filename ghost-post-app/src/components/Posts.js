@@ -10,22 +10,24 @@ import {
 import Post from "./Post.js"
 import PostForm from "./PostForm.js"
 import Header from "./Header.js"
+import Sidebar from "./Sidebar.js"
+import PSearch from "./PSearch.js"
 
 const Posts = ({currentUserID}) => {
   // Store and set posts
   const [posts, setPosts] = useState([])
-
   // Store and set active (editing or replying) posts
   const[activePost, setActivePost] = useState(null)
-
-  // Filter out replies (root posts only - ParentID is null)
+  // Filter out replies (root posts only - ParentID is null) and sort by upvotes
   const rootPosts = posts.filter( (post) => post.ParentID === null)
+    .sort( (a,b) => a.Upvotes.length - b.Upvotes.length)
+    .reverse()
 
   // Sort replies by upvotes
   const getReplies = (postID) => {
     return posts.filter( (post) => post.ParentID === postID)
-      .sort( (a,b) =>a.Upvotes.length - b.Upvotes.length)
-      .reverse();
+      .sort( (a,b) => a.Upvotes.length - b.Upvotes.length)
+      .reverse()
   }
 
   // Store new post
@@ -109,8 +111,9 @@ const Posts = ({currentUserID}) => {
       <Header title="Senior Capstone Session 1"/>
       
       <div className = "p-container">
-        
+        <Sidebar/>
         <div className="posts">
+          {/* <Sidebar /> */}
           <h3 className="posts-title">Posts</h3>
 
           {/* Form to submit posts */}
@@ -140,8 +143,9 @@ const Posts = ({currentUserID}) => {
               />
             ))}
           </div>
-    </div>
-    </div>
+        </div>
+        <PSearch />
+      </div>
     </div>
   )
 }
