@@ -33,6 +33,7 @@ code {
 .p-container {
   background-color: blue;
   display: flex;
+  /* flex-direction: column; */
 }
 
 .PSearch {
@@ -45,6 +46,10 @@ code {
 .bell {
   /* background-color: aquamarine; */
   margin: auto 25px;
+}
+
+.sidebar-container {
+  background-color: black;
 }
 
 /* POST.JS STYLES */
