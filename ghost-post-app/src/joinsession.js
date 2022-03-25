@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
-
+import { Link } from 'react-router-dom';
 import "./stylesjoinsession.css";
 
 function Joinsession() {
@@ -64,9 +64,11 @@ function Joinsession() {
   );
 
   return (
+    
     <div className="app">
+    
       <div className="joinsession-form">
-        <div className="title">Join Session</div>
+        <div className="tc grow"><h1>Join Session</h1></div>
         {isSubmitted ? <div>nice</div> : renderForm}
       </div>
     </div>

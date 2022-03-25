@@ -1,36 +1,34 @@
-import React from 'react';
+import React from "react";
+import App from "./App";
+import Joinsession from './joinsession';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import "./index.css";
+import ArchPosts from './components/ArchPosts';
+import {BrowserRouter, Routes, Route,Link} from 'react-router-dom';
+import Login from './components/Login';
+import Posts from './components/Posts';
+import CreateSession from './components/CreateSession';
 import reportWebVitals from './reportWebVitals';
-
-import Login from './Login'
-import Car from './components/CreateSession'
-import Joinsession from './joinsession'
-import Posts from './components/Posts'
-import ArchPosts from './components/ArchPosts'
-import Error from'./components/Error'
-
-import {BrowserRouter, Routes, Route, Link} from 'react-router-dom'
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      {/* Optional Navbar */}
-      <Routes>  
-        {/* root page */}
-        <Route path="/" element={<Login />} />
-        <Route path="/Car" element={<Car />} />
-        <Route path="/joinsession" element={<Joinsession />} />
-        <Route path="/posts" element={<Posts currentUserID="1"/>} />
-        <Route path="/archposts" element={<ArchPosts />} />
-        {/* Render error page when invalid address is used */}
-        <Route path="*" element={<Error />} />
-      </Routes>
+    <Routes>
+      <Route path = "/" element = {<Login/>}/>
+      <Route path = "CreateSession" element={<CreateSession/>}/>
+      <Route path = "App" element ={<App/>}/>
+      <Route path = "Login" element ={<Login/>}/>
+      <Route path = "Posts" element ={<Posts/>}/>
+      <Route path = "Joinsession" element ={<Joinsession/>}/>
+      <Route path="Archposts" element={<ArchPosts/>}/>
+    </Routes>
     </BrowserRouter>
+   
   </React.StrictMode>,
   document.getElementById('root')
 );
+
+
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

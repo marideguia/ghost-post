@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
-import {useNavigate, Link} from "react-router-dom"
-
-import "./styles.css";
+import { Link } from 'react-router-dom';
+import "../styles.css";
 
 function Login() {
   // let navigate=useNavigate()
@@ -78,16 +77,10 @@ function Login() {
             <input type="button" value = "Sign Up"/>
           </div>
           <div className="button-container">
-            
-              <input type="button" 
-                value = "Join Session"
-                // onclick={() => {navigate("/joinsession")}}
-              />
+          <Link to="Joinsession" className="f6 link dim ph3 pv2 mb2 dib white bg-dark-blue ma2">Join Session</Link> 
           </div>
           <div className="button-container">
-          {/* <Link to="/Car">Create Session</Link> */}
-            
-            <input type="button" value = "Create Session"/> 
+          <Link to="CreateSession" className="f6 link dim ph3 pv2 mb2 dib white bg-dark-blue ma2">Create Session</Link> 
           </div>
         </form>
       </div>
@@ -95,15 +88,14 @@ function Login() {
 
   return (
     <div className="app">
+      <h1 className="grow tc">Ghost Post Sign In</h1>
       <div className="login-form">
-        <div className="title">Sign In</div>
+       
         {isSubmitted ? <div>User is successfully logged in</div> : renderForm}
       </div>
     </div>
   );
 }
 
-const rootElement = document.getElementById("root");
-ReactDOM.render(<Login />, rootElement);
 
 export default Login;
