@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
-// import {useNavigate} from "react-router-dom"
+import {useNavigate, Link} from "react-router-dom"
 
 import "./styles.css";
 
@@ -78,16 +78,16 @@ function Login() {
             <input type="button" value = "Sign Up"/>
           </div>
           <div className="button-container">
-            <input type="button" 
-              value = "Join Session"
-              // onclick={() => {navigate("/joinsession")}}
-            />
+            
+              <input type="button" 
+                value = "Join Session"
+                // onclick={() => {navigate("/joinsession")}}
+              />
           </div>
           <div className="button-container">
-            <input type="button" 
-              value = "Create Session" 
-              // onclick={() => {navigate("/createsession")} }
-            />
+          {/* <Link to="/Car">Create Session</Link> */}
+            
+            <input type="button" value = "Create Session"/> 
           </div>
         </form>
       </div>
