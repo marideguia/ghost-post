@@ -44,7 +44,7 @@ code {
 }
 
 .p-container {
-  background-color: blue;
+  background-color: lightgray;
   /* background-image: "components/background.png";*/
   display: flex;
   /* flex-direction: column; */
@@ -104,7 +104,8 @@ code {
 }
 
 .report {
-  text-align: Right;
+  /* text-align: Right; */
+  margin-left: 50px;
 }
 .post-actions {
   display: flex;
@@ -129,7 +130,8 @@ code {
 /* POSTS.JS STYLES */
 .posts {
   background-color: whitesmoke;
-  width: 100%;
+  width: 500px;
+  /* margin: 0px 150px; */
 }
 
 .posts-title {

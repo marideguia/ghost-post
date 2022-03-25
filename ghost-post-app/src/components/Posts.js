@@ -111,7 +111,7 @@ const Posts = ({currentUserID}) => {
       <Header title="Senior Capstone Session 1"/>
       
       <div className = "p-container">
-        {/* <Sidebar/> */}
+        <Sidebar/>
     
         <div className="posts">
         <h3 className="posts-title">Posts</h3>            

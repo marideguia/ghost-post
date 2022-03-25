@@ -4,6 +4,8 @@ import {
 } from "../api.js"
 import Post from "./Post.js"
 // import PostForm from "./PostForm.js"
+import Sidebar from"./Sidebar.js"
+import Header from "./Header.js"
 
 const ArchPosts = ({currentUserID}) => {
   // Store and set posts
@@ -27,6 +29,11 @@ const ArchPosts = ({currentUserID}) => {
 
   return (
     // Display of submitted posts
+    <div className = "column-container">
+    <Header title="Senior Capstone Session 1"/>
+    
+    <div className = "p-container">
+      <Sidebar/>
     <div className="posts">
       <h3 className="posts-title">Archived Posts</h3>
       
@@ -43,6 +50,9 @@ const ArchPosts = ({currentUserID}) => {
         ))}
       </div>
     </div>
+    </div>
+    </div>
+
   )
 }
 

@@ -11,10 +11,10 @@ function Joinsession() {
   // User session info
   const database = [
     {
-      scode: "79BU4"
+      scode: "79bu4"
     },
     {
-      scode: "ABC12"
+      scode: "abc12"
     }
   ];
 
@@ -69,7 +69,7 @@ function Joinsession() {
     
       <div className="joinsession-form">
         <div className="tc grow"><h1>Join Session</h1></div>
-        {isSubmitted ? <div>nice</div> : renderForm}
+        {isSubmitted ? <div>Joining Senior Capstone 1</div> : renderForm}
       </div>
     </div>
   );
