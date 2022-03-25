@@ -151,47 +151,6 @@ const Posts = ({currentUserID}) => {
   )
 }
   
-    // Display of submitted posts    
-//     <div className = "column-container">
-//       <Header title="Senior Capstone Session 1"/>
-      
-//       <div className = "p-container">
-//         {/* <Sidebar/> */}
-//         <div className="posts">          
-//           <h3 className="posts-title">Posts</h3>
-
-//           {/* Form to submit posts */}
-//           <div className="posts-form">
-//             <div className="posts-form-title">
-//               Submit Posts
-//             </div>
-//             <PostForm submitLabel="Submit" handleSubmit={addPost}/>
-//           </div>
-          
-//           {/* Submitted posts */}
-//           <div className="posts-container">
-//             {rootPosts.map( (rootPost) => (
-//               // <div key={rootPost.PostID}>{rootPost.Text}</div>
-//               <Post 
-//                 key={rootPost.PostID} 
-//                 post={rootPost}
-//                 replies={getReplies(rootPost.PostID)}
-//                 currentUserID={currentUserID}
-//                 deletePost={deletePost}
-//                 activePost={activePost}
-//                 setActivePost={setActivePost}
-//                 addPost={addPost}
-//                 updatePost={updatePost}
-//                 upvotePost={upvotePost}
-//                 removeUpvote={removeUpvote}
-//               />
-//             ))}
-//           </div>
-//         </div>
-//         {/* <PSearch /> */}
-//       </div>
-//     </div>
-//   )
-// }
+  
 
 export default Posts
