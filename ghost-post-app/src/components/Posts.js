@@ -9,6 +9,7 @@ import {
 } from "../api.js"
 import Post from "./Post.js"
 import PostForm from "./PostForm.js"
+import Header from "./Header.js"
 
 const Posts = ({currentUserID}) => {
   // Store and set posts
@@ -20,13 +21,11 @@ const Posts = ({currentUserID}) => {
   // Filter out replies (root posts only - ParentID is null)
   const rootPosts = posts.filter( (post) => post.ParentID === null)
 
-  // Sort replies by create time
+  // Sort replies by upvotes
   const getReplies = (postID) => {
-    return posts.filter(
-      (post) => post.ParentID === postID).sort( (a,b) => 
-      // Convert from string to Date
-        new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
-      )
+    return posts.filter( (post) => post.ParentID === postID)
+      .sort( (a,b) =>a.Upvotes.length - b.Upvotes.length)
+      .reverse();
   }
 
   // Store new post
@@ -85,7 +84,6 @@ const Posts = ({currentUserID}) => {
     })
   }
 
-
   const updatePost =(text,postID) => {
     updatePostApi(text,postID).then( () => {
       const updatedPosts = posts.map(post => {
@@ -106,37 +104,44 @@ const Posts = ({currentUserID}) => {
   }, [])
 
   return (
-    // Display of submitted posts
-    <div className="posts">
-      <h3 className="posts-title">Posts</h3>
-
-      {/* Form to submit posts */}
-      <div className="posts-form">
-        <div className="posts-form-title">
-          Submit Posts
-        </div>
-        <PostForm submitLabel="Submit" handleSubmit={addPost}/>
-      </div>
+    // Display of submitted posts    
+    <div className = "column-container">
+      <Header title="Senior Capstone Session 1"/>
       
-      {/* Submitted posts */}
-      <div className="posts-container">
-        {rootPosts.map( (rootPost) => (
-          // <div key={rootPost.PostID}>{rootPost.Text}</div>
-          <Post 
-            key={rootPost.PostID} 
-            post={rootPost}
-            replies={getReplies(rootPost.PostID)}
-            currentUserID={currentUserID}
-            deletePost={deletePost}
-            activePost={activePost}
-            setActivePost={setActivePost}
-            addPost={addPost}
-            updatePost={updatePost}
-            upvotePost={upvotePost}
-            removeUpvote={removeUpvote}
-          />
-        ))}
-      </div>
+      <div className = "p-container">
+        
+        <div className="posts">
+          <h3 className="posts-title">Posts</h3>
+
+          {/* Form to submit posts */}
+          <div className="posts-form">
+            <div className="posts-form-title">
+              Submit Posts
+            </div>
+            <PostForm submitLabel="Submit" handleSubmit={addPost}/>
+          </div>
+          
+          {/* Submitted posts */}
+          <div className="posts-container">
+            {rootPosts.map( (rootPost) => (
+              // <div key={rootPost.PostID}>{rootPost.Text}</div>
+              <Post 
+                key={rootPost.PostID} 
+                post={rootPost}
+                replies={getReplies(rootPost.PostID)}
+                currentUserID={currentUserID}
+                deletePost={deletePost}
+                activePost={activePost}
+                setActivePost={setActivePost}
+                addPost={addPost}
+                updatePost={updatePost}
+                upvotePost={upvotePost}
+                removeUpvote={removeUpvote}
+              />
+            ))}
+          </div>
+    </div>
+    </div>
     </div>
   )
 }

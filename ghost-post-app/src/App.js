@@ -1,24 +1,17 @@
-import Header from './components/Header'
-import Navbar from './components/Navbar'
+
+
+import Login from './Login'
+import Car from './components/CreateSession'
+import Joinsession from './joinsession'
 import Posts from './components/Posts'
-import PSearch from './components/PSearch'
+import ArchPosts from './components/ArchPosts'
+import Error from'./components/Error'
+
+import {BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom'
 
 const App = () => {
   return (
-    <div className="App">
-      <div className="container">
-        <Navbar />
-        <div className = "column-container">
-          <Header title="Senior Capstone Session 1"/>
-          <div className = "p-container">       
-            <Posts currentUserID="1"/>
-            <PSearch />
-          </div>
-          
-        </div>
-
-      </div>     
-    </div>
+    <div>APP page</div>
   );
 }
 

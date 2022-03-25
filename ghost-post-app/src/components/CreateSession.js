@@ -1,6 +1,6 @@
 import React from 'react';
 import { useEffect, useState } from "react"
-import RandomCode from './RandomCode';
+// import RandomCode from './RandomCode';
 import Posts from './Posts';
 import {BrowserRouter as Router, Routes, Route,Link } from 'react-router-dom';
 import 'tachyons';

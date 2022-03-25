@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
+import {useNavigate, Link} from "react-router-dom"
 
 import "./styles.css";
 
 function Login() {
+  // let navigate=useNavigate()
   // React States
   const [errorMessages, setErrorMessages] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -76,10 +78,16 @@ function Login() {
             <input type="button" value = "Sign Up"/>
           </div>
           <div className="button-container">
-            <input type="button" value = "Join Session"/>
+            
+              <input type="button" 
+                value = "Join Session"
+                // onclick={() => {navigate("/joinsession")}}
+              />
           </div>
           <div className="button-container">
-            <input type="button" value = "Create Session"/>
+          {/* <Link to="/Car">Create Session</Link> */}
+            
+            <input type="button" value = "Create Session"/> 
           </div>
         </form>
       </div>
