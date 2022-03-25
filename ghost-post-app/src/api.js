@@ -15,7 +15,7 @@ export const getPosts = async () => {
             PostID: "2",
             Text: "Second comment",
             ParentID: null,
-            Upvotes: ["1","3"],
+            Upvotes: ["3"],
             CreatedAt: "2021-08-16T23:00:33.010+02:00",         
         },
         {
@@ -24,7 +24,7 @@ export const getPosts = async () => {
             PostID: "3",
             Text: "First comment first child",
             ParentID: "1",
-            Upvotes: ["1"],
+            Upvotes: ["3"],
             CreatedAt: "2021-08-16T23:00:33.010+02:00",          
         },
         {
@@ -42,7 +42,7 @@ export const getPosts = async () => {
             PostID: "5",
             Text: "First comment second child",
             ParentID: "1",
-            Upvotes: ["2","1","3"],
+            Upvotes: ["3"],
             CreatedAt: "2021-08-16T23:00:33.010+02:00",          
         }
     ]

@@ -18,7 +18,7 @@ ReactDOM.render(
       <Route path = "CreateSession" element={<CreateSession/>}/>
       <Route path = "App" element ={<App/>}/>
       <Route path = "Login" element ={<Login/>}/>
-      <Route path = "Posts" element ={<Posts/>}/>
+      <Route path = "Posts" element ={<Posts currentUserID={"1"}/>}/>
       <Route path = "Joinsession" element ={<Joinsession/>}/>
       <Route path="Archposts" element={<ArchPosts/>}/>
     </Routes>
