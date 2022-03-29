@@ -72,16 +72,20 @@ function Login() {
           <div className="button-container">
             <input type="submit" value = "Login"/>
           </div>
-          <label><center>or</center></label>
+          
           <div className="button-container">
             <input type="button" value = "Sign Up"/>
           </div>
-          <div className="button-container">
-          <Link to="Joinsession" className="f6 link dim ph3 pv2 mb2 dib white bg-dark-blue ma2">Join Session</Link> 
+          <p><center>or</center></p>
+          <div className='dual-button-cont'>
+            <div className="button-container">
+              <Link to="Joinsession" className="f6 link dim ph3 pv2 mb2 dib white bg-dark-blue ma2">Join Session</Link> 
+            </div>
+            <div className="button-container">
+              <Link to="CreateSession" className="f6 link dim ph3 pv2 mb2 dib white bg-dark-blue ma2">Create Session</Link> 
+            </div>
           </div>
-          <div className="button-container">
-          <Link to="CreateSession" className="f6 link dim ph3 pv2 mb2 dib white bg-dark-blue ma2">Create Session</Link> 
-          </div>
+          
         </form>
       </div>
   );

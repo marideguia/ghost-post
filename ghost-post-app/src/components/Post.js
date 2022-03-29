@@ -67,7 +67,7 @@ const Post = ({
         {/* Post content - date, text, reply, edit, delete functions*/}
         <div className="post-content">
           <div className = "Top-Row">
-            {createdAt}
+            <div className="created-at">{createdAt}</div>
             <div className = "report" 
               onClick={() => setActivePost( {id:post.PostID, type: "reporting"}) }
             >

@@ -72,7 +72,7 @@ code {
 /* } */
 .root-post {
   /* background-color: blanchedalmond; */
-  background-color: lightgrey;
+  /* background-color: lightpink; */
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -94,8 +94,7 @@ code {
   background-color: whitesmoke;
   border-radius: 12px;
   margin: 0px 5px;
-  padding-left: 5px;
-  padding-right: 5px;
+  padding: 10px;
 }
 
 .Top-Row {
@@ -103,10 +102,17 @@ code {
   /*text-align: Left;*/
 }
 
+.created-at {
+  color: gray;
+  font-style: italic;
+}
+
 .report {
   /* text-align: Right; */
-  margin-left: 50px;
+  margin-left: 5px;
+  /* background-color: aqua; */
 }
+
 .post-actions {
   display: flex;
 }
@@ -120,7 +126,7 @@ code {
 }
 
 .replies {
-  margin: 0px 20px;
+  margin-left: 30px;
 }
 
 .comment-actions {
@@ -146,7 +152,7 @@ code {
 }
 
 .posts-form-title {
-  background-color: lightgrey;
+  /* background-color: lightgrey; */
   text-align: center;
   border-radius: 25px;
 }
@@ -155,9 +161,7 @@ code {
   /* background-color: lightpink; */
   background-color: lightgrey;
   margin: 2px;
-}
-
-.posts-container {
+  padding: 10px;
   border: solid black 2px;
   border-radius: 12px;
 }
@@ -165,9 +169,10 @@ code {
 /* POSTFORM.JS STYLES */
 .post-form-textarea {
   background-color: lightgrey;
-  margin-left: 2.5%;
-  margin-right: 2.5%;
+  /* margin-left: 2.5%;
+  margin-right: 2.5%; */
   width: 95%;
+  max-width: 500px;
 }
 
 .post-form-button {

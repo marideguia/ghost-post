@@ -19,6 +19,7 @@ body {
   height: auto;
   width: 100%;
   padding: 0;
+  margin-top: 15px;
 }
 
 .SidebarList .row {
@@ -44,6 +45,7 @@ body {
   display: grid;
   place-items: center;
 }
+
 .row #title {
   flex: 70%;
 }
