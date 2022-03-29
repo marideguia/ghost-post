@@ -8,27 +8,32 @@ export const SidebarData = [
   {
     title: "Home",
     icon: <HomeIcon />,
-    link: "Login"
+    link: "../Login",
+    clssname: 'nav-text'
   },
   {
     title: "Session Log",
     icon: <AssignmentIcon />,
-    link: "ArchPosts"
+    link: "../ArchPosts",
+    clssname: 'nav-text'
   },
   {
     title: "Courses",
     icon: <MenuBookIcon />,
-    link: "Posts"
+    link: "../Posts",
+    clssname: 'nav-text'
   },
   {
     title: "Calendar",
     icon: <DateRangeIcon />,
-    link: "Calendar"
+    link: "../Calendar",
+    clssname: 'nav-text'
   },
   {
     title: "Settings",
     icon: <SettingsIcon />,
-    link: "Settings"
+    link: "../Settings",
+    clssname: 'nav-text'
   }
 ]
 
