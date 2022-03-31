@@ -10,6 +10,8 @@ function CreateSession() {
   const [text2, setText2] = useState("");
   const [text3, setText3] = useState("");
   const [show, setShow] = useState(false);
+  //React use state hook for disabling input box
+  const [disabled, setDisabled] = useState(false);
   
   //Random string generator to create session codes
   var add = ''
@@ -25,6 +27,7 @@ function CreateSession() {
     setText2("Your session code is " + add);
     setText3("Share this code with your audience")
     setShow(true);
+    setDisabled(!disabled);
 
   };
 
@@ -39,8 +42,8 @@ function CreateSession() {
     <div>
       {/*Form code for allowing user to enter Session Title*/} 
     <form onSubmit={handleSubmit}>
-        <input className='pa2 ba b--dark-gray ma2' type="text" />
-        <button className='f6 grow no-underline br-pill ba bw1 ph3 pv2 mb2 dib black' type="submit">Submit</button>
+        <input className='pa3 ba b--dark-gray ma2' type="text" placeholder="Name of Session" disabled={disabled}/>
+        <button className='f5 grow no-underline br-pill ph3 pv2 mb2 dib white bg-dark-blue' type="submit">Submit</button>
       </form>
       <h2>{text}</h2>
       <h2 className='dark-blue'>{text2}</h2>
