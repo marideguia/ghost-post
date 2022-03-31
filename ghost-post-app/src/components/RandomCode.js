@@ -6,7 +6,7 @@ function RandomCode() {
     
  return(
 <div>
-<h1>Login Page</h1>
+<h1>Test</h1>
 <Link to="Car">Create Session</Link>
 </div>
  );
