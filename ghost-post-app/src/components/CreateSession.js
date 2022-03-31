@@ -43,7 +43,7 @@ function CreateSession() {
       {/*Form code for allowing user to enter Session Title*/} 
     <form onSubmit={handleSubmit}>
         <input className='pa3 ba b--dark-gray ma2' type="text" placeholder="Name of Session" disabled={disabled}/>
-        <button className='f5 grow no-underline br-pill ph3 pv2 mb2 dib white bg-dark-blue' type="submit">Submit</button>
+        <button className='f5 grow no-underline br-pill ph3 pv2 mb2 dib white bg-blue' type="submit">Submit</button>
       </form>
       <h2>{text}</h2>
       <h2 className='dark-blue'>{text2}</h2>
