@@ -1,10 +1,9 @@
 import { FaRegBell } from 'react-icons/fa'
 
+// Session header
 const Header = ({title}) => {
-  return (
-    // Session header
+  return (    
     <header className="sHeader">
-      {/* Session title */}
       <h1>{title}</h1>
 
       {/* Notifications */}
@@ -15,7 +14,5 @@ const Header = ({title}) => {
     </header>
   )
 }
-
-
 
 export default Header

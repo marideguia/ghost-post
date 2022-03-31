@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import "../sidebar.css";
+import "./Sidebar.css";
 import {SidebarData} from './SidebarData';
 import { Link } from 'react-router-dom';
 import MenuIcon from '@material-ui/icons/Menu';

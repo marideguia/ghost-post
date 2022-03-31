@@ -5,7 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url("./components/background.png");
+  background-image: url("./pages/background.png");
   position: fixed;
   min-width: 100%;
   min-height: 100%;
@@ -20,9 +20,13 @@ code {
     monospace;
 }
 
+/* h1 {
+  color: white;
+} */
+
 /* HEADER.JS STYLES */
 .container {
-  background-image: url("./components/background.png");
+  background-image: url("./pages/background.png");
   background-size: cover;
   background-repeat: no-repeat;
   /* background-color: aqua; */
@@ -45,7 +49,6 @@ code {
 
 .p-container {
   background-color: lightgray;
-  /* background-image: "components/background.png";*/
   display: flex;
   /* flex-direction: column; */
 }
@@ -66,10 +69,19 @@ code {
   background-color: black;
 }
 
+.post {
+  border-top: darkgray 1px solid;
+  /* border-bottom: darkgray 1px solid; */
+}
+
 /* POST.JS STYLES */
 /* .post {
-  /* border: solid 1px black; */
-/* } */
+  border: solid 1px black;
+} */
+
+.posts-title {
+  color: black;
+}
 .root-post {
   /* background-color: blanchedalmond; */
   /* background-color: lightpink; */
@@ -77,15 +89,26 @@ code {
   flex-direction: row;
   align-items: center;
   margin: 2px;
-  border-radius: 12px;
+  /* border-left: darkgray 1px solid; */
+  /* border-top: darkgray 1px solid; */
+  /* border-radius: 12px; */
+}
+
+.post-container {
+  display: flex;
+  flex-direction: row;
+  /* background-color: aqua; */
+  width: 100%;
+  /* flex-direction: row; */
 }
 
 .post-upvote {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 15px;
   /* background-color: brown; */
-  background-color: lightgrey;
+  /* background-color: lightgrey; */
 }
 
 .post-content {
@@ -95,6 +118,7 @@ code {
   border-radius: 12px;
   margin: 0px 5px;
   padding: 10px;
+  width: 100%;
 }
 
 .Top-Row {
@@ -113,17 +137,29 @@ code {
   /* background-color: aqua; */
 }
 
+.post-text {
+  margin-top: 5px;
+  padding-top: 5px;
+  /* background-color: aqua; */
+}
+
 .post-actions {
   display: flex;
+  flex-direction: row-reverse;
+
+  /* background-color: green; */
 }
 
 .post-action {
   margin: 2px 5px;
+  font-style: italic;
+  color: gray;
+  /* margin-right: 0px; */
 }
 
-.post-action-reply {
+/* .post-action-reply {
   text-align: right;
-}
+} */
 
 .replies {
   margin-left: 30px;
@@ -136,7 +172,8 @@ code {
 /* POSTS.JS STYLES */
 .posts {
   background-color: whitesmoke;
-  width: 500px;
+  width: 800px;
+  height: auto;
   /* margin: 0px 150px; */
 }
 
@@ -147,36 +184,58 @@ code {
 }
 
 .posts-form {
-  background-color: lightGrey;
-  border-radius: 25px;
+  /* background-color: aqua; */
+  /* border-radius: 25px; */
+  border-top: darkgray 2px solid;
 }
 
 .posts-form-title {
   /* background-color: lightgrey; */
-  text-align: center;
-  border-radius: 25px;
+  /* text-align: center; */
+  /* border-radius: 25px; */
+  margin: 15px;
+  font-weight: bold;
 }
 
 .posts-container {
   /* background-color: lightpink; */
-  background-color: lightgrey;
+  /* background-color: lightgrey; */
   margin: 2px;
   padding: 10px;
-  border: solid black 2px;
+  /* border: solid black 2px; */
   border-radius: 12px;
+}
+
+.post-form {
+  display: flex;
+  flex-direction: column;
 }
 
 /* POSTFORM.JS STYLES */
 .post-form-textarea {
-  background-color: lightgrey;
+  /* background-color: lightgrey; */
   /* margin-left: 2.5%;
   margin-right: 2.5%; */
-  width: 95%;
-  max-width: 500px;
+  width: 80%;
+  padding: 10px;
+
+  /* max-width: 500px; */
+  border-radius: 10px;
+}
+
+.form-buttons {
+  /* flex-direction: row-reverse; */
+  margin-right: 0px;
+  border-radius: 5px;
+  /* background-color: aqua; */
 }
 
 .post-form-button {
-  color: steelblue;
+  color: white;
+  background-color: steelblue;
+  border-radius: 5px;
+  margin: 5px 2px;
+  /* font */
 }
 
 .post-form-button post-form-cancel-button {
@@ -184,124 +243,9 @@ code {
 }
 
 .button-post {
-  padding-right: 2.5%;
+  /* padding-right: 2.5%; */
   text-align: right;
+  margin: 5px 15px;
+  /* margin-left: 25px; */
+  /* margin-bottom: 5px; */
 }
-
-/* HEADER.JS STYLES */
-/* .container {
-    background-color: aqua;
-    display: flex;
-  }
-  
-  .column-container {
-    background-color: aquamarine;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .sHeader {
-    /* background-color: aqua; 
-    display: flex;
-    margin: 0px 10px;
-  }
-  
-  .p-container {
-    background-color: blue;
-    display: flex;
-  }
-  
-  .PSearch {
-    background-color: blueviolet;
-    display: flex;
-    flex-direction: column;
-    margin-left: auto;
-  }
-  
-  .bell {
-    /* background-color: aquamarine; 
-    margin: auto 25px;
-  }
-  
-  /* POST.JS STYLES */
-/* .post {
-    /* border: solid 1px black;
-  /* } 
-  .root-post {
-    background-color: blanchedalmond;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin: 2px;
-  }
-  
-  .post-upvote {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: brown;
-  }
-  
-  .post-content {
-    background-color: aqua;
-    margin: 0px 5px;
-  }
-  
-  .post-actions {
-    display: flex;
-  }
-  
-  .post-action {
-    margin: 2px 5px;
-  }
-  
-  .replies {
-    margin: 0px 20px;
-  }
-  
-  .comment-actions {
-    display: flex;
-  }
-  
-  /* POSTS.JS STYLES 
-  .posts {
-    background-color: aliceblue;
-  }
-  
-  .posts-title {
-    background-color: red;
-  }
-  
-  .posts-form {
-    background-color: bisque;
-  }
-  
-  .posts-form-title {
-    background-color: steelblue;
-  }
-  
-  .posts-container {
-    background-color: lightpink;
-  }
-  
-  .posts-container {
-    border: solid black 2px;
-  }
-  
-  /* POSTFORM.JS STYLES
-  .post-form-textarea {
-    background-color: blueviolet;
-  }
-  
-  .post-form-button {
-    color: steelblue;
-  }
-  
-  .post-form-button post-form-cancel-button {
-    color: steelblue;
-  }
-  
-  html {
-    min-height: 100%;
-  } 
-   */

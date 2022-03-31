@@ -144,10 +144,15 @@ const Posts = ({currentUserID}) => {
                 <PostForm submitLabel="Submit" handleSubmit={addPost}/>
               </div>
             </div>
-          </div>
+
+          </div> {/* posts-container */}
+
         </div>
+        {/* posts */}
       </div>
+      {/* p-container */}
     </div>
+    // column-container
   )
 }
   

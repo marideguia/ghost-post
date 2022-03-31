@@ -1,5 +1,6 @@
 import { FaArrowUp } from "react-icons/fa"
 import PostForm from "./PostForm"
+import { CgArrowLongRight } from "react-icons/cg"
 
 const Post = ({
   post, 
@@ -17,6 +18,7 @@ const Post = ({
   // const fiveMinutes=300000
   // // true if post was created more than five minutes ago
   // const timePassed = ( new Date() - (post.CreatedAt) ) > fiveMinutes
+
   // // Can only reply if user has a user id
   const canReply= Boolean(currentUserID)
   // Can only edit post if user is the creator of the post and less than 5 minutes have passed since creation
@@ -36,45 +38,51 @@ const Post = ({
     activePost && 
     activePost.type ==='replying' && 
     activePost.id === post.PostID
+
   // User is editing their post
   const isEditing = 
     activePost && 
     activePost.type ==='editing' && 
     activePost.id === post.PostID
+
   // If root post, replyID is equivalent to PostID. Else, copy parentID
   const replyID =  parentID ? parentID : post.PostID
 
   return (
     <div className="post">      
       <div className="root-post">
-        {/* Post voting */}
+       
 
-        <div className="post-upvote">
-          {canUpvote ? (
-            <FaArrowUp 
-            onClick={() => upvotePost(post.PostID, currentUserID)}
-            style={{cursor: 'pointer'}}
-            />            
-          ) : (
-            <FaArrowUp     
-              onClick={() => removeUpvote(post.PostID, currentUserID)}          
-              style={{color: 'green', cursor: 'pointer'}}
-            /> 
-          )}
-          <label>{numUpvotes}</label>
-        </div>
+        <div className="post-container">
 
-        {/* Post content - date, text, reply, edit, delete functions*/}
-        <div className="post-content">
-          <div className = "Top-Row">
-            <div className="created-at">{createdAt}</div>
-            <div className = "report" 
-              onClick={() => setActivePost( {id:post.PostID, type: "reporting"}) }
-            >
-              {/* <img src = "FlagIcon.png" alt = "Report Comment"
-              width = "10px" height = "auto" /> */}
-              🚩
-            </div>
+           {/* Post voting */}
+          <div className="post-upvote">
+            {canUpvote ? (
+              <FaArrowUp 
+              onClick={() => upvotePost(post.PostID, currentUserID)}
+              style={{cursor: 'pointer'}}
+              />            
+            ) : (
+              <FaArrowUp     
+                onClick={() => removeUpvote(post.PostID, currentUserID)}          
+                style={{color: 'green', cursor: 'pointer'}}
+              /> 
+            )}
+            <label>{numUpvotes}</label>
+          </div> 
+          {/* end post-upvote */}
+
+          {/* Post content - date, text, reply, edit, delete functions*/}
+          <div className="post-content">
+            <div className = "Top-Row">
+              <div className="created-at">{createdAt}</div>
+              <div className = "report" 
+                onClick={() => setActivePost( {id:post.PostID, type: "reporting"}) }
+              >
+                {/* <img src = "FlagIcon.png" alt = "Report Comment"
+                width = "10px" height = "auto" /> */}
+                🚩
+              </div>
           </div>
 
           {/* Render post text */}
@@ -82,10 +90,40 @@ const Post = ({
             <div className="post-text">{post.Text}</div>
           )}
 
-          {/* Render appropriate post actions */}
-          <div className="post-actions">
+           {/* Render appropriate post actions */}
+           <div className="post-actions">
             {/* conditional short circuits only render actions when condition is valid */}
             
+            <div className = "post-action-reply">
+              {/* Reply action */}
+            {canReply && (           
+             
+              <div 
+                className="post-action"
+                style={{cursor: 'pointer'}}
+                onClick={() => setActivePost(
+                  // create object
+                  {id: post.PostID, type: "replying"})
+                }
+              >
+                
+                Reply <CgArrowLongRight />
+                </div>
+              
+              )}
+            </div>
+
+            
+
+            {/* Delete action */}
+            {canDelete && (
+              <div 
+                className="post-action" 
+                onClick={() => deletePost(post.PostID)}
+              >
+                Delete
+              </div>
+            )}
 
             {/* Edit action */}
             {canEdit && (
@@ -97,34 +135,7 @@ const Post = ({
               }
               >Edit</div>
             )}
-
-            {/* Delete action */}
-            {canDelete && (
-              <div 
-                className="post-action" 
-                onClick={() => deletePost(post.PostID)}
-              >
-                Delete
-              </div>
-            )}
-            {/* Reply action */}
-            {canReply && (
-              
             
-            <div className = "post-action-reply">
-              <div 
-                className="post-action"
-                style={{cursor: 'pointer'}}
-                onClick={() => setActivePost(
-                  // create object
-                  {id: post.PostID, type: "replying"})
-                }
-              >
-                
-                Reply
-                </div>
-              </div>
-              )}
           </div> {/* End post-actions div */}
 
           {/* Render post editing form */}
@@ -146,7 +157,14 @@ const Post = ({
               handleCancel={() => setActivePost(null)}             
             />
           )}          
-        </div> {/* End post-contents div */}
+
+          </div> {/* End post-contents div */}
+        
+
+
+        </div> 
+        {/* End post-container */}       
+        
       </div> {/* End root-post div */}
 
       {/* Rendering replies to 2nd tier */}

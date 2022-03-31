@@ -3,6 +3,7 @@ export const getPosts = async () => {
         {
             UserID: "1",
             SessionID: "1",
+            // courseID?
             PostID: "1",
             Text: "First comment",
             ParentID: null,

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import { Link } from 'react-router-dom';
-import "../styles.css";
+import "./Login.css"
 
 function Login() {
   // let navigate=useNavigate()
@@ -60,31 +60,48 @@ function Login() {
       <div className="form">
         <form onSubmit={handleSubmit}>
           <div className="input-container">
-            <label>Username </label>
+            <label className="login-label">Username </label>
             <input type="text" name="uname" required />
             {renderErrorMessage("uname")}
           </div>
+
           <div className="input-container">
-            <label>Password </label>
-            <input type="password" name="pass" required />
+            <label className="login-label">Password</label>
+            <input type="text" name="pass" required />
             {renderErrorMessage("pass")}
           </div>
+
+          <div className="btns-container">
           <div className="button-container">
-            <input type="submit" value = "Login"/>
+            <input className="lp-button" type="submit" value = "Login"/>
           </div>
           
           <div className="button-container">
-            <input type="button" value = "Sign Up"/>
+            <input className="lp-button" type="button" value = "Sign Up"/>
           </div>
-          <p><center>or</center></p>
+
+          <h3 className="login-header3"><center>OR</center></h3>
+
           <div className='dual-button-cont'>
-            <div className="button-container">
-              <Link to="Joinsession" className="f6 link dim ph3 pv2 mb2 dib white bg-dark-blue ma2">Join Session</Link> 
+            <div className="button-container">              
+              <Link to="Joinsession" >
+                <button className="lp-button">
+                  Join Session
+                </button>
+              </Link> 
             </div>
+
             <div className="button-container">
-              <Link to="CreateSession" className="f6 link dim ph3 pv2 mb2 dib white bg-dark-blue ma2">Create Session</Link> 
+            <Link to="CreateSession" >
+                <button className="lp-button">
+                  Create Session
+                </button>
+              </Link>  
             </div>
           </div>
+
+          </div>
+          
           
         </form>
       </div>
@@ -92,7 +109,7 @@ function Login() {
 
   return (
     <div className="app">
-      <h1 className="grow tc">Ghost Post Sign In</h1>
+      <h1 className="login-header1">Welcome to GhostPost</h1>
       <div className="login-form">
        
         {isSubmitted ? <div>User is successfully logged in</div> : renderForm}

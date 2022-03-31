@@ -24,18 +24,21 @@ const PostForm = ({
   return (
     // Submit post form
     <form onSubmit={onSubmit}>
-        <textarea 
-          className="post-form-textarea" 
-          value={text} 
-          // sync text value with text state
-          onChange={(e) => setText(e.target.value)}
-        />
+      <textarea 
+        className="post-form-textarea" 
+        value={text} 
+        // sync text value with text state
+        onChange={(e) => setText(e.target.value)}
+      />
+      
+      <div className="form-buttons" >
         <button 
           className="post-form-button" 
           disabled={textDisabled}
         >
           {submitLabel}
         </button>
+
         {hasCancelButton && (
           <button 
             type="button" 
@@ -45,6 +48,9 @@ const PostForm = ({
             Cancel
           </button>
         )}
+
+      </div>
+      
     </form>
   )
 }
