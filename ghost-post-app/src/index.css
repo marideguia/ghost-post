@@ -5,7 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url("./pages/background.png");
+  background: linear-gradient(to bottom right, #045de9, #09c6f9);
   position: fixed;
   min-width: 100%;
   min-height: 100%;
