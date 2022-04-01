@@ -104,6 +104,20 @@ function Login() {
           
           
         </form>
+        <div class="area" >
+            <ul class="circles">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+            </ul>
+    </div >
       </div>
   );
 
@@ -111,6 +125,7 @@ function Login() {
     <div className="app">
       <h1 className="login-header1">Welcome to GhostPost</h1>
       <div className="login-form">
+      
        
         {isSubmitted ? <div>User is successfully logged in</div> : renderForm}
       </div>
