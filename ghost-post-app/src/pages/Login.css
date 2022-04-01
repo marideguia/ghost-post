@@ -97,6 +97,7 @@ input[type="button"]:hover {
   font-family: "Eight Bit Dragon Regular";
   font-size: x-large;
   margin-top: 40px;
+  color:#fff;
 }
 
 .login-label {
