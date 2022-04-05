@@ -5,7 +5,7 @@ export default ({ changeToFalse, userDetails }) => {
   const [name, setName] = useState("");
 
   const onSubmit = () => {
-    // const uid = firebaseApp.auth().currentUser.uid;
+    // const uid = firebaseApp.auth().currentUser.uid; Make mySQL version :)
 
     if (image) {
       console.log("Begin");
