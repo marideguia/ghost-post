@@ -16,9 +16,11 @@ import PSearch from "./PSearch.js"
 const Posts = ({currentUserID}) => {
   // Store and set posts
   const [posts, setPosts] = useState([])
+
   // Store and set active (editing or replying) posts
   const[activePost, setActivePost] = useState(null)
-  // Filter out replies (root posts only - ParentID is null) and sort by upvotes
+
+  // Get root posts only - ParentID is null. Sort by upvotes
   const rootPosts = posts.filter( (post) => post.ParentID === null)
     .sort( (a,b) => a.Upvotes.length - b.Upvotes.length)
     .reverse()
@@ -31,7 +33,6 @@ const Posts = ({currentUserID}) => {
   }
 
   // Store new post
-  // add all needed attributes
   const addPost= (text, parentID) => (
     createPostApi(text, parentID).then(post => {
       setPosts([post, ...posts])
@@ -39,7 +40,7 @@ const Posts = ({currentUserID}) => {
     })
   )
 
-  // Prompt user confirt and remove post from display
+  // Prompt user to confirm  and remove post from display
   const deletePost = (postID) => {
     if (window.confirm('Are you sure you want to remove post?')) {
       deletePostApi(postID).then( () => {
@@ -52,7 +53,7 @@ const Posts = ({currentUserID}) => {
   }
 
   // Update post's Upvote list with user like
-  const upvotePost=(postID, userID) => {
+  const upvotePost =(postID, userID) => {
     upvotePostApi(postID, userID).then( () => {
       const updatedPosts = posts.map(post => {
         if (post.PostID === postID) {          
@@ -82,7 +83,6 @@ const Posts = ({currentUserID}) => {
         return post
       })
       setPosts(updatedPosts)
-      // setActivePost(null)
     })
   }
 
@@ -111,7 +111,7 @@ const Posts = ({currentUserID}) => {
       <Header title="Senior Capstone Session 1"/>
       
       <div className = "p-container">
-        <Sidebar/>
+        <Sidebar/>        
     
         <div className="posts">
         <h3 className="posts-title">Posts</h3>            
@@ -146,9 +146,11 @@ const Posts = ({currentUserID}) => {
             </div>
 
           </div> {/* posts-container */}
-
+          
         </div>
         {/* posts */}
+        <PSearch />
+        
       </div>
       {/* p-container */}
     </div>

@@ -36,8 +36,7 @@ function CreateSession() {
      <div className = "center vh-50 dt w-50 bg-light-blue br3 mt6" >
        <div class="dtc v-mid tc white ph3 ph4-l">
         <h1>Ghost Post Session Generator</h1>
-        <h3>Enter title of your session below</h3>
-    
+        <h3>Enter title of your session below</h3>    
     <div>
       {/*Form code for allowing user to enter Session Title*/} 
     <form onSubmit={handleSubmit}>

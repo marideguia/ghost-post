@@ -56,8 +56,8 @@ function JoinSession() {
           <input className="enter-code" type="text" name="sesscode" placeholder="Enter session code" required />
           {renderErrorMessage("sesscode")}
         </div>
-        <div className="button-container">
-          <input type="submit" />
+        <div className="js-button-container">
+          <input className="js-submit" type="submit" />
         </div>
       </form>
     </div>

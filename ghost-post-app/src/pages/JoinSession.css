@@ -17,6 +17,7 @@ input[type="text"] {
   height: 25px;
   border: 1px solid rgb(255, 255, 255);
   padding: 15px 10px;
+  border-radius: 25px;
 }
 
 input[type="submit"] {
@@ -33,13 +34,11 @@ input[type="submit"]:hover {
   background-color: #519ef5;
 }
 
-
-
 .enter-code {
   border-radius: 25px;
 }
 
-.button-container {
+.js-button-container {
   margin-top: 25px;
   display: flex;
   justify-content: center;

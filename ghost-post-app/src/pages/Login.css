@@ -53,26 +53,6 @@ input[type="submit"]:hover {
   background: #519ef5;
 } 
 
-/* sign up button
-input[type="button"] {
-  margin-top: 10px;
-  cursor: pointer;
-  font-size: 15px;
-  background: #0049c6;
-  border: 1px solid #0049c6;
-  color: #fff;
-  padding: 10px 20px;
-  border-radius: 10px;
-  box-shadow: 5px 5px 5px darkblue;
-}
-input[type="button"]:hover {
-  background: #1b85ff;
-} */
-
-/* .login-form {
-  margin-top: 0px;
-} */
-
 .lp-button{
   cursor: pointer;
   font-size: 15px;
@@ -80,7 +60,7 @@ input[type="button"]:hover {
   border: none;
   color: #fff;
   padding: 10px 20px;
-  border-radius: 10px;
+  border-radius: 25px;
   box-shadow: 5px 5px 5px darkblue;
 }
 .lp-button:hover {
@@ -90,13 +70,21 @@ input[type="button"]:hover {
 
 .login-header1 {
   text-shadow: 3px 3px 3px darkblue;
+  transition: all .2s ease-in-out;
+}
+.login-header1:hover{
+  transform: scale(1.1);
 }
 
 .login-header3 {
   text-shadow: 3px 3px 3px darkblue;
   font-family: "Eight Bit Dragon Regular";
   font-size: x-large;
-  margin-top: 40px;
+  margin: 40px 0px;
+  transition: all .2s ease-in-out;
+}
+.login-header3:hover{
+  transform: scale(1.1);
 }
 
 .login-label {
@@ -105,7 +93,7 @@ input[type="button"]:hover {
 .dual-button-cont {
   /* background-color: pink; */
   display: flex;
-  /* margin-top: 40px; */
+  margin-top:20px;
 }
 
 .btns-container {
@@ -130,6 +118,7 @@ input[type="button"]:hover {
   padding: 10px 20px;
   border-radius: 10px;
   box-shadow: 5px 5px 5px darkblue;
+  border-radius: 25px
 }
 
 /* .login-form {

@@ -50,11 +50,9 @@ const Post = ({
 
   return (
     <div className="post">      
-      <div className="root-post">
-       
+      <div className="root-post">       
 
         <div className="post-container">
-
            {/* Post voting */}
           <div className="post-upvote">
             {canUpvote ? (
@@ -74,7 +72,7 @@ const Post = ({
 
           {/* Post content - date, text, reply, edit, delete functions*/}
           <div className="post-content">
-            <div className = "Top-Row">
+            <div className = "top-row">
               <div className="created-at">{createdAt}</div>
               <div className = "report" 
                 onClick={() => setActivePost( {id:post.PostID, type: "reporting"}) }
@@ -83,89 +81,88 @@ const Post = ({
                 width = "10px" height = "auto" /> */}
                 🚩
               </div>
-          </div>
+            </div>
 
-          {/* Render post text */}
-          {!isEditing && (
-            <div className="post-text">{post.Text}</div>
-          )}
+            {/* Render post text */}
+            {!isEditing && (
+              <div className="post-text">{post.Text}</div>
+            )}
 
-           {/* Render appropriate post actions */}
-           <div className="post-actions">
-            {/* conditional short circuits only render actions when condition is valid */}
-            
-            <div className = "post-action-reply">
-              {/* Reply action */}
-            {canReply && (           
-             
-              <div 
-                className="post-action"
-                style={{cursor: 'pointer'}}
-                onClick={() => setActivePost(
-                  // create object
-                  {id: post.PostID, type: "replying"})
-                }
-              >
+            {/* Render appropriate post actions */}
+            <div className="post-actions">
+              {/* conditional short circuits only render actions when condition is valid */}
+              
+              <div className = "post-action-reply">
+                {/* Reply action */}
+              {canReply && (           
+              
+                <div 
+                  className="post-action"
+                  style={{cursor: 'pointer'}}
+                  onClick={() => setActivePost(
+                    // create object
+                    {id: post.PostID, type: "replying"})
+                  }
+                >
                 
                 Reply <CgArrowLongRight />
                 </div>
               
               )}
-            </div>
+              </div>            
 
-            
+              {/* Delete action */}
+              {canDelete && (
+                <div 
+                  className="post-action" 
+                  onClick={() => deletePost(post.PostID)}
+                >
+                  Delete
+                </div>
+              )}
 
-            {/* Delete action */}
-            {canDelete && (
-              <div 
-                className="post-action" 
-                onClick={() => deletePost(post.PostID)}
-              >
-                Delete
-              </div>
+              {/* Edit action */}
+              {canEdit && (
+                <div 
+                  className="post-action"
+                  onClick={() => setActivePost(
+                  // create object
+                    {id: post.PostID, type: "editing"})
+                }
+                >Edit</div>
+              )}
+              
+            </div> {/* End post-actions div */}
+
+            {/* Render post editing form */}
+            {isEditing && (
+              <PostForm submitLabel="Update" 
+                hasCancelButton
+                initialText={post.Text} 
+                handleSubmit={(text) => updatePost(text, post.PostID)} 
+                handleCancel={() => setActivePost(null)}
+              />
             )}
 
-            {/* Edit action */}
-            {canEdit && (
-              <div 
-                className="post-action"
-                onClick={() => setActivePost(
-                // create object
-                  {id: post.PostID, type: "editing"})
-              }
-              >Edit</div>
-            )}
-            
-          </div> {/* End post-actions div */}
+            {/* Render reply form if user is replying */}
+            {isReplying && (
+              <PostForm 
+                submitLabel="Reply" 
+                handleSubmit={(text) => addPost(text, replyID)}
+                hasCancelButton
+                handleCancel={() => setActivePost(null)}             
+              />
+            )}          
 
-          {/* Render post editing form */}
-          {isEditing && (
-            <PostForm submitLabel="Update" 
-              hasCancelButton
-              initialText={post.Text} 
-              handleSubmit={(text) => updatePost(text, post.PostID)} 
-              handleCancel={() => setActivePost(null)}
-            />
-          )}
-
-          {/* Render reply form if user is replying */}
-          {isReplying && (
-            <PostForm 
-              submitLabel="Reply" 
-              handleSubmit={(text) => addPost(text, replyID)}
-              hasCancelButton
-              handleCancel={() => setActivePost(null)}             
-            />
-          )}          
-
-          </div> {/* End post-contents div */}
-        
+          </div> 
+          {/* End post-contents div */}       
 
 
         </div> 
         {/* End post-container */}       
         
-      </div> {/* End root-post div */}
+      </div> 
+      {/* End root-post div */}
 
       {/* Rendering replies to 2nd tier */}
       {/* conditional statement short circuit renders replies only if > 0 exist */}      

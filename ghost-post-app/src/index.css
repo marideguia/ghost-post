@@ -30,19 +30,22 @@ code {
   background-size: cover;
   background-repeat: no-repeat;
   /* background-color: aqua; */
-  display: flex;
+  /* display: grid; */
+  /* justify-content: center; */
 }
 
 .column-container {
   /* background-color: aquamarine; */
   background-color: whitesmoke;
-  display: flex;
-  flex-direction: column;
-  border-radius: 25px;
+  /* flex-direction: column; */
+  /* width: 75%; */
+  display:grid;
+  justify-content: center;
+  /* border-radius: 25px; */
 }
 
 .sHeader {
-  /* background-color: aqua; */
+  background-color: whitesmoke;
   display: flex;
   margin: 0px 10px;
 }
@@ -121,7 +124,7 @@ code {
   width: 100%;
 }
 
-.Top-Row {
+.top-row {
   display: inline-flex;
   /*text-align: Left;*/
 }

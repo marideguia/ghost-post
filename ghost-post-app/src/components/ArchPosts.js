@@ -30,27 +30,26 @@ const ArchPosts = ({currentUserID}) => {
   return (
     // Display of submitted posts
     <div className = "column-container">
-    <Header title="Senior Capstone Session 1"/>
-    
-    <div className = "p-container">
-      <Sidebar/>
-    <div className="posts">
-      <h3 className="posts-title">Archived Posts</h3>
-      
-      {/* Submitted posts */}
-      <div className="posts-container">
-        {rootPosts.map( (rootPost) => (
-          // <div key={rootPost.PostID}>{rootPost.Text}</div>
-          <Post 
-            key={rootPost.PostID} 
-            post={rootPost}
-            replies={getReplies(rootPost.PostID)}
-            currentUserID={currentUserID}
-          />
-        ))}
+      <Header title="Senior Capstone Session 1"/>
+
+      <div className = "p-container">
+        <Sidebar/>
+        <div className="posts">
+          <h3 className="posts-title">Archived Posts</h3>          
+          {/* Submitted posts */}
+          <div className="posts-container">
+            {rootPosts.map( (rootPost) => (
+              // <div key={rootPost.PostID}>{rootPost.Text}</div>
+              <Post 
+                key={rootPost.PostID} 
+                post={rootPost}
+                replies={getReplies(rootPost.PostID)}
+                currentUserID={currentUserID}
+              />
+            ))}
+          </div>
+        </div>
       </div>
-    </div>
-    </div>
     </div>
 
   )
