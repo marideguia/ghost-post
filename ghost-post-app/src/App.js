@@ -8,11 +8,28 @@
 // import Error from'./components/Error'
 
 import {BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom'
+import {React, useEffect, useState } from "react" //necessary react components
 
 const App = () => {
+
+  const [title, setTitleVal] = useState("title");
+  
+ /* loadSession = (data) => {
+    //event.preventDefault();
+    setTitleVal(data.title);
+   
+  };*/
+
+
   return (
-    <div>APP page</div>
+    <div><h1>{title}</h1></div>
   );
 }
 
 export default App;
+
+
+
+
+
+
