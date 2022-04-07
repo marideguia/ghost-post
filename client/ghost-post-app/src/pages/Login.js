@@ -1,13 +1,14 @@
-import React, { useState } from "react";
+import {React, useEffect,useState } from "react";
 import ReactDOM from "react-dom";
 import { Link } from 'react-router-dom';
-import "./Login.css"
+import "./Login.css";
+
 
 function Login() {
-  // let navigate=useNavigate()
-  // React States
+  
   const [errorMessages, setErrorMessages] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
+  
 
   // User Login info
   const database = [
@@ -25,6 +26,8 @@ function Login() {
     uname: "invalid username",
     pass: "invalid password"
   };
+
+
 
   const handleSubmit = (event) => {
     //Prevent page reload

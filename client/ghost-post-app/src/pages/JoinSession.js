@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import "./JoinSession.css";
 
 function JoinSession() {
   // React States
   const [errorMessages, setErrorMessages] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [codeVal, setCodeVal] = useState("");
+  
+  let navigate = useNavigate();
+  
 
   // User session info
   const database = [
@@ -22,11 +26,32 @@ function JoinSession() {
     sesscode: "invalid session code"
   };
 
+  const onCodeChange = (event) => {
+    //event.preventDefault();
+    setCodeVal(event.target.value);
+   
+  };
+
   const handleSubmit = (event) => {
     //Prevent page reload
     event.preventDefault();
+    console.log(codeVal);
+    fetch('http://localhost:3000/joinSession',{
+      method: 'post',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({
+        code: codeVal
+      })
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data === 'success'){
+        navigate("/App");
+      }
+    })
 
-    var {sesscode} = document.forms[0];
+   
+    /*var {sesscode} = document.forms[0];
 
     // Find session info
     const sessionData = database.find((user) => user.scode === sesscode.value);
@@ -39,7 +64,7 @@ function JoinSession() {
       } else {
         setIsSubmitted(true);
       }
-    }
+    }*/
   };
 
   // Generate JSX code for error message
@@ -53,7 +78,12 @@ function JoinSession() {
     <div className="form">
       <form onSubmit={handleSubmit}>
         <div className="input-container">
-          <input className="enter-code" type="text" name="sesscode" placeholder="Enter session code" required />
+          <input 
+          className="enter-code" 
+          type="text" 
+          name="sesscode" 
+          placeholder="Enter session code" required
+          onChange={onCodeChange} />
           {renderErrorMessage("sesscode")}
         </div>
         <div className="button-container">

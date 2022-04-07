@@ -1,8 +1,7 @@
-import React from "react";
+import React, {useState} from "react";
 import App from "./App";
 import ReactDOM from 'react-dom';
 import "./index.css";
-
 import {BrowserRouter, Routes, Route, Link} from 'react-router-dom';
 import ArchPosts from './components/ArchPosts';
 import Login from './pages/Login';
@@ -12,6 +11,7 @@ import reportWebVitals from './reportWebVitals';
 import JoinSession from './pages/JoinSession';
 
 ReactDOM.render(
+  
   <React.StrictMode>
     <BrowserRouter>
     <Routes>
@@ -28,6 +28,7 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root')
 );
+
 
 
 
