@@ -1,6 +1,7 @@
 import { FaArrowUp } from "react-icons/fa"
 import PostForm from "./PostForm"
 import { CgArrowLongRight } from "react-icons/cg"
+import { useState } from "react"
 
 const Post = ({
   post, 
@@ -18,7 +19,12 @@ const Post = ({
   // const fiveMinutes=300000
   // // true if post was created more than five minutes ago
   // const timePassed = ( new Date() - (post.CreatedAt) ) > fiveMinutes
-
+  // toggle replies
+  const [openReply, setOpenReply] = useState(false)
+  // toggle replies
+  const open = () => {
+    setOpenReply(!openReply)
+  }
   // // Can only reply if user has a user id
   const canReply= Boolean(currentUserID)
   // Can only edit post if user is the creator of the post and less than 5 minutes have passed since creation
@@ -32,6 +38,7 @@ const Post = ({
   const canUpvote = !(post.Upvotes).includes(currentUserID)
   // Format post creation date
   const createdAt = new Date(post.CreatedAt).toLocaleDateString()
+  
   
   // User is replying
   const isReplying = 
@@ -88,6 +95,8 @@ const Post = ({
               <div className="post-text">{post.Text}</div>
             )}
 
+
+
             {/* Render appropriate post actions */}
             <div className="post-actions">
               {/* conditional short circuits only render actions when condition is valid */}
@@ -131,7 +140,14 @@ const Post = ({
                 }
                 >Edit</div>
               )}
-              
+
+              {replies.length > 0 && !parentID && 
+                <div id="see-replies" className="post-action" 
+                style={{cursor: 'pointer'}}
+                onClick={open}>
+                  See replies
+                </div>
+              }               
             </div> {/* End post-actions div */}
 
             {/* Render post editing form */}
@@ -152,21 +168,20 @@ const Post = ({
                 hasCancelButton
                 handleCancel={() => setActivePost(null)}             
               />
-            )}          
+            )}                   
 
           </div> 
           {/* End post-contents div */}       
-
 
         </div> 
         {/* End post-container */}       
         
       </div> 
-      {/* End root-post div */}
+      {/* End root-post div */}      
 
       {/* Rendering replies to 2nd tier */}
       {/* conditional statement short circuit renders replies only if > 0 exist */}      
-      {replies.length > 0 && (
+      {replies.length > 0 && openReply && (
         <div className="replies">
           {replies.map( (reply) => (
             <Post 

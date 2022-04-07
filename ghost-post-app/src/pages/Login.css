@@ -1,31 +1,4 @@
-.app {
-  font-family: sans-serif;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 20px;
-  height: 100vh;
-  font-family: Arial, Helvetica, sans-serif;
-  color: #fff;
-  background-color: #3b62ff;
-  background-image: url("./background.png");
-  position: fixed;
-  min-width: 100%;
-  min-height: 100%;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  background-size: 100vw 100vh;
-}
-/* 
-input[type="text"],
-input[type="username"] {
-  height: 35px;
-  border: 1px solid rgb(0, 0, 0);
-  border-radius: 5px;
-  /* box-shadow: 2px; */
-/* } */
+
 
 /* username and password fields */
 input[type="text"] {
@@ -53,6 +26,10 @@ input[type="submit"]:hover {
   background: #519ef5;
 } 
 
+/* .login-form {
+
+} */
+
 .lp-button{
   cursor: pointer;
   font-size: 15px;
@@ -76,20 +53,24 @@ input[type="submit"]:hover {
   transform: scale(1.1);
 }
 
-.login-header3 {
+.login-label {
+  text-shadow: 2px 2px 2px darkblue;
+}
+
+.btns-container h3 {
   text-shadow: 3px 3px 3px darkblue;
   font-family: "Eight Bit Dragon Regular";
   font-size: x-large;
   margin: 40px 0px;
   transition: all .2s ease-in-out;
+  color:white;
 }
-.login-header3:hover{
+
+.btns-container h3:hover {
   transform: scale(1.1);
 }
 
-.login-label {
-  text-shadow: 2px 2px 2px darkblue;
-}
+
 .dual-button-cont {
   /* background-color: pink; */
   display: flex;
@@ -97,7 +78,7 @@ input[type="submit"]:hover {
 }
 
 .btns-container {
-  margin-top: 15px;
+  margin-top: 20px;
 } 
 
 .button-container {

@@ -20,34 +20,35 @@ code {
     monospace;
 }
 
-/* h1 {
-  color: white;
-} */
-
 /* HEADER.JS STYLES */
-.container {
-  background-image: url("./pages/background.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-  /* background-color: aqua; */
-  /* display: grid; */
-  /* justify-content: center; */
-}
-
-.column-container {
-  /* background-color: aquamarine; */
-  background-color: whitesmoke;
-  /* flex-direction: column; */
-  /* width: 75%; */
-  display:grid;
-  justify-content: center;
-  /* border-radius: 25px; */
-}
-
 .sHeader {
   background-color: whitesmoke;
   display: flex;
-  margin: 0px 10px;
+  height: 10vh;
+  padding-left: 30px;
+}
+
+.page-header {
+  font-size: 30pt;
+}
+
+.bell {
+  /* background-color: aquamarine; */
+  margin: auto 15px;
+}
+
+/* PSEARCH.JS STYLES */
+.PSearch {
+  background-color: blueviolet;
+  width: 15vw;
+
+}
+
+/* POSTS.JS STYLES */
+.p-column-container {
+  background-color: whitesmoke;
+  display:grid;
+  justify-content: center;
 }
 
 .p-container {
@@ -56,53 +57,65 @@ code {
   /* flex-direction: column; */
 }
 
-.PSearch {
-  background-color: blueviolet;
+.archp-container {
+  background-color: lightgray;
   display: flex;
-  flex-direction: column;
-  margin-left: auto;
+  /* flex-direction: column; */
 }
-
-.bell {
-  /* background-color: aquamarine; */
-  margin: auto 25px;
-}
-
-.sidebar-container {
-  background-color: black;
-}
-
-.post {
-  border-top: darkgray 1px solid;
-  /* border-bottom: darkgray 1px solid; */
-}
-
-/* POST.JS STYLES */
-/* .post {
-  border: solid 1px black;
-} */
 
 .posts-title {
   color: black;
+  text-align: center;
 }
-.root-post {
-  /* background-color: blanchedalmond; */
-  /* background-color: lightpink; */
+
+.posts {
+  background-color: whitesmoke;
+  /* margin: 0px 150px; */
+  width: 70vw;
+}
+
+.posts-container {
+  background-color:whitesmoke;
+  /* margin-left: 5px;   */
+  padding-left: 5px;
+  height: 70vh;  
+  overflow: scroll;
+}
+
+.posts-form {
+  height: 30vh;
+  padding-bottom: 15px;
+}
+
+.posts-form-title {
+  margin: 15px;
+  font-weight: bold;
+}
+
+.post-button {
+  padding-right: 2.5%;
+  text-align: right;
+  margin: 5px 15px;
+
+}
+
+/* POST.JS STYLES */
+.post {
+  border-top: darkgray 1px solid;
+}
+
+.root-post { 
   display: flex;
   flex-direction: row;
   align-items: center;
   margin: 2px;
-  /* border-left: darkgray 1px solid; */
-  /* border-top: darkgray 1px solid; */
-  /* border-radius: 12px; */
+
 }
 
 .post-container {
   display: flex;
   flex-direction: row;
-  /* background-color: aqua; */
   width: 100%;
-  /* flex-direction: row; */
 }
 
 .post-upvote {
@@ -154,75 +167,29 @@ code {
 }
 
 .post-action {
-  margin: 2px 5px;
+  margin: 15px 5px 5px 5px;
   font-style: italic;
   color: gray;
   /* margin-right: 0px; */
-}
-
-/* .post-action-reply {
-  text-align: right;
-} */
-
-.replies {
-  margin-left: 30px;
 }
 
 .comment-actions {
   display: flex;
 }
 
-/* POSTS.JS STYLES */
-.posts {
-  background-color: whitesmoke;
-  width: 800px;
-  height: auto;
-  /* margin: 0px 150px; */
+#see-replies {
+  margin-right: auto;  
+  
+}
+.replies {
+  margin-left: 30px;
 }
 
-.posts-title {
-  /* background-color: red; */
-  background-color: whitesmoke;
-  text-align: center;
-}
-
-.posts-form {
-  /* background-color: aqua; */
-  /* border-radius: 25px; */
-  border-top: darkgray 2px solid;
-}
-
-.posts-form-title {
-  /* background-color: lightgrey; */
-  /* text-align: center; */
-  /* border-radius: 25px; */
-  margin: 15px;
-  font-weight: bold;
-}
-
-.posts-container {
-  /* background-color: lightpink; */
-  /* background-color: lightgrey; */
-  margin: 2px;
-  padding: 10px;
-  /* border: solid black 2px; */
-  border-radius: 12px;
-}
-
-.post-form {
-  display: flex;
-  flex-direction: column;
-}
 
 /* POSTFORM.JS STYLES */
 .post-form-textarea {
-  /* background-color: lightgrey; */
-  /* margin-left: 2.5%;
-  margin-right: 2.5%; */
-  width: 80%;
+  width: 100%;
   padding: 10px;
-
-  /* max-width: 500px; */
   border-radius: 10px;
 }
 
@@ -236,7 +203,7 @@ code {
 .post-form-button {
   color: white;
   background-color: steelblue;
-  border-radius: 5px;
+  border-radius: 25px;
   margin: 5px 2px;
   /* font */
 }
@@ -245,10 +212,3 @@ code {
   color: steelblue;
 }
 
-.button-post {
-  /* padding-right: 2.5%; */
-  text-align: right;
-  margin: 5px 15px;
-  /* margin-left: 25px; */
-  /* margin-bottom: 5px; */
-}

@@ -63,10 +63,8 @@ function JoinSession() {
     </div>
   );
 
-  return (
-    
-    <div className="app">
-    
+  return (    
+    <div className="app">    
       <div className="joinsession-form">
         <div className="tc grow"><h1 className="login-header1">Join Session</h1></div>
         {isSubmitted ? <div>Joining Senior Capstone 1</div> : renderForm}

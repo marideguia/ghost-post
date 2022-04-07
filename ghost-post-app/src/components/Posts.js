@@ -107,14 +107,14 @@ const Posts = ({currentUserID}) => {
 
   return (
     // Display of submitted posts   
-    <div className = "column-container">
+    <div className = "p-column-container">
       <Header title="Senior Capstone Session 1"/>
       
       <div className = "p-container">
         <Sidebar/>        
     
         <div className="posts">
-        <h3 className="posts-title">Posts</h3>            
+          <h3 className="posts-title">Posts</h3>            
           
           {/* Submitted posts */}
           <div className="posts-container">
@@ -136,19 +136,19 @@ const Posts = ({currentUserID}) => {
                 removeUpvote={removeUpvote}
               />
             ))}
-            <div className="posts-form">
+          </div> {/* posts-container */}
+          <div className="posts-form">
               <div className="posts-form-title">
                 Submit Posts
               </div>
-              <div className = "button-post">
+              <div className = "post-button">
                 <PostForm submitLabel="Submit" handleSubmit={addPost}/>
               </div>
-            </div>
-
-          </div> {/* posts-container */}
+          </div>   
           
         </div>
         {/* posts */}
+        
         <PSearch />
         
       </div>

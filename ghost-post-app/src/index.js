@@ -11,7 +11,8 @@ import CreateSession from './pages/CreateSession';
 import reportWebVitals from './reportWebVitals';
 import JoinSession from './pages/JoinSession';
 import Home from './components/Home'
-
+import Courses from './components/Courses.js'
+import Sessions from './components/Sessions.js'
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
@@ -24,6 +25,9 @@ ReactDOM.render(
       <Route path = "Joinsession" element ={<JoinSession/>}/>
       <Route path="Archposts" element={<ArchPosts/>}/>
       <Route path="Home" element={<Home/>}/>
+      <Route path="Courses" element={<Courses/>}/>
+      <Route path="Sessions" element={<Sessions/>}/>
+
     </Routes>
     </BrowserRouter>
    

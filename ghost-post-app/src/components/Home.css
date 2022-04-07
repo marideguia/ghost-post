@@ -10,10 +10,10 @@ h2 {
 
 .home-dash {
     /* position:absolute; */
-    margin-left:25%;
+    /* margin-left:25%; */
     width: 50%;
-    min-width: 500px;
-    background: gray;
+    min-width: 700px;
+    /* background: gray; */
 }
 
 .recents-items{
@@ -38,7 +38,7 @@ h2 {
     cursor: pointer;
     user-select: none;
     margin-right: 50px;
-    margin-top: 100px;
+    margin-top: px;
     z-index:10;
 }
 
@@ -51,12 +51,7 @@ h2 {
     right: 2%;
     z-index:10; 
     margin-right: 50px;
-    margin-top: 100px;   
-}
-
-.item {
-    opacity: 0;
-    transition-duration: 1s ease;
+    /* margin-top: 100px;    */
 }
 
 .carousel-btn {
@@ -70,6 +65,11 @@ h2 {
     box-shadow: 5px 5px 5px darkblue;
 }
 
+.item {
+    opacity: 0;
+    transition-duration: 1s ease;
+}
+
 .item-active {
     opacity:1;
     transition-duration: 1s ease;
@@ -79,4 +79,25 @@ h2 {
     height: 250px;
     padding: 20px;
     border-radius: 25px;
+}
+
+/* RECENTS */
+.recents-sctn {
+    /* border-top: solid 1px gray; */
+    /* background-color: white; */
+    padding: 20px;
+}
+
+.recents {
+    display: flex;
+}
+
+.r-item{
+    border-radius: 20px;
+    border: solid 1px gray;
+    width: 200px;
+    height: 150px;
+    margin-right: 20px;
+    padding: 0px 10px;
+
 }

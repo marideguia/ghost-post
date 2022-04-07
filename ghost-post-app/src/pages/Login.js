@@ -58,7 +58,7 @@ function Login() {
   // JSX code for login form
   const renderForm = (
       <div className="form">
-        <form onSubmit={handleSubmit}>
+        <form className="login-form" onSubmit={handleSubmit}>
           <div className="input-container">
             <label className="login-label">Username </label>
             <input type="text" name="uname" required />
@@ -72,36 +72,35 @@ function Login() {
           </div>
 
           <div className="btns-container">
-          <div className="button-container">
-            <input className="lp-button" type="submit" value = "Login"/>
-          </div>
-          
-          <div className="button-container">
-            <input className="lp-button" type="button" value = "Sign Up"/>
-          </div>
-
-          <h3 className="login-header3"><center>OR</center></h3>
-
-          {/* <div className='dual-button-cont'> */}
-            <div className="button-container">              
-              <Link to="Joinsession" >
-                <button className="lp-button">
-                  Join Session
-                </button>
-              </Link> 
+            <div className="button-container">
+              <input className="lp-button" type="submit" value = "Login"/>
+            </div>
+            
+            <div className="button-container">
+              <input className="lp-button" type="button" value = "Sign Up"/>
             </div>
 
-            {/* <div className="button-container">
-            <Link to="CreateSession" >
-                <button className="lp-button">
-                  Create Session
-                </button>
-              </Link>  
-            </div> */}
-          {/* </div> */}
+            <h3><center>OR</center></h3>
 
-          </div>
-          
+            {/* <div className='dual-button-cont'> */}
+              <div className="button-container">              
+                <Link to="Joinsession" >
+                  <button className="lp-button">
+                    Join Session
+                  </button>
+                </Link> 
+              </div>
+
+              {/* <div className="button-container">
+              <Link to="CreateSession" >
+                  <button className="lp-button">
+                    Create Session
+                  </button>
+                </Link>  
+              </div> */}
+            {/* </div> */}
+
+          </div>        
           
         </form>
       </div>

@@ -48,9 +48,7 @@ const PostForm = ({
             Cancel
           </button>
         )}
-
-      </div>
-      
+      </div>      
     </form>
   )
 }

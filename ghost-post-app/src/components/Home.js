@@ -3,6 +3,8 @@ import PSearch from './PSearch'
 import SideBar from './Sidebar'
 import "./Home.css"
 import Carousel from './Carousel'
+import Recents from './Recents'
+import Header from './Header'
 
 const Home = () => {
   return (    
@@ -17,12 +19,7 @@ const Home = () => {
           <Carousel />
         </div>
         <div className="recents-cont">
-          <h2>Recently Joined Courses</h2>
-          <div className="recents-items">
-            <p>Senior Capstone</p>
-            <p>Physics</p>
-            <p>Neural Networks</p>
-          </div>
+          <Recents/>
         </div>
       </div>
       <PSearch/>

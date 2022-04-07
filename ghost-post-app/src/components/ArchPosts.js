@@ -6,6 +6,7 @@ import Post from "./Post.js"
 // import PostForm from "./PostForm.js"
 import Sidebar from"./Sidebar.js"
 import Header from "./Header.js"
+import PSearch from "./PSearch.js"
 
 const ArchPosts = ({currentUserID}) => {
   // Store and set posts
@@ -29,10 +30,10 @@ const ArchPosts = ({currentUserID}) => {
 
   return (
     // Display of submitted posts
-    <div className = "column-container">
+    <div className = "p-column-container">
       <Header title="Senior Capstone Session 1"/>
 
-      <div className = "p-container">
+      <div className = "archp-container">
         <Sidebar/>
         <div className="posts">
           <h3 className="posts-title">Archived Posts</h3>          
@@ -49,6 +50,7 @@ const ArchPosts = ({currentUserID}) => {
             ))}
           </div>
         </div>
+        <PSearch />
       </div>
     </div>
 
