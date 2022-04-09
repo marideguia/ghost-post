@@ -8,6 +8,8 @@ function Login() {
   
   const [errorMessages, setErrorMessages] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [userVal, setUserVal] = useState("");
+  const [userPWD, setPWD] = useState("");
   
 
   // User Login info
@@ -27,6 +29,14 @@ function Login() {
     pass: "invalid password"
   };
 
+  const onUserChange = (event) => {
+    setUserVal(event.target.value);
+  }
+
+  const onPWDChange = (event) => {
+    setPWD(event.target.value);
+  }
+
 
 
   const handleSubmit = (event) => {
@@ -36,20 +46,37 @@ function Login() {
     var { uname, pass } = document.forms[0];
 
     // Find user login info
-    const userData = database.find((user) => user.username === uname.value);
+   // const userData = database.find((user) => user.username === uname.value);
+
+    fetch('http://localhost:3000/signin',{
+      method: 'post',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({
+        username: userVal,
+        password: userPWD
+      })
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data === 'success'){
+        alert("succ ess");
+      }else{
+        alert("fail");
+      }
+    })
 
     // Compare user info
-    if (userData) {
-      if (userData.password !== pass.value) {
-        // Invalid password
-        setErrorMessages({ name: "pass", message: errors.pass });
-      } else {
-        setIsSubmitted(true);
-      }
-    } else {
-      // Username not found
-      setErrorMessages({ name: "uname", message: errors.uname });
-    }
+    // if (userData) {
+    //   if (userData.password !== pass.value) {
+    //     // Invalid password
+    //     setErrorMessages({ name: "pass", message: errors.pass });
+    //   } else {
+    //     setIsSubmitted(true);
+    //   }
+    // } else {
+    //   // Username not found
+    //   setErrorMessages({ name: "uname", message: errors.uname });
+    // }
   };
 
   // Generate JSX code for error message
@@ -64,13 +91,19 @@ function Login() {
         <form onSubmit={handleSubmit}>
           <div className="input-container">
             <label className="login-label">Username </label>
-            <input type="text" name="uname" required />
+            <input 
+            type="text" 
+            name="uname"
+            onChange={onUserChange} required />
             {renderErrorMessage("uname")}
           </div>
 
           <div className="input-container">
             <label className="login-label">Password</label>
-            <input type="text" name="pass" required />
+            <input 
+            type="text" 
+            name="pass" 
+            onChange={onPWDChange} required />
             {renderErrorMessage("pass")}
           </div>
 
@@ -79,7 +112,7 @@ function Login() {
             <input className="lp-button" type="submit" value = "Login"/>
           </div>
           
-          <div className='button-container'>
+          <div className='btns-container'>
             <div className="button-container">              
               <Link to="Signup" >
                 <button className="lp-button">

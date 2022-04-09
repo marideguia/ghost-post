@@ -42,6 +42,7 @@ const database ={
     users:
     [
         {
+            username: 'methAmp',
             userid: '123',
             password: 'cookie',
             fname: 'meth',
@@ -51,6 +52,7 @@ const database ={
             phone: '123-456-7890'
         },
         {
+            username: 'mariJuan',
             userid: '125',
             password: 'coke',
             fname: 'mari',
@@ -70,13 +72,13 @@ const database ={
     ]
 }
 
-/*app.get('/',(req,res)=>{
-    res.send(database.users);
-})*/
-
 app.get('/',(req,res)=>{
-    res.send(database.sessions);
+    res.send(database.users);
 })
+
+// app.get('/',(req,res)=>{
+//     res.send(database.sessions);
+// })
 
 app.post('/joinSession', (req,res)=>{
    if (req.body.code === database.sessions[0].code)
@@ -124,28 +126,24 @@ app.listen(3000,()=>{
 
 app.post('/signin', (req, res) => {
 
-    if(req.body.email === database.users[0].email && 
+    if(req.body.username === database.users[0].username && 
             req.body.password === database.users[0].password){
         res.json('success');
     }else{
-        console.log(req.body.email, req.body.password)
+        // console.log(req.body.username, req.body.password)
         res.status(400).json('Error logging in');
     }
 })
 
 app.post('/register', (req, res) => {
-    const { email, password, fname } = req.body;
+    const { username, password} = req.body;
     bcrypt.hash(password, null, null, function(err, hash) {
         console.log(hash)
     })
     database.users.push({
+        username: username,
         userid: '1212',
-        password: password,
-        fname: fname,
-        lname: 'urie',
-        school: 'zoom uni',
-        email: email,
-        phone: '098-865-4321'
+        password: password
     })
 
     res.json(database.users[database.users.length-1]);

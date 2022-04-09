@@ -8,7 +8,22 @@ function Signup() {
   
   const [errorMessages, setErrorMessages] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
-  
+  const [userVal, setUserVal] = useState("");
+  const [userPWD, setPWD] = useState("");
+
+  // const [sessionState,setSessionState]= useState({
+  //   username:'asdfg',
+  //   password:''
+  // });
+
+  const onUserChange = (event) => {
+    setUserVal(event.target.value);
+  }
+
+  const onPWDChange = (event) => {
+    setPWD(event.target.value);
+  }
+
 
   // User Login info
   const database = [
@@ -31,21 +46,38 @@ function Signup() {
   const handleSubmit = (event) => {
     //Prevent page reload
     event.preventDefault();
+    fetch('http://localhost:3000/register',{
+      method: 'post',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({
+        username: userVal,
+        password: userPWD
+      })
+    })
+    .then(response => response.json())
+    .then(user => {
+      if (user){
+        
+        alert("succ ess");
+      }else{
+        alert("fail");
+      }
+    })
 
-    var { uname, pass } = document.forms[0];
+    // var { uname, pass } = document.forms[0];
 
-    // Find user login info
-    const userData = database.find((user) => user.username === uname.value);
+    // // Find user login info
+    // const userData = database.find((user) => user.username === uname.value);
 
-    // Compare user info
-    if (userData) {
-      // Username dupe found
-      setErrorMessages({ name: "uname", message: errors.uname });
-    }
-    else{
-      setIsSubmitted(true)
-    }
-  }
+    // // Compare user info
+    // if (userData) {
+    //   // Username dupe found
+    //   setErrorMessages({ name: "uname", message: errors.uname });
+    // }
+    // else{
+    //   setIsSubmitted(true)
+    // }
+  };
 
   // Generate JSX code for error message
   const renderErrorMessage = (name) =>
@@ -59,19 +91,27 @@ function Signup() {
         <form onSubmit={handleSubmit}>
           <div className="input-container">
             <label className="login-label">Username </label>
-            <input type="text" name="uname" required />
+            <input 
+            type="text" 
+            name="uname" 
+            onChange={onUserChange}
+            required />
             {renderErrorMessage("uname")}
           </div>
 
           <div className="input-container">
             <label className="login-label">Password</label>
-            <input type="text" name="pass" required />
+            <input 
+            type="text" 
+            name="pass" 
+            onChange={onPWDChange}
+            required />
           </div>
 
           <div className="btns-container">
           
           <div className="button-container">
-            <input className="lp-button" type="button" value = "Sign Up"/>
+            <input className="lp-button" type="submit" value = "Sign Up"/>
           </div>
           </div>
           
@@ -96,7 +136,7 @@ function Signup() {
 
   return (
     <div className="app">
-      <h1 className="signup-header1">Welcome to GhostPost</h1>
+      <h1 className="signup-header1">Create an Account</h1>
       <div className="signup-form">
       
        
