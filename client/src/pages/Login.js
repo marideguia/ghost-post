@@ -79,7 +79,7 @@ function Login() {
             <input className="lp-button" type="submit" value = "Login"/>
           </div>
           
-          <div className='button-container'>
+          <div className='btns-container'>
             <div className="button-container">              
               <Link to="Signup" >
                 <button className="lp-button">
