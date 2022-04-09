@@ -9,10 +9,15 @@ import Posts from './components/Posts';
 import CreateSession from './pages/CreateSession';
 import reportWebVitals from './reportWebVitals';
 import JoinSession from './pages/JoinSession';
+import {Provider} from "react-redux";
+import { createStore, applyMiddleware} from "redux";
+import promiseMiddleware from "redux-promise";
+import ReduxThunk from "redux-thunk";
+const createStoreWithMiddleware = applyMiddleware(promiseMiddleware,ReduxThunk)(createStore)
 
 ReactDOM.render(
-  
   <React.StrictMode>
+   {/* <Provider store = {createStoreWithMiddleware()}>*/}
     <BrowserRouter>
     <Routes>
       <Route path = "/" element = {<Login/>}/>
@@ -24,7 +29,7 @@ ReactDOM.render(
       <Route path="Archposts" element={<ArchPosts/>}/>
     </Routes>
     </BrowserRouter>
-   
+    {/*</Provider>*/}
   </React.StrictMode>,
   document.getElementById('root')
 );

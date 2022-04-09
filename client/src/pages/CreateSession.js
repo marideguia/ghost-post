@@ -59,14 +59,12 @@ function CreateSession() {
     setShow(true);
     setDisabled(!disabled);
 
-
-
     fetch('http://localhost:3000/createSession',{
       method: 'post',
       headers:{'Content-Type':'application/json'},
       body: JSON.stringify({
-        title: sessionState.title,
-        code: sessionState.code
+        code: sessionState.code,
+        title: sessionState.title
       })
     })
     .then(response => response.json())
@@ -75,6 +73,9 @@ function CreateSession() {
        // props.loadSession(session)
         //navigate("/Posts"); //navigate for testing purposes but we need to update front with session info
         console.log("successful fetch");
+        alert("ahah success");
+      }else{
+        alert("alas a failure");
       }
     })
 
