@@ -17,6 +17,7 @@ import Home from './components/Home';
 import Sessions from './components/Sessions';
 import Courses from './components/Courses';
 import Signup from './pages/Signup';
+import OurCalendar from './pages/Calendar';
 const createStoreWithMiddleware = applyMiddleware(promiseMiddleware,ReduxThunk)(createStore);
 
 ReactDOM.render(
@@ -35,6 +36,7 @@ ReactDOM.render(
       <Route path="Sessions" element={<Sessions/>}/>
       <Route path="Courses" element={<Courses/>}/>
       <Route path="Signup" element={<Signup/>}/>
+      <Route path="OurCalendar" element={<OurCalendar/>}/>
     </Routes>
     </BrowserRouter>
     {/*</Provider>*/}

@@ -26,7 +26,7 @@ export const SidebarData = [
   {
     title: "Calendar",
     icon: <DateRangeIcon />,
-    link: "../Calendar",
+    link: "../OurCalendar",
     clssname: 'nav-text'
   },
   {
