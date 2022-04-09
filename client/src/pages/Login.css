@@ -80,7 +80,7 @@ input[type="button"]:hover {
   border: none;
   color: #fff;
   padding: 10px 20px;
-  border-radius: 10px;
+  border-radius: 25px;
   box-shadow: 5px 5px 5px darkblue;
 }
 .lp-button:hover {
