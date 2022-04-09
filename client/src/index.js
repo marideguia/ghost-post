@@ -13,10 +13,10 @@ import {Provider} from "react-redux";
 import { createStore, applyMiddleware} from "redux";
 import promiseMiddleware from "redux-promise";
 import ReduxThunk from "redux-thunk";
-const createStoreWithMiddleware = applyMiddleware(promiseMiddleware,ReduxThunk)(createStore)
-import Home from './components/Home'
-import Sessions from './components/Sessions'
-import Courses from './components/Courses'
+import Home from './components/Home';
+import Sessions from './components/Sessions';
+import Courses from './components/Courses';
+const createStoreWithMiddleware = applyMiddleware(promiseMiddleware,ReduxThunk)(createStore);
 
 ReactDOM.render(
   <React.StrictMode>
