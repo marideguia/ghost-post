@@ -16,6 +16,7 @@ import ReduxThunk from "redux-thunk";
 import Home from './components/Home';
 import Sessions from './components/Sessions';
 import Courses from './components/Courses';
+import Signup from './pages/Signup';
 const createStoreWithMiddleware = applyMiddleware(promiseMiddleware,ReduxThunk)(createStore);
 
 ReactDOM.render(
@@ -33,6 +34,7 @@ ReactDOM.render(
       <Route path="Home" element={<Home/>}/>
       <Route path="Sessions" element={<Sessions/>}/>
       <Route path="Courses" element={<Courses/>}/>
+      <Route path="Signup" element={<Signup/>}/>
     </Routes>
     </BrowserRouter>
     {/*</Provider>*/}
