@@ -14,6 +14,9 @@ import { createStore, applyMiddleware} from "redux";
 import promiseMiddleware from "redux-promise";
 import ReduxThunk from "redux-thunk";
 const createStoreWithMiddleware = applyMiddleware(promiseMiddleware,ReduxThunk)(createStore)
+import Home from './components/Home'
+import Sessions from './components/Sessions'
+import Courses from './components/Courses'
 
 ReactDOM.render(
   <React.StrictMode>
@@ -27,6 +30,9 @@ ReactDOM.render(
       <Route path = "Posts" element ={<Posts currentUserID={"1"}/>}/>
       <Route path = "Joinsession" element ={<JoinSession/>}/>
       <Route path="Archposts" element={<ArchPosts/>}/>
+      <Route path="Home" element={<Home/>}/>
+      <Route path="Sessions" element={<Sessions/>}/>
+      <Route path="Courses" element={<Courses/>}/>
     </Routes>
     </BrowserRouter>
     {/*</Provider>*/}
