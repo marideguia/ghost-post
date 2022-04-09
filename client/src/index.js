@@ -9,6 +9,9 @@ import Posts from './components/Posts';
 import CreateSession from './pages/CreateSession';
 import reportWebVitals from './reportWebVitals';
 import JoinSession from './pages/JoinSession';
+import Home from './components/Home'
+import Sessions from './components/Sessions'
+import Courses from './components/Courses'
 
 ReactDOM.render(
   
@@ -22,6 +25,9 @@ ReactDOM.render(
       <Route path = "Posts" element ={<Posts currentUserID={"1"}/>}/>
       <Route path = "Joinsession" element ={<JoinSession/>}/>
       <Route path="Archposts" element={<ArchPosts/>}/>
+      <Route path="Home" element={<Home/>}/>
+      <Route path="Sessions" element={<Sessions/>}/>
+      <Route path="Courses" element={<Courses/>}/>
     </Routes>
     </BrowserRouter>
    
