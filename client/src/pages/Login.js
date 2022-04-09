@@ -79,9 +79,15 @@ function Login() {
             <input className="lp-button" type="submit" value = "Login"/>
           </div>
           
-          <div className="button-container" id="signup">
-            <input className="lp-button" type="button" value = "Sign Up"/>
-          </div>
+          <div className='button-container'>
+            <div className="button-container">              
+              <Link to="Signup" >
+                <button className="lp-button">
+                  Sign up
+                </button>
+              </Link> 
+            </div>
+            </div>
 
           <h3 className="login-header3"><center>OR</center></h3>
 
