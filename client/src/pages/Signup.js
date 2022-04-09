@@ -96,7 +96,7 @@ function Signup() {
 
   return (
     <div className="app">
-      <h1 className="signup-header1">Welcome to GhostPost</h1>
+      <h1 className="signup-header1">Create an account</h1>
       <div className="signup-form">
       
        
