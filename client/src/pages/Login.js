@@ -85,7 +85,7 @@ function Login() {
 
           <h3 className="login-header3"><center>OR</center></h3>
 
-          <div className='dual-button-cont'>
+          {/* <div className='dual-button-cont'> */}
             <div className="button-container">              
               <Link to="Joinsession" >
                 <button className="lp-button">
@@ -94,14 +94,14 @@ function Login() {
               </Link> 
             </div>
 
-            <div className="button-container">
+            {/* <div className="button-container">
             <Link to="CreateSession" >
                 <button className="lp-button">
                   Create Session
                 </button>
               </Link>  
-            </div>
-          </div>
+            </div> */}
+          {/* </div> */}
 
           </div>
           
