@@ -29,7 +29,7 @@ const ArchPosts = ({currentUserID}) => {
 
   return (
     // Display of submitted posts
-    <div className = "column-container">
+    <div className = "p-column-container">
     <Header title="Senior Capstone Session 1"/>
     
     <div className = "p-container">
