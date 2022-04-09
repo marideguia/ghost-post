@@ -120,6 +120,14 @@ input[type="button"]:hover {
   border-radius: 5px;
 }
 
+#signup {
+  margin-top: 0px;
+}
+
+#join-sess {
+  margin-top: 40px;
+}
+
 .session-button {
   /* margin-top: 10px; */
   cursor: pointer;
