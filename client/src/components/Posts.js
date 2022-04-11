@@ -12,8 +12,10 @@ import PostForm from "./PostForm.js"
 import Header from "./Header.js"
 import Sidebar from "./Sidebar.js"
 import PSearch from "./PSearch.js"
+import { useStore } from '../store/Store';
 
 const Posts = ({currentUserID}) => {
+  const { logoColor } = useStore();
   // Store and set posts
   const [posts, setPosts] = useState([])
 
@@ -109,7 +111,7 @@ const Posts = ({currentUserID}) => {
     // Display of submitted posts   
     <div className = "p-column-container">
       <Header title="Senior Capstone Session 1"/>
-      
+      <h2 style={{ color: logoColor }}>Subtitle</h2>
       <div className = "p-container">
         <Sidebar/>        
     

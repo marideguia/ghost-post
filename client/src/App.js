@@ -1,28 +1,41 @@
+import React, {useState} from "react";
+import ReactDOM from 'react-dom';
+import {BrowserRouter, Routes, Route, Link} from 'react-router-dom';
+import ArchPosts from './components/ArchPosts';
+import Login from './pages/Login';
+import Posts from './components/Posts';
+import CreateSession from './pages/CreateSession';
+import JoinSession from './pages/JoinSession';
+import {Provider} from "react-redux";
+import { createStore, applyMiddleware} from "redux";
+import promiseMiddleware from "redux-promise";
+import ReduxThunk from "redux-thunk";
+import Home from './components/Home';
+import Sessions from './components/Sessions';
+import Courses from './components/Courses';
+import Signup from './pages/Signup';
+import OurCalendar from './pages/Calendar';
 
-
-// import Login from './components/Login'
-// import Car from './components/CreateSession'
-// import Joinsession from './joinsession'
-// import Posts from './components/Posts'
-// import ArchPosts from './components/ArchPosts'
-// import Error from'./components/Error'
-
-import {BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom'
-import {React, useEffect, useState } from "react" //necessary react components
-
-const App = () => {
-
-  const [title, setTitleVal] = useState("title");
+function App(){
   
- /* loadSession = (data) => {
-    //event.preventDefault();
-    setTitleVal(data.title);
-   
-  };*/
-
 
   return (
-    <div><h1>{title}</h1></div>
+    <BrowserRouter>
+    <Routes>
+      <Route path = "/" element = {<Login/>}/>
+      <Route path = "CreateSession" element={<CreateSession/>}/>
+      <Route path = "App" element ={<App/>}/>
+      <Route path = "Login" element ={<Login/>}/>
+      <Route path = "Posts" element ={<Posts currentUserID={"1"}/>}/>
+      <Route path = "Joinsession" element ={<JoinSession/>}/>
+      <Route path="Archposts" element={<ArchPosts/>}/>
+      <Route path="Home" element={<Home/>}/>
+      <Route path="Sessions" element={<Sessions/>}/>
+      <Route path="Courses" element={<Courses/>}/>
+      <Route path="Signup" element={<Signup/>}/>
+      <Route path="OurCalendar" element={<OurCalendar/>}/>
+    </Routes>
+    </BrowserRouter>
   );
 }
 

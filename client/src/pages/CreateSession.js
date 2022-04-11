@@ -6,7 +6,7 @@ import './CreateSession.css' //Additional Style Sheet for Component
 
 function CreateSession() {
   const [sessionState,setSessionState]= useState({
-    code:'asdfg',
+    code:'',
     title:''
   });
 

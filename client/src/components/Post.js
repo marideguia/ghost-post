@@ -2,6 +2,7 @@ import { FaArrowUp } from "react-icons/fa"
 import PostForm from "./PostForm"
 import { CgArrowLongRight } from "react-icons/cg"
 import { useState } from "react"
+//import { useStore } from '../store/Store';
 
 const Post = ({
   post, 
@@ -20,6 +21,7 @@ const Post = ({
   // // true if post was created more than five minutes ago
   // const timePassed = ( new Date() - (post.CreatedAt) ) > fiveMinutes
   // toggle replies
+ // const { logoColor } = useStore();
   const [openReply, setOpenReply] = useState(false)
   // toggle replies
   const open = () => {
@@ -56,7 +58,7 @@ const Post = ({
   const replyID =  parentID ? parentID : post.PostID
 
   return (
-    <div className="post">      
+    <div className="post">     
       <div className="root-post">       
 
         <div className="post-container">
