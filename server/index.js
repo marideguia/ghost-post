@@ -2,22 +2,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt-nodejs');
 const cors = require('cors');
-const { response } = require('express');
-const app = express();
-const knex = require('knex')({
-    client: 'mysql',
-    connection: {
-      host : '127.0.0.1',
-      port : 3306,
-      user : 'summer',
-      password : 'ghostfruit',
-      database : 'ghostpost'
-    }
-  });
 
-/*knex.select('*').from('session').then(data=>{
-    console.log(data);
-})*/
+const app = express();
+
 app.use(bodyParser.json());
 app.use(cors());
 
@@ -92,19 +79,17 @@ app.post('/joinSession', (req,res)=>{
 
 app.post('/createSession',(req,res) =>{
     const {code,title} = req.body;
-    knex('session')
-    .insert({
+    bcrypt.hash(code, null, null, function(err, hash) {
+        console.log(hash);
+    });
+    database.sessions.push({
+        id: '125',
         code:code,
         title:title,
         created: new Date()
     })
-    .then(session =>{
-        res.json(session[0]);
-    })
-    .catch(err => res.status(400).json('unable to create session'))
- 
+   res.json(database.sessions[database.sessions.length-1])
 })
-
 app.get('/session/:id',(req,res) =>{
     const {id} = req.params;
     let found = false;
@@ -127,22 +112,26 @@ app.listen(3000,()=>{
 app.post('/signin', (req, res) => {
 
     if(req.body.username === database.users[0].username && 
-            req.body.password === database.users[0].password){
-        res.json('success');
-    }else{
-        // console.log(req.body.username, req.body.password)
-        res.status(400).json('Error logging in');
-    }
+        req.body.password === database.users[0].password){
+    res.json('success');
+        }else{
+            // console.log(req.body.username, req.body.password)
+            res.status(400).json('Error logging in');
+        }
 })
 
 app.post('/register', (req, res) => {
-    const { username, password} = req.body;
+    const { username, email, school, phone, password} = req.body;
     bcrypt.hash(password, null, null, function(err, hash) {
         console.log(hash)
     })
     database.users.push({
         username: username,
+        email: email,
+        school: school,
+        phone: phone,
         userid: '1212',
+
         password: password
     })
 
