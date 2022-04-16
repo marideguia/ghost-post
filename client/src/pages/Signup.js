@@ -1,6 +1,7 @@
 import {React, useEffect,useState } from "react";
 import ReactDOM from "react-dom";
 import { Link } from 'react-router-dom';
+import validator from "validator";
 import "./Login.css";
 
 
@@ -9,6 +10,9 @@ function Signup() {
   const [errorMessages, setErrorMessages] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [userVal, setUserVal] = useState("");
+  const [userEmail, setEmailVal] = useState("");
+  const [userSchool, setSchoolVal] = useState("");
+  const [userPhone, setPhoneNum] = useState("");
   const [userPWD, setPWD] = useState("");
 
   // const [sessionState,setSessionState]= useState({
@@ -18,6 +22,18 @@ function Signup() {
 
   const onUserChange = (event) => {
     setUserVal(event.target.value);
+  }
+
+  const onEmailChange = (event) => {
+    setEmailVal(event.target.value);
+  }
+
+  const onSchoolChange = (event) => {
+    setSchoolVal(event.target.value);
+  }
+
+  const onPhoneChange = (event) => {
+    setPhoneNum(event.target.value);
   }
 
   const onPWDChange = (event) => {
@@ -51,6 +67,9 @@ function Signup() {
       headers:{'Content-Type':'application/json'},
       body: JSON.stringify({
         username: userVal,
+        email: userEmail,
+        school: userSchool,
+        phone: userPhone,
         password: userPWD
       })
     })
@@ -58,7 +77,7 @@ function Signup() {
     .then(user => {
       if (user){
         
-        alert("succ ess");
+        alert("success");
       }else{
         alert("fail");
       }
@@ -97,6 +116,33 @@ function Signup() {
             onChange={onUserChange}
             required />
             {renderErrorMessage("uname")}
+          </div>
+
+          <div className="input-container">
+            <label className="login-label">Email</label>
+            <input 
+            type="text" 
+            name="email" 
+            onChange={onEmailChange}
+            required />
+          </div>
+
+          <div className="input-container">
+            <label className="login-label">School</label>
+            <input 
+            type="text" 
+            name="school" 
+            onChange={onSchoolChange}
+            required />
+          </div>
+
+          <div className="input-container">
+            <label className="login-label">Phone</label>
+            <input 
+            type="text" 
+            name="phone" 
+            onChange={onPhoneChange}
+            required />
           </div>
 
           <div className="input-container">
