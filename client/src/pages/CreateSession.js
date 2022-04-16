@@ -4,7 +4,7 @@ import 'tachyons'; //CSS toolkit for styling
 import './CreateSession.css' //Additional Style Sheet for Component
 
 
-function CreateSession() {
+function CreateSession({setSessionTitle}) {
   const [sessionState,setSessionState]= useState({
     code:'',
     title:''
@@ -43,6 +43,7 @@ function CreateSession() {
     setSessionState((prevState)=>{
       return {...prevState,title:val};
     })
+    setSessionTitle(val);
     //Random string generator to create session codes
     
   };
@@ -56,6 +57,7 @@ function CreateSession() {
     //setText(event.target[0].value);
     setText("Share this code with your audience");
     setText2(sessionState.code);
+
     setShow(true);
     setDisabled(!disabled);
 

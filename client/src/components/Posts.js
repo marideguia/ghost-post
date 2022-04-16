@@ -14,7 +14,7 @@ import Sidebar from "./Sidebar.js"
 import PSearch from "./PSearch.js"
 import { useStore } from '../store/Store';
 
-const Posts = ({currentUserID}) => {
+const Posts = (props) => {
   const { logoColor } = useStore();
   // Store and set posts
   const [posts, setPosts] = useState([])
@@ -110,8 +110,8 @@ const Posts = ({currentUserID}) => {
   return (
     // Display of submitted posts   
     <div className = "p-column-container">
-      <Header title="Senior Capstone Session 1"/>
-      <h2 style={{ color: logoColor }}>Subtitle</h2>
+      <Header title={props.sessionTitle}/>
+      <h2 style={{color:logoColor}} >Subtitle</h2>
       <div className = "p-container">
         <Sidebar/>        
     
@@ -128,7 +128,8 @@ const Posts = ({currentUserID}) => {
                 key={rootPost.PostID} 
                 post={rootPost}
                 replies={getReplies(rootPost.PostID)}
-                currentUserID={currentUserID}
+                currentUserID={props.currentUserID}
+                //currentUserID = "1"
                 deletePost={deletePost}
                 activePost={activePost}
                 setActivePost={setActivePost}

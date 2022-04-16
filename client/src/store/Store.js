@@ -6,7 +6,7 @@ Store.displayName = 'Store';
 export const useStore = () => React.useContext(Store);
 
 export const StoreProvider = ({ children }) => {
-    const logoColor = 'blue';
+    const logoColor = 'red';
 
   return (
     <Store.Provider value={{logoColor}}>{children}</Store.Provider>
