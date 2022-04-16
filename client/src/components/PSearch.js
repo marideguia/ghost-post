@@ -1,5 +1,6 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import Posts, { getPosts } from "../api.js"
+
 
 const PSearch = () => {
   const [searchTerm, setSearchTerm] = useState("");

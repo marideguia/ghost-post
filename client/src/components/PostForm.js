@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import React, {useState} from 'react'
 
 // Form to submit posts
 const PostForm = ({

@@ -1,7 +1,7 @@
 import { FaArrowUp } from "react-icons/fa"
 import PostForm from "./PostForm"
 import { CgArrowLongRight } from "react-icons/cg"
-import { useState } from "react"
+import React, { useState } from "react"
 //import { useStore } from '../store/Store';
 
 const Post = ({

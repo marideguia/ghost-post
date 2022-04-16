@@ -2,8 +2,20 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt-nodejs');
 const cors = require('cors');
+const { response } = require('express');
 
 const app = express();
+
+const knex = require('knex')({
+    client: 'mysql',
+    connection: {
+      host : '127.0.0.1',
+      port : 3306,
+      user : 'summer',
+      password : 'ghostfruit',
+      database : 'ghostpost'
+    }
+  });  
 
 app.use(bodyParser.json());
 app.use(cors());
@@ -79,16 +91,17 @@ app.post('/joinSession', (req,res)=>{
 
 app.post('/createSession',(req,res) =>{
     const {code,title} = req.body;
-    bcrypt.hash(code, null, null, function(err, hash) {
-        console.log(hash);
-    });
-    database.sessions.push({
-        id: '125',
+    knex('session')
+    .insert({
         code:code,
         title:title,
         created: new Date()
     })
-   res.json(database.sessions[database.sessions.length-1])
+
+    .then(session =>{
+        res.json(session[0]);
+    })
+    .catch(err => res.status(400).json('unable to create session'))
 })
 app.get('/session/:id',(req,res) =>{
     const {id} = req.params;
