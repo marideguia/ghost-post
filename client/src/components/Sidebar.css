@@ -39,6 +39,14 @@
   height: 60px;
 }
 
+.logo{
+  display: fixed;
+  align-items: center;
+  padding: 6px 0px 8px 16px;
+  list-style: none;
+  height: 60px;
+}
+
 .nav-text a{
   text-decoration: none;
   color: gray;
