@@ -1,8 +1,7 @@
 import { FaArrowUp } from "react-icons/fa"
 import PostForm from "./PostForm"
 import { CgArrowLongRight } from "react-icons/cg"
-import React, { useState } from "react"
-//import { useStore } from '../store/Store';
+import { useState } from "react"
 
 const Post = ({
   post, 
@@ -15,81 +14,75 @@ const Post = ({
   addPost,
   updatePost,
   upvotePost,
-  removeUpvote
+  removeUpvote,
+  arch,
 }) => {
-  // const fiveMinutes=300000
-  // // true if post was created more than five minutes ago
-  // const timePassed = ( new Date() - (post.CreatedAt) ) > fiveMinutes
-  // toggle replies
- // const { logoColor } = useStore();
+  // Display replies if true
   const [openReply, setOpenReply] = useState(false)
-  // toggle replies
+  // Can only reply if user has a user id
+  const canReply= Boolean(currentUserID)
+  // Can only edit post if user is the creator of the post 
+  const canEdit = currentUserID === post.UserID 
+  // Can only delete post if user is the creator of the post 
+  const canDelete = currentUserID === post.UserID 
+  // length of Upvotes array
+  const numUpvotes = post.Upvotes.length
+  // True if user can upvote post - userID is not already in the upvotes array
+  const canUpvote = !(post.Upvotes).includes(currentUserID)
+  // Format post creation date
+  const createdAt = new Date(post.CreatedAt).toLocaleString()
+
+  // Toggles see/hide replies
   const open = () => {
     setOpenReply(!openReply)
   }
-  // // Can only reply if user has a user id
-  const canReply= Boolean(currentUserID)
-  // Can only edit post if user is the creator of the post and less than 5 minutes have passed since creation
-  const canEdit = currentUserID === post.UserID 
-    // && !timePassed
-  // Can only delete post if user is the creator of the post and less than 5 minutes have passed since creation
-  const canDelete = canEdit
-  // length of Upvotes array
-  const numUpvotes = post.Upvotes.length
-  // True if user can upvote post - userID is not in the upvotes array
-  const canUpvote = !(post.Upvotes).includes(currentUserID)
-  // Format post creation date
-  const createdAt = new Date(post.CreatedAt).toLocaleDateString()
-  
-  
-  // User is replying
+
+  // True if user is replying to this post
   const isReplying = 
     activePost && 
     activePost.type ==='replying' && 
     activePost.id === post.PostID
 
-  // User is editing their post
+  // True if user is editing this post
   const isEditing = 
     activePost && 
     activePost.type ==='editing' && 
     activePost.id === post.PostID
 
-  // If root post, replyID is equivalent to PostID. Else, copy parentID
+  // If post has parent, replyID is parentID. Else, replyID is current postID
   const replyID =  parentID ? parentID : post.PostID
 
   return (
-    <div className="post">     
+    <div className="post">      
       <div className="root-post">       
 
         <div className="post-container">
-           {/* Post voting */}
-          <div className="post-upvote">
-            {canUpvote ? (
-              <FaArrowUp 
-              onClick={() => upvotePost(post.PostID, currentUserID)}
-              style={{cursor: 'pointer'}}
-              />            
-            ) : (
-              <FaArrowUp     
-                onClick={() => removeUpvote(post.PostID, currentUserID)}          
-                style={{color: 'green', cursor: 'pointer'}}
-              /> 
-            )}
-            <label>{numUpvotes}</label>
-          </div> 
-          {/* end post-upvote */}
+          {/* Post voting */}
+          {canUpvote ? 
+              <div className={arch ? "a-post-upvote" : "post-upvote"} 
+                onClick={arch ? {} : () => upvotePost(post.PostID, currentUserID)} 
+              >
+                <FaArrowUp />     
+                <label className="upvote-lbl">{numUpvotes}</label> 
+              </div>                  
+             : 
+              <div className={arch ? "a-post-upvote" :"post-upvoted" }
+                onClick={arch ? {} :() => removeUpvote(post.PostID, currentUserID)}
+              >
+                <FaArrowUp /> 
+                <label className="upvote-lbl">{numUpvotes}</label> 
+              </div>              
+          }     
 
-          {/* Post content - date, text, reply, edit, delete functions*/}
+          {/* Post content - date, text, & see replies, reply, edit, delete functions*/}
           <div className="post-content">
             <div className = "top-row">
               <div className="created-at">{createdAt}</div>
-              <div className = "report" 
+              {/* <div className = "report" 
                 onClick={() => setActivePost( {id:post.PostID, type: "reporting"}) }
               >
-                {/* <img src = "FlagIcon.png" alt = "Report Comment"
-                width = "10px" height = "auto" /> */}
                 🚩
-              </div>
+              </div> */}
             </div>
 
             {/* Render post text */}
@@ -97,70 +90,80 @@ const Post = ({
               <div className="post-text">{post.Text}</div>
             )}
 
-
-
-            {/* Render appropriate post actions */}
-            <div className="post-actions">
-              {/* conditional short circuits only render actions when condition is valid */}
-              
-              <div className = "post-action-reply">
-                {/* Reply action */}
-              {canReply && (           
-              
-                <div 
-                  className="post-action"
-                  style={{cursor: 'pointer'}}
-                  onClick={() => setActivePost(
-                    // create object
-                    {id: post.PostID, type: "replying"})
-                  }
-                >
-                
-                Reply <CgArrowLongRight />
-                </div>
-              
-              )}
-              </div>            
-
-              {/* Delete action */}
-              {canDelete && (
-                <div 
-                  className="post-action" 
-                  onClick={() => deletePost(post.PostID)}
-                >
-                  Delete
-                </div>
-              )}
-
-              {/* Edit action */}
-              {canEdit && (
-                <div 
-                  className="post-action"
-                  onClick={() => setActivePost(
-                  // create object
-                    {id: post.PostID, type: "editing"})
-                }
-                >Edit</div>
-              )}
-
-              {replies.length > 0 && !parentID && 
-                <div id="see-replies" className="post-action" 
-                style={{cursor: 'pointer'}}
-                onClick={open}>
-                  See replies
-                </div>
-              }               
-            </div> {/* End post-actions div */}
-
-            {/* Render post editing form */}
+            {/* Render post editing form if editing*/}
             {isEditing && (
-              <PostForm submitLabel="Update" 
+              <PostForm 
+                submitLabel="Update" 
                 hasCancelButton
                 initialText={post.Text} 
                 handleSubmit={(text) => updatePost(text, post.PostID)} 
                 handleCancel={() => setActivePost(null)}
               />
             )}
+
+          {/* Render appropriate post actions */}
+          <div className="post-actions">
+            {/* conditional short circuits only render actions when 1st condition is valid */}
+            
+            {/* Reply action */}
+            <div className = "post-action">              
+              {canReply && (         
+                <div 
+                  className="post-action-reply"
+                  style={{cursor: 'pointer'}}
+                  onClick={() => setActivePost(
+                    // create object
+                    {id: post.PostID, type: "replying"})
+                  }
+                >                  
+                  Reply                     
+                </div>              
+              )}
+            </div>
+
+            {/* Delete action */}
+            <div className = "post-action">              
+              {canDelete && (
+                <div 
+                  className="post-action-delete" 
+                  onClick={() => deletePost(post.PostID)}
+                >
+                  Delete
+                </div>
+              )}
+            </div>
+
+            {/* Edit action */}
+            <div className="post-action">
+              {canEdit && (
+                <div 
+                  className="post-action-edit"
+                  onClick={() => setActivePost(
+                  // create object
+                    {id: post.PostID, type: "editing"})
+                }
+                >Edit</div>
+              )}
+            </div>
+
+            {(replies.length > 0 && !parentID &&
+              // then display post action
+              (!openReply ? 
+                <div id="see-replies" className="post-action" 
+                style={{cursor: 'pointer'}}
+                onClick={open}>
+                  See replies
+                </div> 
+              :
+                <div id="see-replies" className="post-action" 
+                style={{cursor: 'pointer'}}
+                onClick={open}>
+                  Hide replies
+                </div>
+              )
+            )}               
+          </div> 
+          {/* End post-actions */}    
 
             {/* Render reply form if user is replying */}
             {isReplying && (
@@ -170,19 +173,18 @@ const Post = ({
                 hasCancelButton
                 handleCancel={() => setActivePost(null)}             
               />
-            )}                   
+            )}   
 
           </div> 
-          {/* End post-contents div */}       
+          {/* End post-content */}             
 
         </div> 
         {/* End post-container */}       
         
-      </div> 
-      {/* End root-post div */}      
+      </div>      
+      {/* End root-post */}      
 
       {/* Rendering replies to 2nd tier */}
-      {/* conditional statement short circuit renders replies only if > 0 exist */}      
       {replies.length > 0 && openReply && (
         <div className="replies">
           {replies.map( (reply) => (
@@ -199,11 +201,12 @@ const Post = ({
               updatePost={updatePost}
               upvotePost={upvotePost}
               removeUpvote={removeUpvote}
+              arch={arch}             
             />
           ))}
         </div>
       )}  
-    </div> /* end "post" element */
+    </div> 
   )
 }
 
