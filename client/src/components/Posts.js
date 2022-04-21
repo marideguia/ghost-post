@@ -13,11 +13,18 @@ import Header from "./Header.js"
 import Sidebar from "./Sidebar.js"
 import PSearch from "./PSearch.js"
 import { useStore } from '../store/Store';
+import {useParams} from "react-router-dom";
+import axios from "axios";
 
 const Posts = (props) => {
+  let { id } = useParams();
+  let x;
   const { logoColor } = useStore();
+  const [sessionObject, setSessionObject]= useState({});
   // Store and set posts
   const [posts, setPosts] = useState([])
+  const [postList, setPostList]= useState([])
+    
 
   // Store and set active (editing or replying) posts
   const[activePost, setActivePost] = useState(null)
@@ -100,18 +107,102 @@ const Posts = (props) => {
       setActivePost(null)
     })
   }
+  let theArray = []
+  useEffect(() => {
+    axios.get(`http://localhost:3000/sessions/${id}`).then((response)=>{
+      setSessionObject(response.data);
+    });
+    axios.get(`http://localhost:3000/posts/${id}`).then((response)=>{
+      //setPostList(response.data);
+    console.log(response.data)
+    for(let i in response.data){
+      const newVal= response.data[i];
+      //console.log("old",newVal.createdAt);
+     // const newdate = new Date(response.data[i].createdAt)
+     // newVal.createdAt = newdate;
+     // console.log("new",newVal.createdAt);
+     newVal.PostID = String(response.data[i].PostID);
+    // newVal.createdAt = String(response.data[i].createdAt)
+     theArray.push(newVal)
+    }
+  //console.log(theArray);
+  setPosts(theArray)
+  setPostList(response.data)
+  console.log(theArray)
+   //setPosts(response.data)
+    });
+   
+    let data = [
+      {
+          UserID: "1",
+          SessionID: 5,
+          // courseID?
+          PostID: "1",
+          Text: "First comment",
+          ParentID: null,
+          Upvotes: ["2"],
+          CreatedAt: "2022-04-20T16:14:08.000Z"             
+      },
+      {
+          UserID: "2",
+          SessionID: 5,
+          PostID: "2",
+          Text: "Second comment",
+          ParentID: null,
+          Upvotes: ["3"],
+          CreatedAt: "2021-08-16T23:00:33.010+02:00",         
+      },
+      {
+          UserID: "2",
+          SessionID: 5,
+          PostID: "3",
+          Text: "First comment first child",
+          ParentID: "1",
+          Upvotes: ["3"],
+          CreatedAt: "2021-08-16T23:00:33.010+02:00",          
+      },
+      {
+          UserID: "1",
+          SessionID: 5,
+          PostID: "4",
+          Text: "Second comment first child",
+          ParentID: "2",
+          Upvotes: ["2"],
+          CreatedAt: "2021-08-16T23:00:33.010+02:00",      
+      },
+      {
+          UserID: "3",
+          SessionID: 5,
+          PostID: "5",
+          Text: "First comment second child",
+          ParentID: "1",
+          Upvotes: ["3"],
+          CreatedAt: "2021-08-16T23:00:33.010+02:00",          
+      }
+  ] 
+    //console.log(data[0].Text)
+    //setPosts(data)
+    console.log(data)
 
+  }, [])
+{/*
   useEffect(() => {
     getPostsApi().then(data => {
       setPosts(data)
-    })
-  }, [])
+    }) 
+   
+  //setPosts(data)
+  var myarray = JSON.parse(postList);
+  setPosts(myarray);
+  }, []) */}
+
+  
 
   return (
     // Display of submitted posts   
     <div className = "p-column-container">
-      <Header title={props.sessionTitle}/>
-      <h2 style={{color:logoColor}} >Subtitle</h2>
+      <Header title={sessionObject.title}/>
+      {/*<h2 style={{color:logoColor}} >{sessionObject.title}</h2>*/}
       <div className = "p-container">
         <Sidebar/>        
     

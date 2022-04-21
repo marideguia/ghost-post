@@ -17,17 +17,15 @@ import Signup from './pages/Signup';
 import OurCalendar from './pages/Calendar';
 
 function App(){
-  const [sessionTitle,setSessionTitle]= useState('Session Name');
    
-  
   return (
     <BrowserRouter>
     <Routes>
       <Route path = "/" element = {<Login/>}/>
-      <Route path = "CreateSession" element={<CreateSession setSessionTitle={setSessionTitle}/>}/>
+      <Route path = "CreateSession" element={<CreateSession />}/>
       <Route path = "App" element ={<App/>}/>
       <Route path = "Login" element ={<Login/>}/>
-      <Route path = "Posts" element ={<Posts currentUserID={"1"} sessionTitle= {sessionTitle} />}/>
+      <Route path = "Posts/:id" element ={<Posts currentUserID={"1"} />}/>
       <Route path = "Joinsession" element ={<JoinSession/>}/>
       <Route path="Archposts" element={<ArchPosts/>}/>
       <Route path="Home" element={<Home/>}/>
