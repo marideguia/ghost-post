@@ -1,18 +1,17 @@
 import { FaRegBell } from 'react-icons/fa'
-import React, { useEffect, useState } from 'react';
 
 // Session header
 const Header = ({title}) => {
   return (    
-    <header className="sHeader">
-      <h1>{title}</h1>
+    <div className="sHeader">
+      <h1 className="page-title">{title}</h1>
 
       {/* Notifications */}
-      <div className="bell">
+      {/* <div className="bell">
         <FaRegBell onClick={() => console.log("notification bell clicked")} style={{cursor:'pointer'}} />
-      </div>
+      </div> */}
       
-    </header>
+    </div>
   )
 }
 

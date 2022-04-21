@@ -29,7 +29,7 @@ function App(){
       <Route path = "Login" element ={<Login/>}/>
       <Route path = "Posts" element ={<Posts currentUserID={"1"} sessionTitle= {sessionTitle} />}/>
       <Route path = "Joinsession" element ={<JoinSession/>}/>
-      <Route path="Archposts" element={<ArchPosts/>}/>
+      <Route path="Archposts" element={<ArchPosts currentUserID={"1"}/>}/>
       <Route path="Home" element={<Home/>}/>
       <Route path="Sessions" element={<Sessions/>}/>
       <Route path="Courses" element={<Courses/>}/>
