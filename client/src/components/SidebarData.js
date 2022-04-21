@@ -4,7 +4,13 @@ import SettingsIcon from '@material-ui/icons/Settings';
 import DateRangeIcon from '@material-ui/icons/DateRange';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import MenuBookIcon from '@material-ui/icons/MenuBook';
+import Logo from './Ghost_Post_Logo.png'
 export const SidebarData = [
+  {
+    title: "Logo",
+    icon: <img src={Logo}/>,
+    link: "../"
+  },
   {
     title: "Home",
     icon: <HomeIcon />,
