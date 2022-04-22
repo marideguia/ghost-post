@@ -23,7 +23,7 @@ const Home = ( {currentUserID} ) => {
   const userID = String(currentUserID)
   let yourIndex = 0
   // courses user is in: filter through user/courses table
-  const yourCourses = userCourses
+  // const yourCourses = userCourses
 
   return (    
     <div className="column-cont">
