@@ -11,7 +11,7 @@ import Post from "./Post.js"
 import PostForm from "./PostForm.js"
 import Header from "./Header.js"
 import Sidebar from "./Sidebar.js"
-import PSearch from "./PSearch.js"
+import SearchBar from "./SearchBar"
 
 const Posts = ({currentUserID}) => {
   // Store and set posts
@@ -149,7 +149,7 @@ const Posts = ({currentUserID}) => {
         {/* posts */}
       </div>
       {/* p-container */}
-      {/* <PSearch /> */}
+      {/* <Searchbar /> */}
     </div>
     // column-container
   )
