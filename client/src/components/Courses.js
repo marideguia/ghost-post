@@ -39,71 +39,76 @@ const Courses = () => {
   return (
     <div className='c-col-container'> 
       <Sidebar />     
-      <Header title="Your Courses"/>
-      <div className="tabs-container">
-        <div className="bloc-tabs">
-          <button
-            className={activeTab === 1 ? "tabs active-tabs" : "tabs"}
-            onClick={() => toggleTab(1)}
-          >
-            Your Courses
-          </button>
-          <button
-            className={activeTab === 2 ? "tabs active-tabs" : "tabs"}
-            onClick={() => toggleTab(2)}
-          >
-            Created Courses
-          </button>
-          <button
-            className={activeTab === 3 ? "tabs active-tabs" : "tabs"}
-            onClick={() => toggleTab(3)}
-          >
-            Join a Course
-          </button>
-          <button
-            className={activeTab === 4 ? "tabs active-tabs" : "tabs"}
-            onClick={() => toggleTab(4)}
-          >
-            Create A Course
-          </button>
+      <div className='c-dash'>
+
+        
+        <Header title="Your Courses"/>
+
+        <div className="tabs-container">
+          <div className="bloc-tabs">
+            <button
+              className={activeTab === 1 ? "tabs active-tabs" : "tabs"}
+              onClick={() => toggleTab(1)}
+            >
+              Your Courses
+            </button>
+            <button
+              className={activeTab === 2 ? "tabs active-tabs" : "tabs"}
+              onClick={() => toggleTab(2)}
+            >
+              Created Courses
+            </button>
+            <button
+              className={activeTab === 3 ? "tabs active-tabs" : "tabs"}
+              onClick={() => toggleTab(3)}
+            >
+              Join a Course
+            </button>
+            <button
+              className={activeTab === 4 ? "tabs active-tabs" : "tabs"}
+              onClick={() => toggleTab(4)}
+            >
+              Create A Course
+            </button>
+          </div>
+
+          <div className="content-tabs">
+            <div className={activeTab === 1 ? "content  active-content" : "content"}>
+              <div className="course-list" >
+                {yourCourses.map( (yourCourse) => (
+                  <Course
+                    index={yourIndex+=1}
+                    key={yourCourse.CourseID}
+                    course={yourCourse}
+                  />
+                  // console.log("course: ", yourCourse.Title, yourCourse.CourseID)
+                ))}
+              </div>      
+              
+            </div>
+
+            <div  className={activeTab === 2 ? "content  active-content" : "content"}>
+              <div className="course-list" >          
+                {createdCourses.map( (createdCourse) => (
+                  <Course
+                    index={createIndex+=1}
+                    key={createdCourse.CourseID}
+                    course={createdCourse}
+                  />      
+                  // console.log("course created: ", createdCourse)        
+                ))}
+              </div> 
+            </div>
+
+            <div className={activeTab === 3 ? "content  active-content" : "content"}>
+              <JoinCourse/>
+            </div>
+            <div className={activeTab === 4 ? "content  active-content" : "content"}>
+              <CreateCourse/>
+            </div>
+          </div>
         </div>
-
-        <div className="content-tabs">
-          <div className={activeTab === 1 ? "content  active-content" : "content"}>
-            <div className="course-list" >
-              {yourCourses.map( (yourCourse) => (
-                <Course
-                  index={yourIndex+=1}
-                  key={yourCourse.CourseID}
-                  course={yourCourse}
-                />
-                // console.log("course: ", yourCourse.Title, yourCourse.CourseID)
-              ))}
-            </div>      
-            
-          </div>
-
-          <div  className={activeTab === 2 ? "content  active-content" : "content"}>
-            <div className="course-list" >          
-              {createdCourses.map( (createdCourse) => (
-                <Course
-                  index={createIndex+=1}
-                  key={createdCourse.CourseID}
-                  course={createdCourse}
-                />      
-                // console.log("course created: ", createdCourse)        
-              ))}
-            </div> 
-          </div>
-
-          <div className={activeTab === 3 ? "content  active-content" : "content"}>
-            <JoinCourse/>
-          </div>
-          <div className={activeTab === 4 ? "content  active-content" : "content"}>
-            <CreateCourse/>
-          </div>
-        </div>
-    </div>
+      </div>
       
       {/* <SearchBar /> */}
     </div>

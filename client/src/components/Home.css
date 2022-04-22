@@ -3,6 +3,7 @@
     justify-content:center;
     align-items: center;
     height: 100vh;
+    width: 100%;
     /* flex-direction: column; */
     background-color: whitesmoke;
 }
@@ -14,11 +15,25 @@ h2 {
 .home-dash {
     display: flex;
     flex-direction: column;
+    justify-content:center;
+    align-items: center;
+    width:60%;
+    height: 100%;
+    /* background-color:green; */
     /* width: 70vw; */
 }
 
 .recents-items{
     display: flex;
+}
+
+.carousel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  /* background-color: green; */
 }
 
 .carousel-cont{
@@ -68,30 +83,131 @@ h2 {
 }
 
 .item-active {
-    opacity:1;
-    transition-duration: 1s ease;
-    transform: scale(1.08);
-    background-color: #7eabf3;
-    width: 400px;
-    height: 250px;
-    padding: 20px;
-    border-radius: 25px;
-    justify-content: center;
-    align-items: center;
+  opacity:1;
+  transition-duration: 1s ease;
+  transform: scale(1.08);
+  background-color: #7eabf3;
+  width: 400px;
+  height: 250px;
+  padding: 20px;
+  border-radius: 25px;
+  justify-content: center;
+  align-items: center;
 }
 
 /* .item-active h2, p {
   color: white;
 } */
 
-/* RECENTS */
-.h-courses-cont {
-    padding: 20px;
-    overflow-x:scroll;
+/* Pyramid buttons */
+.h-cj-cont {
+  display:flex;
+  align-items:center;
+  width: 100%;
+  height: 100%;
+  gap: 1.5%;
 }
 
-.h-c-title{
-  font-weight:larger
+.h-cj-cont button {
+  width: max-content;
+}
+
+.h-j-cont, .h-c-cont {
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align:center;
+  /* margin: 10px; */
+  width: 40%;
+  height: 300px;
+  border-radius: 0 25px 25px 0;
+  box-shadow: 5px 5px 5px #045de9;
+  background-color: #2e7bff;
+  padding: 15px;
+  color:white;
+  /* margin-right: 5%; */
+}
+
+.left {
+  display:flex;
+  flex-direction: column;
+  /* margin: 10px; */
+  width: 60%;
+  height: 300px;
+  border-radius: 25px 0 0 25px;
+  box-shadow: 5px 5px 5px #045de9;
+  background-color: #2e7bff;
+  padding: 20px;
+  color:white;
+  background-color: purple;
+  background-image: url("./kevin-gonzalez-unsplash.jpg");
+  background-repeat: no-repeat;
+  background-size: 500px 300px;
+  background-position: center;
+}
+
+.left2 {
+  display:flex;
+  flex-direction: column;
+  /* margin: 10px; */
+  width: 60%;
+  height: 300px;
+  border-radius: 25px 0 0 25px;
+  box-shadow: 5px 5px 5px #045de9;
+  background-color: #2e7bff;
+  padding: 20px;
+  color:white;
+  background-color: purple;
+  background-image: url("./william-moreland-unsplash.jpg");
+  background-repeat: no-repeat;
+  background-size: 300px 500px;
+  background-position: center;
+}
+
+.card {
+  display: flex;
+}
+
+.h-j-cont h3, .h-c-cont h3 {
+  color:white;
+}
+
+.h-js-btn, .h-cs-btn {
+  margin: 20px;
+  cursor: pointer;
+  font-size: 15px;
+  background: #0049c6;
+  border: none;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 25px;
+  box-shadow: 5px 5px 5px darkblue;
+  
+}
+
+.h-js-btn:hover, .h-cs-btn:hover {
+  background-color: #519ef5;
+}
+
+/* RECENTS */
+.h-courses-cont {
+  display:flex;
+  flex-direction: column;
+  /* padding: 20px; */
+  /* overflow-x:scroll; */
+  width:100%;
+  height: 100%;
+  justify-content:center;
+  align-items: center;
+  /* background-color: yellow; */  
+}
+
+.h-courses-cont h2 {
+  /* background-color: pink; */
+  /* text-align:left; */
+  font-weight:larger;
+  margin-bottom: 20px;
 }
 
 .h-courses {
@@ -111,11 +227,24 @@ h2 {
 
 /* COURSES.JS */
 .c-col-container {
-    display:grid;
-    justify-content: center;
+    display: flex;
+    justify-content:center;
+    /* align-items: center; */
+    /* height: 100vh; */
+    width: 100%;
+    background-color: whitesmoke;
     /* align-items: center; */
     /* background-color: whitesmoke; */
     /* height: 100vh; */
+  }
+
+  .c-dash {
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    /* align-items: center; */
+    width:60%;
+    height: 100%;
   }
   
 *, ::before, ::after {
@@ -125,14 +254,12 @@ h2 {
   }
   
 .tabs-container {
-  display: flex;
-  flex-direction: column;
+  /* background-color: pink; */
   /* position: relative; */
-  width: 1000px;
-  height: 500px;
+  width: 100%;
+  height: 100%;
   background: transparent;
-  margin: 0 auto;
-  word-break: break-all;
+  /* word-break: break-all; */
   /* border: 1px solid rgba(0, 0, 0, 0.274); */
 }
 
@@ -149,10 +276,10 @@ h2 {
   border-bottom: 1px solid rgba(0, 0, 0, 0.274);
   border-radius: 15px 15px 0 0;
   box-sizing: content-box;
-  position: relative;
+  /* position: relative; */
   outline: none;
   color:white;
-  word-break: break-all;
+  /* word-break: break-all; */
 
 }
 
@@ -161,7 +288,7 @@ h2 {
 }
 
 .active-tabs  {
-  background: white;
+  background:#7eabf3;
   border-bottom: 1px solid transparent;
   color:black;
 }
@@ -183,11 +310,29 @@ button {
 }
 
 .content-tabs {
-  flex-grow : 1;
+  height: 100%;
+  overflow-y: scroll;
+  padding-bottom: 50px;
+  background:#7eabf3;
+  /* word-wrap: break-word; */
+}
+
+.content-tabs::-webkit-scrollbar {
+  width: 12px;
+}
+
+.content-tabs::-webkit-scrollbar-track {
+  background: #045de9 ;
+}
+
+.content-tabs::-webkit-scrollbar-thumb {
+  background-color: #00286a;
+  border-radius: 20px;
+  border: 3px solid #045de9 ;
 }
 
 .content {
-  background: white;
+  background: #7eabf3;
   padding: 20px;
   width: 100%;
   height: 100%;
@@ -216,6 +361,7 @@ button {
 
 .course-list {
   display:flex;
+  overflow-x: scroll;
 }
 
 .c-cont h3 {
@@ -241,7 +387,8 @@ button {
 .course-2:hover, .course:hover {
   cursor: pointer;
   /* color:black; */
-  background-color: #7eabf3;
+  background-color: #fff;
+  color:black;
 }
 
 .c-title{
@@ -264,15 +411,31 @@ button {
 
 /* SESSIONS.JS STYLES */
 .s-col-container {
-  display:grid;
+  display:flex;
   justify-content: center;
+  background-color: whitesmoke;
+  height:100vh;
+}
+
+.s-dash{
+  display: flex;
+  flex-direction: column;
+  justify-content:center;
+  /* align-items: center; */
+  width:60%;
+  height: 100%;
+  word-wrap: normal;
+}
+
+.fill {  
+  height: 50%;
+  /* background-color: green; */
 }
 
 .session-list {
   display:flex;
   flex-direction: column;
-  padding: 20px 50px
-
+  padding: 20px 50px;
 }
 
 /* SESSION.JS STYLES */
@@ -282,7 +445,8 @@ button {
 
 .session {
   border-radius: 25px;
-  background: #0049c6;
+  background: #0049c6; 
+
   color:white;
   padding: 10px 25px;
   /* margin-top: 2px; */
@@ -309,9 +473,7 @@ button {
 
 .session-2:hover, .session:hover {
   cursor: pointer;
-  /* color:black; */
-  background-color: #7eabf3;
-  
+  background-color: #2e7bff;  
 }
 
 .s-title {
@@ -342,5 +504,63 @@ button {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+}
+
+/* SQ.JS STYLES */
+.sq-cont h3 {
+  color:white;
+}
+
+.sq, .sq-2 {
+  /* display: flex; */
+  margin: 10px;
+  width: 200px;
+  height: 200px;
+  border-radius: 25px;
+  box-shadow: 5px 5px 5px #045de9;
+  background-color: #0049c6;
+  padding: 20px;
+  color:white;
+}
+
+.sq-2 {
+  background-color: #2e7bff;
+}
+
+.sq-2:hover, .sq:hover {
+  cursor: pointer;
+  /* color:black; */
+  background-color: #7eabf3;
+}
+
+.sq-title{
+  font-size: larger;
+}
+
+.sq-students{
+  font-style: italic
+}
+
+.sq-list {
+  display:flex;
+  width:100%;
+  justify-content: center;
+  overflow-x: scroll;
+  
+}
+
+.no-sessions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center; 
+  width: 100%;
+  height: 100%;  
+  font-style: italic;
+  background-color: lightgray;
+  border-radius: 25px;
+  margin: 15px 25px;
+  /* padding-top: 20vh; */
 
 }

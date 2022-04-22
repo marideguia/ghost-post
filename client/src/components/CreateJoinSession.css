@@ -19,7 +19,7 @@
   h1 {
     font-family: "Eight Bit Dragon Regular";
     text-shadow: 3px 3px 3px darkblue;
-    word-break: break-all;
+    /* word-break: break-all; */
   }
   
   h2 {
@@ -158,4 +158,35 @@
     background-color: #7eabf3;
 
   }
+
+.js-cont, .cs-cont {
+  display:flex;
+  flex-direction: column;
+  justify-content:center;
+  align-items: center;
+  text-align: center;
+  padding:40px;
+  background-color: #7eabf3;
   
+  inline-size: 100%;
+  /* overflow-wrap: break-word; */
+  hyphens: manual;
+  white-space: pre-wrap;
+}
+
+
+.js-btn, .cs-btn {
+  margin: 20px;
+  cursor: pointer;
+  font-size: 15px;
+  background: #0049c6;
+  border: none;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 25px;
+  box-shadow: 5px 5px 5px darkblue;
+}
+
+.js-btn:hover, .cs-btn:hover {
+  background-color: #2e7bff;
+}
