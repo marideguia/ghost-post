@@ -35,14 +35,14 @@ code {
 
 /* HEADER.JS STYLES */
 .sHeader {
-  display: flex;  
-  justify-content:center;  
+  display: flex;
+  justify-content:center;
+  align-items:center;
   text-align:center;
   padding: 10px;
-  inline-size: 100%;
   overflow-wrap: break-word;
-  hyphens: manual;
-  /* white-space: pre-wrap; */
+  max-height:20vh;
+  /* text-overflow: ellipsis; */
 }
 
 .page-title {
@@ -55,11 +55,6 @@ code {
   margin: auto 15px;
   /* color: white; */
 }
-
-/* PSEARCH.JS STYLES */
-/* .PSearch {
-  width: 15vw;
-} */
 
 /* POSTS.JS STYLES */
 .p-column-container {
@@ -101,20 +96,20 @@ code {
   height: 65vh; 
 }
 
-.a-post-container{
+.a-posts-container{
   overflow-y: scroll;
-  height: 75vh;
+  height: 80vh;
 }
 
-.posts-container::-webkit-scrollbar {
+.posts-container::-webkit-scrollbar, .a-posts-container::-webkit-scrollbar{
   width: 12px;
 }
 
-.posts-container::-webkit-scrollbar-track {
+.posts-container::-webkit-scrollbar-track, .a-posts-container::-webkit-scrollbar-track{
   background: #045de9 ;
 }
 
-.posts-container::-webkit-scrollbar-thumb {
+.posts-container::-webkit-scrollbar-thumb, .a-posts-container::-webkit-scrollbar-thumb{
   background-color: #00286a;
   border-radius: 20px;
   border: 3px solid #045de9 ;
