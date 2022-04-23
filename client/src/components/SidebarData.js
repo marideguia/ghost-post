@@ -7,9 +7,20 @@ import MenuBookIcon from '@material-ui/icons/MenuBook';
 import Logo from './Ghost_Post_Logo.png'
 export const SidebarData = [
   {
-    title: "Logo",
+    title: " ",
     icon: <img src={Logo}/>,
-    link: "../"
+    link: "../",
+    clssname: "logo"
+  },
+  {
+    title: " ",
+    link: "../",
+    clssname: "logo"
+  },
+  {
+    title: " ",
+    link: "../",
+    clssname: "logo"
   },
   {
     title: "Home",

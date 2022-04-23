@@ -39,6 +39,13 @@
   height: 60px;
 }
 
+.logo{
+  display: fixed;
+  align-items: center;
+  list-style: none;
+  height: 150px;
+}
+
 .nav-text a{
   text-decoration: none;
   color: gray;

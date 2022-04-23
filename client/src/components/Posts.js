@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 import React,{ useEffect, useState } from "react"
+=======
+import { useEffect, useState } from "react"
+import React from "react"
+>>>>>>> e87060901d384b81980b8784663eb22f8eda29ef
 import { 
   getPosts as getPostsApi,
   createPost as createPostApi,
@@ -11,11 +16,15 @@ import Post from "./Post.js"
 import PostForm from "./PostForm.js"
 import Header from "./Header.js"
 import Sidebar from "./Sidebar.js"
+<<<<<<< HEAD
 import PSearch from "./PSearch.js"
 import { useStore } from '../store/Store';
 import {useParams} from "react-router-dom";
 import axios from "axios";
 
+=======
+import SearchBar from "./SearchBar"
+>>>>>>> e87060901d384b81980b8784663eb22f8eda29ef
 
 const Posts = ({currentUserID}) => {
   let { id } = useParams();
