@@ -1,3 +1,7 @@
+html{
+  height: 100%;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -12,7 +16,7 @@ body {
   background-size: cover;
   background-position: center;
   background-size: 100vw 100vh;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat;  
 }
 
 code {
@@ -24,93 +28,121 @@ code {
   background-image: url("./pages/background.png");
   background-size: cover;
   background-repeat: no-repeat;
-  /* background-color: aqua; */
   display: flex;
+  color:black;
+
 }
 
-/* HEADER.JS STYLES */
 /* HEADER.JS STYLES */
 .sHeader {
-  background-color: whitesmoke;
-  display: flex;
-  height: 10vh;
-  padding-left: 30px;
+  display: flex;  
+  justify-content:center;  
+  text-align:center;
+  padding: 10px;
+  inline-size: 100%;
+  overflow-wrap: break-word;
+  hyphens: manual;
+  /* white-space: pre-wrap; */
 }
 
-.page-header {
-  font-size: 30pt;
+.page-title {
+  text-shadow: 2px 2px 2px #519ef5;
+ 
+  /* color:white; */
 }
 
 .bell {
-  /* background-color: aquamarine; */
   margin: auto 15px;
+  /* color: white; */
 }
 
 /* PSEARCH.JS STYLES */
-.PSearch {
-  background-color: blueviolet;
+/* .PSearch {
   width: 15vw;
-
-}
+} */
 
 /* POSTS.JS STYLES */
 .p-column-container {
-  background-color: whitesmoke;
-  display:grid;
+  height: 100vh;
+  display:flex;
   justify-content: center;
+  background-color: whitesmoke;
+  
 }
 
 .p-container {
-  background-color: lightgray;
-  display: flex;
-  /* flex-direction: column; */
+  /* left: 240px; */
+  display:flex;
+  flex-direction: column;
+  width: 70%;
+  height: 100%;
 }
 
 .archp-container {
-  background-color: lightgray;
   display: flex;
-  /* flex-direction: column; */
+  flex-direction: column;
+  width: 70%;
+  height: 100%;  
 }
 
 .posts-title {
+  /* color: white; */
   color: black;
   text-align: center;
 }
 
 .posts {
-  background-color: whitesmoke;
-  /* margin: 0px 150px; */
-  width: 70vw;
+  display: flex;
+  flex-direction: column;
 }
 
 .posts-container {
-  background-color:whitesmoke;
-  /* margin-left: 5px;   */
-  padding-left: 5px;
-  height: 70vh;  
-  overflow: scroll;
+  overflow-y: scroll;
+  height: 65vh; 
+}
+
+.a-post-container{
+  overflow-y: scroll;
+  height: 75vh;
+}
+
+.posts-container::-webkit-scrollbar {
+  width: 12px;
+}
+
+.posts-container::-webkit-scrollbar-track {
+  background: #045de9 ;
+}
+
+.posts-container::-webkit-scrollbar-thumb {
+  background-color: #00286a;
+  border-radius: 20px;
+  border: 3px solid #045de9 ;
 }
 
 .posts-form {
-  height: 30vh;
-  padding-bottom: 15px;
+  padding: 10px;
+  width: 100%;
 }
 
 .posts-form-title {
-  margin: 15px;
+  /* margin: 15px; */
   font-weight: bold;
+  /* color: white; */
+  /* color: black; */
+  padding-left: 10px;
+  padding-bottom: 5px;
 }
 
 .post-button {
   padding-right: 2.5%;
   text-align: right;
   margin: 5px 15px;
-
 }
 
 /* POST.JS STYLES */
 .post {
-  border-top: darkgray 1px solid;
+  border-top: #045de9 1px solid;
 }
 
 .root-post { 
@@ -118,13 +150,19 @@ code {
   flex-direction: row;
   align-items: center;
   margin: 2px;
-
 }
 
 .post-container {
   display: flex;
-  flex-direction: row;
   width: 100%;
+}
+
+.a-post-upvote {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 15px;
+  /* color: white; */
 }
 
 .post-upvote {
@@ -132,28 +170,45 @@ code {
   flex-direction: column;
   align-items: center;
   margin-top: 15px;
-  /* background-color: brown; */
-  /* background-color: lightgrey; */
+  /* color: white; */
+}
+
+.post-upvoted {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 15px;
+  color: rgb(74, 220, 74);
+}
+.post-upvote:hover, .post-upvoted:hover {
+  cursor: pointer;
+}
+
+
+.upvote-lbl{
+  margin-top: 5px;
+  font-weight: bold;
 }
 
 .post-content {
-  /*display: inline-block;*/
-  /* background-color: aqua; */
-  background-color: whitesmoke;
   border-radius: 12px;
   margin: 0px 5px;
   padding: 10px;
-  width: 100%;
+  width: 95%;
+  /* display: flex; */
 }
 
 .top-row {
   display: inline-flex;
+  font-size: small;
   /*text-align: Left;*/
 }
 
 .created-at {
+  /* color: lightgray; */
   color: gray;
   font-style: italic;
+  margin-bottom: 5px;
 }
 
 .report {
@@ -163,23 +218,35 @@ code {
 }
 
 .post-text {
-  margin-top: 5px;
   padding-top: 5px;
-  /* background-color: aqua; */
+  padding-right: 5px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: 450;
+  font-size: 12;
+  /* color:white; */
+  inline-size: 100%;
+  overflow-wrap: break-word;
+  hyphens: manual;
+  white-space: pre-wrap;
 }
 
 .post-actions {
   display: flex;
   flex-direction: row-reverse;
-
-  /* background-color: green; */
+  margin-bottom: 5px;
+  /* color:lightgray; */
+  color:gray;
+  font-size: small;
 }
 
 .post-action {
-  margin: 15px 5px 5px 5px;
+  margin: 15px 10px 5px 0px;
   font-style: italic;
-  color: gray;
+  
   /* margin-right: 0px; */
+}
+.post-action:hover {
+  cursor: pointer;
 }
 
 .comment-actions {
@@ -197,27 +264,46 @@ code {
 
 /* POSTFORM.JS STYLES */
 .post-form-textarea {
+  text-transform: none;
+  word-break: break-word;
   width: 100%;
+  /* height: 75px; */
   padding: 10px;
   border-radius: 10px;
+  background-color: transparent;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: 450;
+  /* color:white;   */
+  /* border: lightgray solid 1px; */
+  resize: none;  
 }
 
 .form-buttons {
-  /* flex-direction: row-reverse; */
-  margin-right: 0px;
-  border-radius: 5px;
-  /* background-color: aqua; */
+  display: flex;  
 }
 
 .post-form-button {
   color: white;
-  background-color: steelblue;
+  background-color:#045de9;
   border-radius: 25px;
   margin: 5px 2px;
-  /* font */
+  border: none;
+  padding: 5px 15px;
+  margin-right: 0px;
+  margin-left: auto;  
 }
 
-.post-form-button post-form-cancel-button {
-  color: steelblue;
+.post-form-cancel-button {
+  color: white;
+  background-color: #045de9;
+  border-radius: 25px;
+  margin: 5px 2px;
+  border: none;
+  padding: 5px 15px;
+  margin-right: 0px;  
 }
 
+.post-form-button:hover, .post-form-cancel-button:hover {
+  background-color: #519ef5;
+  cursor: pointer;
+}

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React,{ useEffect, useState } from "react"
 import { 
   getPosts as getPostsApi,
   createPost as createPostApi,
@@ -16,32 +16,30 @@ import { useStore } from '../store/Store';
 import {useParams} from "react-router-dom";
 import axios from "axios";
 
-const Posts = (props) => {
+
+const Posts = ({currentUserID}) => {
   let { id } = useParams();
   let x;
   const { logoColor } = useStore();
   const [sessionObject, setSessionObject]= useState({});
+  const [postList, setPostList]= useState([])
   // Store and set posts
   const [posts, setPosts] = useState([])
-  const [postList, setPostList]= useState([])
-    
-
-  // Store and set active (editing or replying) posts
+  // Store and set active (editing or replying to) posts
   const[activePost, setActivePost] = useState(null)
-
-  // Get root posts only - ParentID is null. Sort by upvotes
+  // Get root posts only - ParentID is null. Sort by upvotes in descending order
   const rootPosts = posts.filter( (post) => post.ParentID === null)
     .sort( (a,b) => a.Upvotes.length - b.Upvotes.length)
     .reverse()
 
-  // Sort replies by upvotes
+  // Get replies, sort by upvotes in descending order
   const getReplies = (postID) => {
     return posts.filter( (post) => post.ParentID === postID)
       .sort( (a,b) => a.Upvotes.length - b.Upvotes.length)
       .reverse()
   }
 
-  // Store new post
+  // Store newly created post***
   const addPost= (text, parentID) => (
     createPostApi(text, parentID).then(post => {
       setPosts([post, ...posts])
@@ -61,8 +59,8 @@ const Posts = (props) => {
     }
   }
 
-  // Update post's Upvote list with user like
-  const upvotePost =(postID, userID) => {
+  // Update post's Upvote list with user like ***
+  const upvotePost = (postID, userID) => {
     upvotePostApi(postID, userID).then( () => {
       const updatedPosts = posts.map(post => {
         if (post.PostID === postID) {          
@@ -74,7 +72,6 @@ const Posts = (props) => {
         return post
       })
       setPosts(updatedPosts)
-      // setActivePost(null)
     })
   }
 
@@ -86,19 +83,22 @@ const Posts = (props) => {
         if (post.PostID === postID) {
           // remove upvote from list
           const newUpvotes = post.Upvotes.filter( (upvote) => upvote !== userID)
-          console.log('post upvote removed', userID, postID, newUpvotes)
+          // console.log('post upvote removed', userID, postID, newUpvotes)
           return {...post, Upvotes: newUpvotes}
         }
         return post
       })
       setPosts(updatedPosts)
+      console.log(updatedPosts)
     })
   }
 
+  // Update post after editing
   const updatePost =(text,postID) => {
     updatePostApi(text,postID).then( () => {
       const updatedPosts = posts.map(post => {
         if (post.PostID === postID) {
+          // post.edited = true
           return {...post, Text: text}
         }
         return post
@@ -129,6 +129,7 @@ const Posts = (props) => {
   setPosts(theArray)
   setPostList(response.data)
   console.log(theArray)
+  
    //setPosts(response.data)
     });
    
@@ -180,32 +181,18 @@ const Posts = (props) => {
           CreatedAt: "2021-08-16T23:00:33.010+02:00",          
       }
   ] 
-    //console.log(data[0].Text)
-    //setPosts(data)
-    console.log(data)
 
   }, [])
-{/*
-  useEffect(() => {
-    getPostsApi().then(data => {
-      setPosts(data)
-    }) 
-   
-  //setPosts(data)
-  var myarray = JSON.parse(postList);
-  setPosts(myarray);
-  }, []) */}
+
 
   
 
   return (
     // Display of submitted posts   
     <div className = "p-column-container">
-      <Header title={sessionObject.title}/>
-      {/*<h2 style={{color:logoColor}} >{sessionObject.title}</h2>*/}
+      <Sidebar/>   
       <div className = "p-container">
-        <Sidebar/>        
-    
+        <Header title={sessionObject.title}/>
         <div className="posts">
           <h3 className="posts-title">Posts</h3>            
           
@@ -219,34 +206,34 @@ const Posts = (props) => {
                 key={rootPost.PostID} 
                 post={rootPost}
                 replies={getReplies(rootPost.PostID)}
-                currentUserID={props.currentUserID}
-                //currentUserID = "1"
+                currentUserID={currentUserID}
                 deletePost={deletePost}
                 activePost={activePost}
                 setActivePost={setActivePost}
                 addPost={addPost}
                 updatePost={updatePost}
                 upvotePost={upvotePost}
-                removeUpvote={removeUpvote}
+                removeUpvote={removeUpvote}  
+                arch={false}           
               />
             ))}
           </div> {/* posts-container */}
           <div className="posts-form">
-              <div className="posts-form-title">
-                Submit Posts
-              </div>
-              <div className = "post-button">
-                <PostForm submitLabel="Submit" handleSubmit={addPost}/>
-              </div>
-          </div>   
+            <div className="posts-form-title">
+              Submit Post
+            </div>              
+            <PostForm submitLabel="Submit" handleSubmit={addPost}/>          
+          </div> 
           
         </div>
         {/* posts */}
-        
-        {/* <PSearch /> */}
+          
+    
         
       </div>
       {/* p-container */}
+      {/* <PSearch /> */}
+
     </div>
     // column-container
   )
