@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import React from "react"
 import { 
   getPosts as getPostsApi,
@@ -22,9 +22,10 @@ const Posts = ({currentUserID}) => {
   let x;
   const { logoColor } = useStore();
   const [sessionObject, setSessionObject]= useState({});
-  const [postList, setPostList]= useState([])
+  const [postVal, setPostVal]= useState("initial");
   // Store and set posts
   const [posts, setPosts] = useState([])
+  const isFirstRender = useRef(true);
   // Store and set active (editing or replying to) posts
   const[activePost, setActivePost] = useState(null)
   // Get root posts only - ParentID is null. Sort by upvotes in descending order
@@ -38,19 +39,42 @@ const Posts = ({currentUserID}) => {
       .sort( (a,b) => a.Upvotes.length - b.Upvotes.length)
       .reverse()
   }
+  const myCallback= ()=>{
+    console.log(posts)
+  }
+  useEffect(()=>{
+    if (isFirstRender.current){
+      isFirstRender.current = false;
+      return
+    }
+    myCallback()
+  },[postVal])
 
   // Store newly created post***
-  const addPost= (text, parentID) => (
-    createPostApi(text, parentID).then(post => {
-      setPosts([post, ...posts])
+  const addPost= (text, parentID) => {
+    parentID = parentID || null;
+    axios.post("http://localhost:3000/posts/ask", { UserID: 1, Text: text,  SessionID: id, ParentID:parentID,Upvotes:[] }).then(response=>{
+      //const postToAdd = { Text:text};
+      const postToAdd = {UserID: "1",
+      SessionID: String(id),
+      PostID: String(response.data.PostID),
+      Text: text,
+      ParentID: parentID,
+      Upvotes: [],
+      CreatedAt: response.data.CreatedAt}
+
+      setPosts([...posts, postToAdd])
       setActivePost(null)
+      setPostVal(text)
+      console.log(response.data)
     })
-  )
+
+  }
 
   // Prompt user to confirm  and remove post from display
   const deletePost = (postID) => {
     if (window.confirm('Are you sure you want to remove post?')) {
-      deletePostApi(postID).then( () => {
+      axios.delete(`http://localhost:3000/posts/delete/${postID}`).then( ()=>{
         const updatedPosts = posts.filter( 
           (post) => post.PostID !== postID
         )
@@ -60,12 +84,15 @@ const Posts = ({currentUserID}) => {
   }
 
   // Update post's Upvote list with user like ***
+  
   const upvotePost = (postID, userID) => {
+    
     upvotePostApi(postID, userID).then( () => {
       const updatedPosts = posts.map(post => {
         if (post.PostID === postID) {          
           const newUpvotes = post.Upvotes
           newUpvotes.push(userID)
+          axios.put(`http://localhost:3000/posts/upvote/${postID}`, { Upvotes: newUpvotes });
           console.log('post upvoted', userID, postID,newUpvotes)
           return {...post, Upvotes: newUpvotes}
         }
@@ -73,7 +100,7 @@ const Posts = ({currentUserID}) => {
       })
       setPosts(updatedPosts)
     })
-  }
+  } 
 
   // Filter out upvote and update posts
   const removeUpvote=(postID, userID) => {
@@ -83,6 +110,7 @@ const Posts = ({currentUserID}) => {
         if (post.PostID === postID) {
           // remove upvote from list
           const newUpvotes = post.Upvotes.filter( (upvote) => upvote !== userID)
+          axios.put(`http://localhost:3000/posts/upvote/${postID}`, { Upvotes: newUpvotes });
           // console.log('post upvote removed', userID, postID, newUpvotes)
           return {...post, Upvotes: newUpvotes}
         }
@@ -95,6 +123,7 @@ const Posts = ({currentUserID}) => {
 
   // Update post after editing
   const updatePost =(text,postID) => {
+    axios.put(`http://localhost:3000/posts/edit`, { Text: text , id: postID });
     updatePostApi(text,postID).then( () => {
       const updatedPosts = posts.map(post => {
         if (post.PostID === postID) {
@@ -107,6 +136,7 @@ const Posts = ({currentUserID}) => {
       setActivePost(null)
     })
   }
+
   let theArray = []
   useEffect(() => {
     axios.get(`http://localhost:3000/sessions/${id}`).then((response)=>{
@@ -117,70 +147,15 @@ const Posts = ({currentUserID}) => {
     console.log(response.data)
     for(let i in response.data){
       const newVal= response.data[i];
-      //console.log("old",newVal.createdAt);
-     // const newdate = new Date(response.data[i].createdAt)
-     // newVal.createdAt = newdate;
-     // console.log("new",newVal.createdAt);
      newVal.PostID = String(response.data[i].PostID);
-    // newVal.createdAt = String(response.data[i].createdAt)
+     newVal.UserID = String(response.data[i].UserID);
      theArray.push(newVal)
     }
   //console.log(theArray);
   setPosts(theArray)
-  setPostList(response.data)
   console.log(theArray)
   
-   //setPosts(response.data)
     });
-   
-    let data = [
-      {
-          UserID: "1",
-          SessionID: 5,
-          // courseID?
-          PostID: "1",
-          Text: "First comment",
-          ParentID: null,
-          Upvotes: ["2"],
-          CreatedAt: "2022-04-20T16:14:08.000Z"             
-      },
-      {
-          UserID: "2",
-          SessionID: 5,
-          PostID: "2",
-          Text: "Second comment",
-          ParentID: null,
-          Upvotes: ["3"],
-          CreatedAt: "2021-08-16T23:00:33.010+02:00",         
-      },
-      {
-          UserID: "2",
-          SessionID: 5,
-          PostID: "3",
-          Text: "First comment first child",
-          ParentID: "1",
-          Upvotes: ["3"],
-          CreatedAt: "2021-08-16T23:00:33.010+02:00",          
-      },
-      {
-          UserID: "1",
-          SessionID: 5,
-          PostID: "4",
-          Text: "Second comment first child",
-          ParentID: "2",
-          Upvotes: ["2"],
-          CreatedAt: "2021-08-16T23:00:33.010+02:00",      
-      },
-      {
-          UserID: "3",
-          SessionID: 5,
-          PostID: "5",
-          Text: "First comment second child",
-          ParentID: "1",
-          Upvotes: ["3"],
-          CreatedAt: "2021-08-16T23:00:33.010+02:00",          
-      }
-  ] 
 
   }, [])
 
