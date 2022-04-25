@@ -8,7 +8,6 @@ import {
   removeUpvote as removeUpvoteApi
 } from "../api.js"
 import Post from "./Post.js"
-import PostForm from "./PostForm.js"
 import Header from "./Header.js"
 import Sidebar from "./Sidebar.js"
 
@@ -57,7 +56,7 @@ const Posts = ({currentUserID}) => {
         if (post.PostID === postID) {          
           const newUpvotes = post.Upvotes
           newUpvotes.push(userID)
-          console.log('post upvoted', userID, postID,newUpvotes)
+          // console.log('post upvoted', userID, postID,newUpvotes)
           return {...post, Upvotes: newUpvotes}
         }
         return post

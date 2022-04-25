@@ -12,9 +12,11 @@ import Post from "./Post.js"
 import PostForm from "./PostForm.js"
 import Header from "./Header.js"
 import Sidebar from "./Sidebar.js"
+// import PSearch from "./PSearch.js"
 import { useStore } from '../store/Store';
 import {useParams} from "react-router-dom";
 import axios from "axios";
+
 import SearchBar from "./SearchBar"
 
 const Posts = ({currentUserID}) => {
