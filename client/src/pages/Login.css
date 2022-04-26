@@ -18,6 +18,9 @@
   background-position: center;
   background-size: 100vw 100vh;
 }
+a:hover{
+  background-color: transparent;
+}
 /* 
 input[type="text"],
 input[type="username"] {
@@ -193,9 +196,6 @@ body{
     color: #fff;
     font-size: 50px;
 }
-
-
-
 
 .circles{
     top: 0;

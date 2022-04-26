@@ -2,14 +2,17 @@ import React,{useEffect,useState } from "react";
 import ReactDOM from "react-dom";
 import { Link } from 'react-router-dom';
 import "./Login.css";
+import axios from "axios";
+import { useNavigate } from 'react-router-dom';
 
-
+ 
 function Login() {
   
   const [errorMessages, setErrorMessages] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [userVal, setUserVal] = useState("");
+  const [email, setEmail] = useState("");
   const [userPWD, setPWD] = useState("");
+  let navigate = useNavigate();
   
 
   // User Login info
@@ -30,7 +33,7 @@ function Login() {
   };
 
   const onUserChange = (event) => {
-    setUserVal(event.target.value);
+    setEmail(event.target.value);
   }
 
   const onPWDChange = (event) => {
@@ -46,37 +49,13 @@ function Login() {
     var { uname, pass } = document.forms[0];
 
     // Find user login info
-   // const userData = database.find((user) => user.username === uname.value);
+   // const userData = database.find((user) => user.username === uname.value);4
+   const data = {email:email,password:userPWD}
+   axios.post('http://localhost:3000/auth/login',data).then((res)=>{
+     console.log(res.data);
+     navigate('/Home');
+   })
 
-    fetch('http://localhost:3000/signin',{
-      method: 'post',
-      headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({
-        username: userVal,
-        password: userPWD
-      })
-    })
-    .then(response => response.json())
-    .then(data => {
-      if (data === 'success'){
-        alert("succ ess");
-      }else{
-        alert("fail");
-      }
-    })
-
-    // Compare user info
-    // if (userData) {
-    //   if (userData.password !== pass.value) {
-    //     // Invalid password
-    //     setErrorMessages({ name: "pass", message: errors.pass });
-    //   } else {
-    //     setIsSubmitted(true);
-    //   }
-    // } else {
-    //   // Username not found
-    //   setErrorMessages({ name: "uname", message: errors.uname });
-    // }
   };
 
   // Generate JSX code for error message
@@ -90,10 +69,11 @@ function Login() {
       <div className="form">
         <form onSubmit={handleSubmit}>
           <div className="input-container">
-            <label className="login-label">Username </label>
+            <label className="login-label">Email </label>
             <input 
             type="text" 
             name="uname"
+            style={{textTransform:'none'}}
             onChange={onUserChange} required />
             {renderErrorMessage("uname")}
           </div>
@@ -103,6 +83,7 @@ function Login() {
             <input 
             type="text" 
             name="pass" 
+            style={{textTransform:'none'}}
             onChange={onPWDChange} required />
             {renderErrorMessage("pass")}
           </div>
@@ -112,7 +93,7 @@ function Login() {
             <input className="lp-button" type="submit" value = "Login"/>
           </div>
           
-          <div className='btns-container'>
+         
             <div className="button-container">              
               <Link to="Signup" >
                 <button className="lp-button">
@@ -120,7 +101,7 @@ function Login() {
                 </button>
               </Link> 
             </div>
-            </div>
+          
 
           <h3 className="login-header3"><center>OR</center></h3>
 

@@ -1,11 +1,12 @@
 .column-cont {
     display:flex;
     justify-content:center;
-    align-items: center;
+    /* align-items: center; */
     height: 100vh;
     width: 100%;
-    /* flex-direction: column; */
     background-color: whitesmoke;
+    justify-content:space-between;
+    flex-shrink: 0;
 }
 
 h2 {
@@ -17,10 +18,9 @@ h2 {
     flex-direction: column;
     justify-content:center;
     align-items: center;
-    width:60%;
+    width:100%;
     height: 100%;
-    /* background-color:green; */
-    /* width: 70vw; */
+    /* float:right; */
 }
 
 .recents-items{
@@ -33,7 +33,6 @@ h2 {
   align-items: center;
   width: 100%;
   height: 100%;
-  /* background-color: green; */
 }
 
 .carousel-cont{
@@ -41,18 +40,15 @@ h2 {
     justify-content: center;
     align-items: center;
     margin: 7% 0;
-    /* padding: 50px, 0px; */
 }
 
 .left-arrow,.right-arrow {
     color: #7eabf3;
     cursor: pointer;
     margin: 0 auto;
-    /* background-color: black; */
 }
 
 .carousel-btn {
-    /* align-self: baseline; */
     margin-top:auto;
     margin-bottom:0;
     cursor: pointer;
@@ -95,21 +91,44 @@ h2 {
   align-items: center;
 }
 
-/* .item-active h2, p {
-  color: white;
-} */
-
-/* Pyramid buttons */
+/* Join Create Cards */
 .h-cj-cont {
   display:flex;
   align-items:center;
-  width: 100%;
-  height: 100%;
+  width: 80%;
+  /* height: 100%; */
   gap: 1.5%;
+  /* background-color: yellow; */
 }
 
 .h-cj-cont button {
   width: max-content;
+}
+
+.card {
+  display: flex;
+  width: 100%;
+  height: 80%;
+  border-radius: 25px;
+  box-shadow: 5px 5px 5px #045de9;
+}
+
+.left, .left2{
+  display: flex;
+  justify-content: center;  
+  align-items: center;
+  overflow:hidden;
+  border-radius: 25px 0 0 25px;
+}
+
+.left-img {
+  max-width: 100%;
+  object-fit: cover;
+}
+
+.left2-img{
+  max-width: 100%;
+  object-fit: cover;
 }
 
 .h-j-cont, .h-c-cont {
@@ -118,56 +137,16 @@ h2 {
   justify-content: center;
   align-items: center;
   text-align:center;
-  /* margin: 10px; */
-  width: 40%;
-  height: 300px;
   border-radius: 0 25px 25px 0;
-  box-shadow: 5px 5px 5px #045de9;
+  width: 50%;
+  height: 100%;
   background-color: #2e7bff;
   padding: 15px;
   color:white;
   /* margin-right: 5%; */
 }
 
-.left {
-  display:flex;
-  flex-direction: column;
-  /* margin: 10px; */
-  width: 60%;
-  height: 300px;
-  border-radius: 25px 0 0 25px;
-  box-shadow: 5px 5px 5px #045de9;
-  background-color: #2e7bff;
-  padding: 20px;
-  color:white;
-  background-color: purple;
-  background-image: url("./kevin-gonzalez-unsplash.jpg");
-  background-repeat: no-repeat;
-  background-size: 500px 300px;
-  background-position: center;
-}
-
-.left2 {
-  display:flex;
-  flex-direction: column;
-  /* margin: 10px; */
-  width: 60%;
-  height: 300px;
-  border-radius: 25px 0 0 25px;
-  box-shadow: 5px 5px 5px #045de9;
-  background-color: #2e7bff;
-  padding: 20px;
-  color:white;
-  background-color: purple;
-  background-image: url("./william-moreland-unsplash.jpg");
-  background-repeat: no-repeat;
-  background-size: 300px 500px;
-  background-position: center;
-}
-
-.card {
-  display: flex;
-}
+  /* background-image: url("./william-moreland-unsplash.jpg"); */
 
 .h-j-cont h3, .h-c-cont h3 {
   color:white;
@@ -182,8 +161,7 @@ h2 {
   color: #fff;
   padding: 10px 20px;
   border-radius: 25px;
-  box-shadow: 5px 5px 5px darkblue;
-  
+  box-shadow: 5px 5px 5px darkblue;  
 }
 
 .h-js-btn:hover, .h-cs-btn:hover {
@@ -194,25 +172,19 @@ h2 {
 .h-courses-cont {
   display:flex;
   flex-direction: column;
-  /* padding: 20px; */
-  /* overflow-x:scroll; */
   width:100%;
   height: 100%;
   justify-content:center;
   align-items: center;
-  /* background-color: yellow; */  
 }
 
 .h-courses-cont h2 {
-  /* background-color: pink; */
-  /* text-align:left; */
   font-weight:larger;
   margin-bottom: 20px;
 }
 
 .h-courses {
     display: flex;
-    /* overflow-x: scroll; */
 }
 
 .r-item{
@@ -229,20 +201,14 @@ h2 {
 .c-col-container {
     display: flex;
     justify-content:center;
-    /* align-items: center; */
-    /* height: 100vh; */
     width: 100%;
     background-color: whitesmoke;
-    /* align-items: center; */
-    /* background-color: whitesmoke; */
-    /* height: 100vh; */
   }
 
   .c-dash {
     display: flex;
     flex-direction: column;
     justify-content:center;
-    /* align-items: center; */
     width:60%;
     height: 100%;
   }
@@ -254,13 +220,9 @@ h2 {
   }
   
 .tabs-container {
-  /* background-color: pink; */
-  /* position: relative; */
   width: 100%;
   height: 100%;
   background: transparent;
-  /* word-break: break-all; */
-  /* border: 1px solid rgba(0, 0, 0, 0.274); */
 }
 
 .bloc-tabs {
@@ -276,11 +238,8 @@ h2 {
   border-bottom: 1px solid rgba(0, 0, 0, 0.274);
   border-radius: 15px 15px 0 0;
   box-sizing: content-box;
-  /* position: relative; */
   outline: none;
   color:white;
-  /* word-break: break-all; */
-
 }
 
 .tabs:not(:last-child){
@@ -302,7 +261,6 @@ h2 {
   transform: translateX(-50%);
   width: calc(100% + 2px);
   height: 5px;
-  /* background: #045de9; */
 }  
 
 button {
@@ -314,7 +272,6 @@ button {
   overflow-y: scroll;
   padding-bottom: 50px;
   background:#7eabf3;
-  /* word-wrap: break-word; */
 }
 
 .content-tabs::-webkit-scrollbar {
@@ -369,7 +326,6 @@ button {
 }
 
 .course, .course-2 {
-  /* display: flex; */
   margin: 10px;
   width: 200px;
   height: 200px;
@@ -386,7 +342,6 @@ button {
 
 .course-2:hover, .course:hover {
   cursor: pointer;
-  /* color:black; */
   background-color: #fff;
   color:black;
 }
@@ -421,7 +376,6 @@ button {
   display: flex;
   flex-direction: column;
   justify-content:center;
-  /* align-items: center; */
   width:60%;
   height: 100%;
   word-wrap: normal;
@@ -429,7 +383,6 @@ button {
 
 .fill {  
   height: 50%;
-  /* background-color: green; */
 }
 
 .session-list {
@@ -439,23 +392,14 @@ button {
 }
 
 /* SESSION.JS STYLES */
-/* .s-cont {
-  background-color: green;
-} */
-
 .session {
   border-radius: 25px;
   background: #0049c6; 
-
   color:white;
   padding: 10px 25px;
-  /* margin-top: 2px; */
   display: flex;
   align-items: center;
   height: 50px;
-  /* justify-content: center; */
-  /* gap: 5px; */
-
 }
 
 .session-2 {
@@ -463,12 +407,9 @@ button {
   background: #2e7bff;
   color:white;
   padding: 10px 25px;
-  /* margin-top: 2px; */
   display: flex;
   align-items: center;
   height: 50px;
-  /* justify-content: center; */
-  /* gap: 5px; */
 }
 
 .session-2:hover, .session:hover {
@@ -477,12 +418,10 @@ button {
 }
 
 .s-title {
-  /* font-weight: bolder; */
   font-size: large;
 }
 
 .s-created-at {
-  /* margin-top: 5px; */
   font-style: italic;
   color: whitesmoke;
   margin-left: auto;
@@ -496,7 +435,6 @@ button {
   gap: 20px;
   height: 45vh;
   background-color: #7eabf3;
-  /* margin: auto; */
 }
 
 .c-form {
@@ -504,7 +442,6 @@ button {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
 }
 
 /* SQ.JS STYLES */
@@ -513,7 +450,6 @@ button {
 }
 
 .sq, .sq-2 {
-  /* display: flex; */
   margin: 10px;
   width: 200px;
   height: 200px;
@@ -530,7 +466,6 @@ button {
 
 .sq-2:hover, .sq:hover {
   cursor: pointer;
-  /* color:black; */
   background-color: #7eabf3;
 }
 
@@ -561,6 +496,4 @@ button {
   background-color: lightgray;
   border-radius: 25px;
   margin: 15px 25px;
-  /* padding-top: 20vh; */
-
 }

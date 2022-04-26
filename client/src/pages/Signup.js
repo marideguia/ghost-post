@@ -1,168 +1,115 @@
 import React, {useEffect,useState } from "react";
-import ReactDOM from "react-dom";
-import { Link } from 'react-router-dom';
 import "./Login.css";
+import "./Signup.css";
+import {Formik,Form,Field,ErrorMessage} from "formik";
+import * as Yup from 'yup';
+import axios from "axios";
+import { useNavigate } from 'react-router-dom';
+
 
 
 function Signup() {
+  const [value, setValue] = useState('');
+  const [isActive, setIsActive] = useState(false);
+  let navigate = useNavigate();
+
+  const initialValues = {
+    email:"",
+    password:"",
+    firstName:"",
+    lastName:"",
+  };
+
+  function handleTextChange(text) {
+    setValue(text);
   
-  const [errorMessages, setErrorMessages] = useState({});
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [userVal, setUserVal] = useState("");
-  const [userEmail, setEmailVal] = useState("");
-  const [userSchool, setSchoolVal] = useState("");
-  const [userPhone, setPhoneNum] = useState("");
-  const [userPWD, setPWD] = useState("");
-
-  // const [sessionState,setSessionState]= useState({
-  //   username:'asdfg',
-  //   password:''
-  // });
-
-  const onUserChange = (event) => {
-    setUserVal(event.target.value);
-  }
-
-  const onEmailChange = (event) => {
-    setEmailVal(event.target.value);
-  }
-
-  const onSchoolChange = (event) => {
-    setSchoolVal(event.target.value);
-  }
-
-  const onPhoneChange = (event) => {
-    setPhoneNum(event.target.value);
-  }
-
-  const onPWDChange = (event) => {
-    setPWD(event.target.value);
-  }
-
-
-  // User Login info
-  const database = [
-    {
-      username: "user1",
-      password: "pass1"
-    },
-    {
-      username: "user2",
-      password: "pass2"
+    if (text !== '') {
+      setIsActive(true);
+    } else {
+      setIsActive(false);
     }
-  ];
+  }
 
-  const errors = {
-    uname: "username is in use",
+  const validationSchema = Yup.object().shape({
+    email: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
+    password: Yup.string().min(5).max(255).required('Password is required'),
+    firstName: Yup.string().min(3).max(255).required('First name is required'),
+    lastName: Yup.string().min(3).max(255).required('Last name is required'),
+
+  });
+
+  const onSubmit = (data)=>{
+  
+    axios.post("http://localhost:3000/auth/createUser",data).then(()=>{
+      navigate('/Home');
+    });
+
   };
 
+  return (
+    <div class = "container">
+    <div className="child">
+      <div className="signup-form">
+      <Formik
+        initialValues={initialValues}
+        onSubmit={onSubmit}
+        validationSchema={validationSchema}
+      >
+      <Form className="formContainer">
+      <h1 className="signup-header">Create an Account</h1>
+      
+      <div class="inputContainer">
+        <label className="input">Email: </label>
+          <ErrorMessage name="email" component="span" />
+          <Field className = "input"
+            id="inputRegister"
+            name="email"
+            placeholder="Your Email"
+            type = "email"
+          />
+        </div>
 
+        <div class ="inputContainer">
+          <label>First Name: </label>
+          <ErrorMessage name="firstName" component="span" />
+          <Field className = "input"
+            id="inputRegister"
+            name="firstName"
+            placeholder="Your First Name"
+            type = "name"
+          />
+        </div>
 
-  const handleSubmit = (event) => {
-    //Prevent page reload
-    event.preventDefault();
-    fetch('http://localhost:3000/register',{
-      method: 'post',
-      headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({
-        username: userVal,
-        email: userEmail,
-        school: userSchool,
-        phone: userPhone,
-        password: userPWD
-      })
-    })
-    .then(response => response.json())
-    .then(user => {
-      if (user){
-        
-        alert("success");
-      }else{
-        alert("fail");
-      }
-    })
+           <div class="inputContainer">
+           <label>Last Name: </label>
+          <ErrorMessage name="lastName" component="span" />
+          <Field className = "input"
+            id="inputRegister"
+            name="lastName"
+            placeholder="Your Last Name"
+            type = "name"
+          />
+        </div>
 
-    // var { uname, pass } = document.forms[0];
+           <div class="inputContainer">
+          <label >Password: </label>
+          <ErrorMessage name="password" component="span" />
+          <Field className = "input"
+            type="password"
+            id="inputRegister"
+            name="password"
+            placeholder="Your Password..."
+          />
+        </div>
 
-    // // Find user login info
-    // const userData = database.find((user) => user.username === uname.value);
-
-    // // Compare user info
-    // if (userData) {
-    //   // Username dupe found
-    //   setErrorMessages({ name: "uname", message: errors.uname });
-    // }
-    // else{
-    //   setIsSubmitted(true)
-    // }
-  };
-
-  // Generate JSX code for error message
-  const renderErrorMessage = (name) =>
-    name === errorMessages.name && (
-      <div className="error">{errorMessages.message}</div>
-    );
-
-  // JSX code for login form
-  const renderForm = (
-      <div className="form">
-        <form onSubmit={handleSubmit}>
-          <div className="input-container">
-            <label className="login-label">Username </label>
-            <input 
-            type="text" 
-            name="uname" 
-            onChange={onUserChange}
-            required />
-            {renderErrorMessage("uname")}
-          </div>
-
-          <div className="input-container">
-            <label className="login-label">Email</label>
-            <input 
-            type="text" 
-            name="email" 
-            onChange={onEmailChange}
-            required />
-          </div>
-
-          <div className="input-container">
-            <label className="login-label">School</label>
-            <input 
-            type="text" 
-            name="school" 
-            onChange={onSchoolChange}
-            required />
-          </div>
-
-          <div className="input-container">
-            <label className="login-label">Phone</label>
-            <input 
-            type="text" 
-            name="phone" 
-            onChange={onPhoneChange}
-            required />
-          </div>
-
-          <div className="input-container">
-            <label className="login-label">Password</label>
-            <input 
-            type="text" 
-            name="pass" 
-            onChange={onPWDChange}
-            required />
-          </div>
-
-          <div className="btns-container">
-          
-          <div className="button-container">
-            <input className="lp-button" type="submit" value = "Sign Up"/>
-          </div>
-          </div>
-          
-          
-        </form>
-        <div class="area" >
+          <button type="submit" className="submitBtn"> Sign Up </button>
+        </Form>
+      </Formik>
+     
+       {/* {isSubmitted ? <div>User is successfully signed up</div> : renderForm}*/}
+      </div>
+    </div>
+    <div class="area" >
             <ul class="circles">
                     <li></li>
                     <li></li>
@@ -176,18 +123,7 @@ function Signup() {
                     <li></li>
             </ul>
     </div >
-      </div>
-  );
-
-  return (
-    <div className="app">
-      <h1 className="signup-header1">Create an Account</h1>
-      <div className="signup-form">
-      
-       
-        {isSubmitted ? <div>User is successfully signed up</div> : renderForm}
-      </div>
-    </div>
+  </div>
   );
 }
 

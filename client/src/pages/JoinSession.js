@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import { Link, useNavigate } from 'react-router-dom';
 import "./JoinSession.css";
+import axios from "axios";
 
 function JoinSession() {
   // React States
@@ -10,17 +11,7 @@ function JoinSession() {
   const [codeVal, setCodeVal] = useState("");
   
   let navigate = useNavigate();
-  
 
-  // User session info
-  const database = [
-    {
-      scode: "79bu4"
-    },
-    {
-      scode: "abc12"
-    }
-  ];
 
   const errors = {
     sesscode: "invalid session code"
@@ -36,35 +27,15 @@ function JoinSession() {
     //Prevent page reload
     event.preventDefault();
     console.log(codeVal);
-    fetch('http://localhost:3000/joinSession',{
-      method: 'post',
-      headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({
-        code: codeVal
-      })
-    })
-    .then(response => response.json())
-    .then(data => {
-      if (data === 'success'){
-        navigate("/App");
-      }
+
+    axios.post('http://localhost:3000/sessions/join',{
+      code : codeVal
+    }).then(res=>{
+      const id = res.data;
+      navigate(`/Posts/${id}`);
+      
     })
 
-   
-    /*var {sesscode} = document.forms[0];
-
-    // Find session info
-    const sessionData = database.find((user) => user.scode === sesscode.value);
-
-    // Compare user info
-    if (sessionData) {
-      if (sessionData.scode !== sesscode.value) {
-        // Invalid session code
-        setErrorMessages({ name: "sesscode", message: errors.sesscode });
-      } else {
-        setIsSubmitted(true);
-      }
-    }*/
   };
 
   // Generate JSX code for error message

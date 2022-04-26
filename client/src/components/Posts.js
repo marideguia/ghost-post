@@ -209,7 +209,7 @@ const Posts = ({currentUserID}) => {
         
       </div>
       {/* p-container */}
-      {/* <PSearch /> */}
+      <SearchBar />
 
     </div>
     // column-container

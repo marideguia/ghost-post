@@ -7,7 +7,8 @@ import "./Home.css"
 import Carousel from './Carousel'
 import Header from './Header'
 import Course from './Course';
-import Image1 from './kevin-gonzalez-unsplash.jpg'
+// https://create.vista.com/unlimited/stock-photos/219684892/stock-photo-african-american-lecturer-talking-audience/
+import Image1 from './stock-photo-african-american-lecturer-talking-audience.jpg'
 import Image2 from './william-moreland-unsplash.jpg'
 import {
   getCourses as getCoursesApi,
@@ -46,15 +47,13 @@ const Home = ( {currentUserID} ) => {
       <div className="home-dash">  
         <Header title={`Hi ${userID}, What questions do you have today?`}/>
 
-
-
         {/* <Carousel /> */}
 
         <div className='h-cj-cont'>
           
           <div className='card'>
             <div className='left'>
-              {/* <img src={Image1} alt='lecture audience'/> */}
+              <img className='left-img'src={Image1} alt='lecture audience'/>
             </div>
             <div className='h-j-cont'>            
               <p>Talk to your peers, ask important questions, and vote on the questions you want answered. Join a session now!</p>
@@ -68,10 +67,10 @@ const Home = ( {currentUserID} ) => {
           
           <div className='card'>
             <div className='left2'>
-              {/* <img src={Image2} alt='classroom lecturer'/> */}
+              <img className='left2-img' src={Image2} alt='classroom lecturer'/>
             </div>
             <div className='h-c-cont'>              
-              <p>Want to connect with your audience? Need a better understanding of what they're learning? Create a session now!</p>
+              <p>Want to connect with your audience? Need a better understanding of what they're learning? Create a session today.</p>
               <Link to="../CreateSession">
                   <button className="h-cs-btn">
                     Create now
@@ -95,7 +94,7 @@ const Home = ( {currentUserID} ) => {
               ))}
             </div> */}
             
-            { yourSessions ? 
+            { !yourSessions ? 
               <div className="sq-list">
                 { yourSessions.map( (yourSession) => (
                   <SessionSquare
@@ -107,13 +106,13 @@ const Home = ( {currentUserID} ) => {
               </div> 
               :
               <div className="no-sessions">
-                <p>Looks like your sessions are empty.</p>
+                <p>You don't have any sessions yet.</p>
               </div>
             }
         </div>            
       </div>
       
-      {/* <SearchBar/> */}
+      <SearchBar/>
     </div>
   )
 }

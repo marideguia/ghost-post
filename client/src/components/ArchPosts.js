@@ -10,6 +10,7 @@ import {
 import Post from "./Post.js"
 import Header from "./Header.js"
 import Sidebar from "./Sidebar.js"
+import SearchBar from "./SearchBar.js"
 
 
 const Posts = ({currentUserID}) => {
@@ -148,7 +149,7 @@ const Posts = ({currentUserID}) => {
         {/* posts */}
       </div>
       {/* p-container */}
-      {/* <PSearch /> */}
+      <SearchBar />
     </div>
     // column-container
   )
