@@ -32,6 +32,15 @@ html {
   min-height: 100%;
 }
 
+.copy-text{
+  color:white;
+  text-shadow: 3px 3px 3px darkblue;
+  padding: 7px;
+}
+span {
+  display: table;
+  margin: 0 auto;
+}
 
 .btn-create {
   margin-top: 10px;
