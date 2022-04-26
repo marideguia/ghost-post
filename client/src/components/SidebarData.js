@@ -13,19 +13,9 @@ export const SidebarData = [
     clssname: "logo"
   },
   {
-    title: " ",
-    link: "../",
-    clssname: "logo"
-  },
-  {
-    title: " ",
-    link: "../",
-    clssname: "logo"
-  },
-  {
     title: "Home",
     icon: <HomeIcon />,
-    link: "../",
+    link: "../Home",
     clssname: 'nav-text'
   },
   {
