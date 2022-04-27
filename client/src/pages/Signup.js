@@ -1,5 +1,5 @@
 import React, {useEffect,useState } from "react";
-import "./Login.css";
+// import "./Login.css";
 import "./Signup.css";
 import {Formik,Form,Field,ErrorMessage} from "formik";
 import * as Yup from 'yup';
@@ -35,7 +35,6 @@ function Signup() {
     password: Yup.string().min(5).max(255).required('Password is required'),
     firstName: Yup.string().min(3).max(255).required('First name is required'),
     lastName: Yup.string().min(3).max(255).required('Last name is required'),
-
   });
 
   const onSubmit = (data)=>{
@@ -125,6 +124,7 @@ function Signup() {
     </div >
   </div>
   );
+
 }
 
 
