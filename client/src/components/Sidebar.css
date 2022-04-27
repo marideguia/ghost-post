@@ -4,7 +4,6 @@
   height: 500px;
   justify-content: start;
   align-items: center;
-
 }
 
 .menu-bars {
@@ -19,15 +18,33 @@
   height: 100vh;
   display:flex;
   justify-content: center;
+  position: fixed;
+  top: 0;
+  left: -100%;
+  transition: 850ms;
+}
+.nav-menu-web {
+  background-color: whitesmoke;
+  width: 240px;
+  height: 100vh;
+  display:flex;
+  justify-content: center;
   /* position: fixed; */
   top: 0;
   left: -100%;
   transition: 850ms;
 }
 
-.nav-menu.active{
+.nav-menu.active-web{
   left: 0;
   transition: 350ms;
+  position: relative;
+}
+
+.nav-menu.active {
+  left: 0;
+  transition: 350ms;
+  position: fixed;
 }
 
 .nav-text{

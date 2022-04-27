@@ -41,16 +41,28 @@ const Home = ( {currentUserID} ) => {
   let yourIndex = 0  
 
   return (    
-    <div className="column-cont">
+    <div className={
+      isMobile ? "column-cont" : 
+      "web-column-cont" }
+    >
       <SideBar />
-      <div className="home-dash">  
+      <div className={
+        isMobile ? "home-dash" : 
+        "web-home-dash"
+      }>  
         <Header title={`Hi ${userID}, What questions do you have today?`}/>
 
         {/* <Carousel /> */}
 
-        <div className='h-cj-cont'>
+        <div className={
+          isMobile ? 'h-cj-cont' : 
+          'web-h-cj-cont'
+        }>
           
-          <div className='card'>
+          <div className={
+            isMobile ? 'card' : 
+            'web-card'
+          }>
             <div className='left'>
               <img className='left-img'src={Image1} alt='lecture audience'/>
             </div>
@@ -64,7 +76,10 @@ const Home = ( {currentUserID} ) => {
             </div>
           </div>
           
-          <div className='card'>
+          <div className={
+            isMobile ? 'card' : 
+            'web-card'
+          }>
             <div className='left2'>
               <img className='left2-img' src={Image2} alt='classroom lecturer'/>
             </div>
@@ -76,8 +91,7 @@ const Home = ( {currentUserID} ) => {
                   </button>                  
                 </Link>
             </div>
-          </div>
-          
+          </div>         
           
         </div>
 
@@ -94,7 +108,7 @@ const Home = ( {currentUserID} ) => {
             </div> */}
             
             { userSessions ? 
-              <div className="sq-list">
+              <div className={isMobile ? "sq-list" : "web-sq-list" }>
                 { userSessions.map( (yourSession) => (
                   <SessionSquare
                     index={yourIndex+=1}

@@ -49,7 +49,7 @@ function SideBar() {
     return (
       <>
       <IconContext.Provider value={{color:'gray'}}>
-      <nav className={nonMobileSidebar ? 'nav-menu active' : 'nav-menu'}>
+      <nav className={nonMobileSidebar ? 'nav-menu active-web' : 'nav-menu-web'}>
         <ul className='nav-menu-items' onClick={keepSidebar}>
           {SidebarData.map((item, index) => {
             return (
