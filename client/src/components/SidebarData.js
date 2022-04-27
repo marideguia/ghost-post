@@ -9,7 +9,7 @@ export const SidebarData = [
   {
     title: " ",
     icon: <img src={Logo}/>,
-    link: "../",
+    link: "../Home",
     clssname: "logo"
   },
   {
