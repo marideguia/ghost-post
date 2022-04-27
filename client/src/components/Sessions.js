@@ -113,7 +113,7 @@ const Sessions = () => {
         </div>
       </div>
 
-      {/* <SearchBar /> */}
+      <SearchBar />
 
     </div>
   )

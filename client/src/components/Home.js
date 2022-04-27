@@ -4,9 +4,9 @@ import SearchBar from "./SearchBar"
 import { useState, useEffect } from "react";
 import SideBar from './Sidebar'
 import "./Home.css"
-import Carousel from './Carousel'
+// import Carousel from './Carousel'
 import Header from './Header'
-import Course from './Course';
+// import Course from './Course';
 // https://create.vista.com/unlimited/stock-photos/219684892/stock-photo-african-american-lecturer-talking-audience/
 import Image1 from './stock-photo-african-american-lecturer-talking-audience.jpg'
 import Image2 from './william-moreland-unsplash.jpg'
@@ -15,6 +15,7 @@ import {
   getSessions as getSessionsApi,
 } from "../api.js"
 import SessionSquare from './SessionSquare';
+import {isMobile} from 'react-device-detect';
 
 const Home = ( {currentUserID} ) => {
   // const [userCourses, setUserCourses] = useState([]);
@@ -38,8 +39,6 @@ const Home = ( {currentUserID} ) => {
 
   const userID = String(currentUserID)
   let yourIndex = 0  
-
-  const yourSessions = userSessions
 
   return (    
     <div className="column-cont">
@@ -94,9 +93,9 @@ const Home = ( {currentUserID} ) => {
               ))}
             </div> */}
             
-            { !yourSessions ? 
+            { userSessions ? 
               <div className="sq-list">
-                { yourSessions.map( (yourSession) => (
+                { userSessions.map( (yourSession) => (
                   <SessionSquare
                     index={yourIndex+=1}
                     key={yourSession.SessionID}

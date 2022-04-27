@@ -1,12 +1,9 @@
 .column-cont {
     display:flex;
     justify-content:center;
-    /* align-items: center; */
     height: 100vh;
     width: 100%;
     background-color: whitesmoke;
-    justify-content:space-between;
-    flex-shrink: 0;
 }
 
 h2 {
@@ -20,7 +17,8 @@ h2 {
     align-items: center;
     width:100%;
     height: 100%;
-    /* float:right; */
+    margin: 0 10px 0 10px;
+    /* background-color: green; */
 }
 
 .recents-items{
@@ -96,9 +94,7 @@ h2 {
   display:flex;
   align-items:center;
   width: 80%;
-  /* height: 100%; */
   gap: 1.5%;
-  /* background-color: yellow; */
 }
 
 .h-cj-cont button {
@@ -122,12 +118,14 @@ h2 {
 }
 
 .left-img {
-  max-width: 100%;
+  min-width: 100%;
+  min-height: 100%;
   object-fit: cover;
 }
 
 .left2-img{
-  max-width: 100%;
+  min-width: 100%;
+  min-height: 100%;
   object-fit: cover;
 }
 

@@ -19,7 +19,7 @@
   height: 100vh;
   display:flex;
   justify-content: center;
-  position: fixed;
+  /* position: fixed; */
   top: 0;
   left: -100%;
   transition: 850ms;
@@ -76,6 +76,15 @@
   align-items: center;
 }
 
-span{
-  margin-left: 16px;
+li{
+  width: 100%;
+  /* background-color: green; */
+  display: inline-block;
+  max-width:100%; /* limit width */
+  /* word-break:break-all; wrap extended text */
+  /* border:1px solid red */
+}
+
+span {
+  display: inline-block;
 }

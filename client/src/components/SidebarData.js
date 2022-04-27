@@ -19,17 +19,17 @@ export const SidebarData = [
     clssname: 'nav-text'
   },
   {
-    title: "Session Log",
+    title: "Sessions",
     icon: <AssignmentIcon />,
     link: "../ArchPosts",
     clssname: 'nav-text'
   },
-  {
-    title: "Courses",
-    icon: <MenuBookIcon />,
-    link: "../Posts",
-    clssname: 'nav-text'
-  },
+  // {
+  //   title: "Courses",
+  //   icon: <MenuBookIcon />,
+  //   link: "../Posts",
+  //   clssname: 'nav-text'
+  // },
   {
     title: "Calendar",
     icon: <DateRangeIcon />,

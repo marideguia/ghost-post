@@ -12,12 +12,10 @@ import Post from "./Post.js"
 import PostForm from "./PostForm.js"
 import Header from "./Header.js"
 import Sidebar from "./Sidebar.js"
-// import PSearch from "./PSearch.js"
 import { useStore } from '../store/Store';
 import {useParams} from "react-router-dom";
 import axios from "axios";
-
-import SearchBar from "./SearchBar"
+// import SearchBar from "./SearchBar"
 
 const Posts = ({currentUserID}) => {
   let { id } = useParams();
@@ -34,6 +32,7 @@ const Posts = ({currentUserID}) => {
   const rootPosts = posts.filter( (post) => post.ParentID === null)
     .sort( (a,b) => a.Upvotes.length - b.Upvotes.length)
     .reverse()
+
 
   // Get replies, sort by upvotes in descending order
   const getReplies = (postID) => {
@@ -177,7 +176,12 @@ const Posts = ({currentUserID}) => {
           <div className="posts-container">
             {/* Form to submit posts */}
             
-            {rootPosts.map( (rootPost) => (
+            { !posts ? 
+              <div className="no-posts">
+                <p>No posts yet.</p>
+              </div>
+              :
+              rootPosts.map( (rootPost) => (
               // <div key={rootPost.PostID}>{rootPost.Text}</div>
               <Post 
                 key={rootPost.PostID} 
@@ -193,7 +197,8 @@ const Posts = ({currentUserID}) => {
                 removeUpvote={removeUpvote}  
                 arch={false}           
               />
-            ))}
+              ))
+            }
           </div> {/* posts-container */}
           <div className="posts-form">
             <div className="posts-form-title">
@@ -209,7 +214,7 @@ const Posts = ({currentUserID}) => {
         
       </div>
       {/* p-container */}
-      <SearchBar />
+      {/* <SearchBar /> */}
 
     </div>
     // column-container

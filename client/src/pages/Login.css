@@ -18,9 +18,7 @@
   background-position: center;
   background-size: 100vw 100vh;
 }
-a:hover{
-  background-color: transparent;
-}
+
 /* 
 input[type="text"],
 input[type="username"] {

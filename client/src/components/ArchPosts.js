@@ -10,7 +10,7 @@ import {
 import Post from "./Post.js"
 import Header from "./Header.js"
 import Sidebar from "./Sidebar.js"
-import SearchBar from "./SearchBar.js"
+// import SearchBar from "./SearchBar.js"
 
 
 const Posts = ({currentUserID}) => {
@@ -22,7 +22,7 @@ const Posts = ({currentUserID}) => {
   const rootPosts = posts.filter( (post) => post.ParentID === null)
     .sort( (a,b) => a.Upvotes.length - b.Upvotes.length)
     .reverse()
-
+  
   // Get replies, sort by upvotes in descending order
   const getReplies = (postID) => {
     return posts.filter( (post) => post.ParentID === postID)
@@ -119,7 +119,13 @@ const Posts = ({currentUserID}) => {
           <div className="a-posts-container">
             {/* Form to submit posts */}
             
-            {rootPosts.map( (rootPost) => (
+            {!posts ? 
+              <div className="no-posts">
+                {console.log("nope")}
+                No posts yet.
+              </div>
+            :
+              rootPosts.map( (rootPost) => (
               // <div key={rootPost.PostID}>{rootPost.Text}</div>
               <Post 
                 key={rootPost.PostID} 
@@ -149,7 +155,7 @@ const Posts = ({currentUserID}) => {
         {/* posts */}
       </div>
       {/* p-container */}
-      <SearchBar />
+      {/* <SearchBar /> */}
     </div>
     // column-container
   )

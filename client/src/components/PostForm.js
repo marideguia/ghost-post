@@ -1,6 +1,7 @@
 import {useState, useRef} from 'react'
 import React from 'react'
 
+
 // Form to submit posts
 const PostForm = ({
   handleSubmit, 
