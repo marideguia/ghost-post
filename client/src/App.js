@@ -15,7 +15,7 @@ import Sessions from './components/Sessions';
 import Courses from './components/Courses';
 import Signup from './pages/Signup';
 import OurCalendar from './pages/Calendar';
-
+import UserProfile from './pages/UserProfile';
 function App(){
    
   return (
@@ -33,6 +33,7 @@ function App(){
       <Route path="Courses" element={<Courses/>}/>
       <Route path="Signup" element={<Signup/>}/>
       <Route path="OurCalendar" element={<OurCalendar/>}/>
+      <Route path="Settings" element={<UserProfile/>}/>
     </Routes>
     </BrowserRouter>
   );

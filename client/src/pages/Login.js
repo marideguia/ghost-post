@@ -40,8 +40,6 @@ function Login() {
     setPWD(event.target.value);
   }
 
-
-
   const handleSubmit = (event) => {
     //Prevent page reload
     event.preventDefault();
@@ -79,10 +77,11 @@ function Login() {
           </div>
 
           <div className="input-container">
-            <label className="login-label">Password</label>
+            <label className="login-label">Password </label>
             <input 
-            type="text" 
+            type="password" 
             name="pass" 
+            className="pwdBtn"
             style={{textTransform:'none'}}
             onChange={onPWDChange} required />
             {renderErrorMessage("pass")}
