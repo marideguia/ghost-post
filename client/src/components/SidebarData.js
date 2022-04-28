@@ -21,7 +21,7 @@ export const SidebarData = [
   {
     title: "Sessions",
     icon: <AssignmentIcon />,
-    link: "../ArchPosts",
+    link: "../Sessions",
     clssname: 'nav-text'
   },
   // {
