@@ -31,12 +31,12 @@ export const SidebarData = [
   //   link: "../Posts",
   //   clssname: 'nav-text'
   // },
-  {
-    title: "Calendar",
-    icon: <DateRangeIcon />,
-    link: "../OurCalendar",
-    clssname: 'nav-text'
-  },
+ // {
+   // title: "Calendar",
+  //  icon: <DateRangeIcon />,
+   // link: "../OurCalendar",
+   // clssname: 'nav-text'
+  //},
   {
     title: "Settings",
     icon: <SettingsIcon />,
