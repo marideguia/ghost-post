@@ -4,6 +4,7 @@ import SettingsIcon from '@material-ui/icons/Settings';
 import DateRangeIcon from '@material-ui/icons/DateRange';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import MenuBookIcon from '@material-ui/icons/MenuBook';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import Logo from './Ghost_Post_Logo.png'
 export const SidebarData = [
   {
@@ -40,6 +41,12 @@ export const SidebarData = [
     title: "Settings",
     icon: <SettingsIcon />,
     link: "../Settings",
+    clssname: 'nav-text'
+  },
+  {
+    title: "Log Out",
+    icon: <ExitToAppIcon />,
+    link: "../",
     clssname: 'nav-text'
   }
 ]
