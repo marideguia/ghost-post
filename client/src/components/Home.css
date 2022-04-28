@@ -1,8 +1,10 @@
 .column-cont {
   display:flex;
   justify-content: center;
+  /* align-items: center; */
   background-color: whitesmoke;
   height:100vh;
+  overflow-y: scroll;
 }
 
 .web-column-cont {
@@ -19,26 +21,24 @@ h2 {
   color: black;
 }
 
-.web-home-dash {
-  display: flex;
-  flex-direction: column;
-  /* justify-content:center; */
-  align-items: center;
-  width:100%;
-  height: 100%;
-  /* margin: 0 10px; */
-  /* background-color: green; */
-}
-
 .home-dash {
   display: flex;
   flex-direction: column;
-  justify-content:center;
-  align-items: center;
+  /* justify-content:center; */
+  /* align-items: center; */
   width: 320px;
   /* height: 100%; */
   margin: 0 10px;
+  gap: 2%;
   /* background-color: green; */
+}
+
+.web-home-dash {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width:100%;
+  height: 100%;  
 }
 
 /* Join Create Cards */
@@ -145,16 +145,14 @@ box-shadow: 5px 5px 5px darkblue;
 background-color: #519ef5;
 }
 
-
-
 .tabs-container {
-width: 100%;
-height: 100%;
-background: transparent;
+  width: 100%;
+  max-width: 900px;
+  height: 100%;
 }
 
 .bloc-tabs {
-display: flex;
+  display: flex;
 }
 
 .tabs {  
@@ -250,19 +248,20 @@ min-width: 300px;
 
 /* SESSIONS.JS STYLES */
 .s-col-container {
-display:flex;
-justify-content: center;
-background-color: whitesmoke;
-height:100vh;
+  display:flex;
+  justify-content: center;
+  background-color: whitesmoke;
+  height:100vh;
 }
 
 .s-dash{
-display: flex;
-flex-direction: column;
-justify-content:center;
-width:60%;
-height: 100%;
-word-wrap: normal;
+  display: flex;
+  flex-direction: column;
+  justify-content:center;
+  align-items: center;
+  width:100%;
+  height: 100%;
+  word-wrap: normal;
 }
 
 .fill {  
@@ -383,12 +382,12 @@ display:flex;
 width:100%;
 justify-content: center;
 overflow-x: scroll;
-
 }
 .sq-list {
 /* display:flex; */
 width:100%;
 justify-content: center;
+align-items: center;
 overflow-x: scroll;
 }
 
