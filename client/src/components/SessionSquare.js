@@ -12,7 +12,7 @@ const SessionSquare = ({
   return (
     <div className='sq-cont'>
       <div className={index % 2 === 0 ? "sq-2" : "sq"} onClick={onClick}>
-        <h3 className="sq-title" >{session.Title}</h3>
+        <h3 className="sq-title" >{session.title}</h3>
         <div className="sq-students">{session.Students.length} students</div>
       </div>
     </div>    

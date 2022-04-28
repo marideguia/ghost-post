@@ -114,11 +114,20 @@ input[type="button"]:hover {
   margin-top: 15px;
 } 
 
-.button-container {
+.l-button-container {
   display: flex;
   justify-content: center;
-  padding: 5px;
+  /* padding: 5px; */
   border-radius: 5px;
+  margin: 40px;
+}
+
+.l-button-container2 {
+  display: flex;
+  justify-content: center;
+  /* padding: 5px; */
+  border-radius: 5px;
+  margin: 20px;
 }
 
 #signup {

@@ -14,7 +14,7 @@ const Session = ({
           className="session-2"
           onClick={onClick}
         >
-          <div className="s-title" >{session.Title}</div>
+          <div className="s-title" >{session.title}</div>
           <div className="s-created-at">{createdAt}</div>
         </div>
         :        
@@ -22,7 +22,7 @@ const Session = ({
           className="session"
           onClick={onClick}
         >
-          <div className="s-title" >{session.Title}</div>
+          <div className="s-title" >{session.title}</div>
           <div className="s-created-at">{createdAt}</div>
         </div>
       }      

@@ -11,10 +11,13 @@ import CreateSession2 from "./CreateSession2"
 import Sidebar from "./Sidebar"
 import SearchBar from "./SearchBar"
 // https://github.com/Ziratsu/yt-react-tabs
+// https://www.youtube.com/watch?v=mZvKPtH9Fzo
 
 const Sessions = () => {
   const [activeTab, setActiveTab] = useState(1);
   const [userSessions, setUserSessions] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('')
+  const [searchTerm2, setSearchTerm2] = useState('')
 
   const toggleTab = (index) => {
     setActiveTab(index);
@@ -71,35 +74,49 @@ const Sessions = () => {
 
           <div className="content-tabs">
             <div className={activeTab === 1 ? "content  active-content" : "content"}>
-              <div className="session-list" >
-                {yourSessions.map( (yourSession) => (
-                  <Session
-                    index={yourIndex+=1}
-                    key={yourSession.SessionID}
-                    session={yourSession}
-                  />
-                  // console.log("course: ", yourCourse.Title, yourCourse.CourseID)
-                ))}
+              <div className="s-tabs">
+                <input className="s-search" type="text" placeholder="Search Sessions" onChange={event => {setSearchTerm(event.target.value)}}/>
+                <div className="session-list" >
+                  {yourSessions.filter( (yourSession) => {
+                    if (searchTerm === "") {
+                      return yourSession
+                    } else if (yourSession.title.toLowerCase().includes(searchTerm.toLowerCase())) {
+                      return yourSession
+                    }
+                  }).map( (yourSession) => (
+                    <Session
+                      index={yourIndex+=1}
+                      key={yourSession.SessionID}
+                      session={yourSession}
+                    />
+                    ))}
+                </div>
               </div>     
             </div>
 
             <div className={activeTab === 2 ? "content  active-content" : "content"}>
-              <div className="session-list" >
-                {createdSessions.map( (createdSession) => (
-                  <Session
-                    index={createIndex+=1}
-                    key={createdSession.SessionID}
-                    session={createdSession}
-                  />
-                  // console.log("course: ", yourCourse.Title, yourCourse.CourseID)
-                ))}
-              </div>              
+              <div className="s-tabs">
+                <input className="s-search" type="text" placeholder="Search Sessions" onChange={event => {setSearchTerm2(event.target.value)}}/>
+                <div className="session-list" >
+                  {createdSessions.filter( (createdSession) => {
+                    if (searchTerm2 === "") {
+                      return createdSession
+                    } else if (createdSession.title.toLowerCase().includes(searchTerm2.toLowerCase())) {
+                      return createdSession
+                    }
+                  }).map( (createdSession) => (
+                    <Session
+                      index={createIndex+=1}
+                      key={createdSession.SessionID}
+                      session={createdSession}
+                    />
+                    ))}
+                </div>
+              </div>                    
             </div>
 
-            <div className={activeTab === 3 ? "content  active-content" : "content"}>
-              
+            <div className={activeTab === 3 ? "content  active-content" : "content"}>              
               <JoinSession2/>
-
             </div>
 
             <div className={activeTab === 4 ? "content  active-content" : "content"}>
@@ -113,7 +130,7 @@ const Sessions = () => {
         </div>
       </div>
 
-      <SearchBar />
+      {/* <SearchBar /> */}
 
     </div>
   )

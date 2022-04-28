@@ -89,12 +89,12 @@ function Login() {
           </div>
 
           <div className="btns-container">
-          <div className="button-container">
+          <div className="l-button-container">
             <input className="lp-button" type="submit" value = "Login"/>
           </div>
           
          
-            <div className="button-container">              
+            <div className="l-button-container2">              
               <Link to="Signup" >
                 <button className="lp-button">
                   Sign up
@@ -103,16 +103,15 @@ function Login() {
             </div>
           
 
-          <h3 className="login-header3"><center>OR</center></h3>
+          {/* <h3 className="login-header3"><center>OR</center></h3>
 
-          {/* <div className='dual-button-cont'> */}
             <div className="button-container" id="join-sess">              
               <Link to="Joinsession" >
                 <button className="lp-button" >
                   Join Session
                 </button>
               </Link> 
-            </div>
+            </div> */}
 
             {/* <div className="button-container">
             <Link to="CreateSession" >

@@ -269,11 +269,22 @@ word-wrap: normal;
 height: 50%;
 }
 
+.s-tabs {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  /* align-items: center; */
+}
+
+.s-search {
+  width: 300px;
+  margin: 15px auto 5px auto;
+}
+
 .session-list {
-display:flex;
-flex-direction: column;
-/* padding: 10px; */
-margin: 10px;
+  display:flex;
+  flex-direction: column;
+  margin: 10px;
 }
 
 /* SESSION.JS STYLES */
