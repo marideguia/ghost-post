@@ -121,7 +121,6 @@ const Posts = ({currentUserID}) => {
             
             {!posts ? 
               <div className="no-posts">
-                {console.log("nope")}
                 No posts yet.
               </div>
             :

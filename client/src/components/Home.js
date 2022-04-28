@@ -50,7 +50,7 @@ const Home = ( {currentUserID} ) => {
         isMobile ? "home-dash" : 
         "web-home-dash"
       }>  
-        <Header title={`Hi ${userID}, What questions do you have today?`}/>
+        <Header title={`Hi ${userID}, What questions do you have?`}/>
 
         {/* <Carousel /> */}
 
@@ -125,7 +125,7 @@ const Home = ( {currentUserID} ) => {
         </div>            
       </div>
       
-      <SearchBar/>
+      {/* <SearchBar/> */}
     </div>
   )
 }
