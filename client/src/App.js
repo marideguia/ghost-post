@@ -16,6 +16,7 @@ import Courses from './components/Courses';
 import Signup from './pages/Signup';
 import OurCalendar from './pages/Calendar';
 import UserProfile from './pages/UserProfile';
+import Profile from './components/Profile';
 function App(){
    
   return (
@@ -25,15 +26,16 @@ function App(){
       <Route path = "CreateSession" element={<CreateSession />}/>
       <Route path = "App" element ={<App/>}/>
       <Route path = "Login" element ={<Login/>}/>
-      <Route path = "Posts/:id" element ={<Posts currentUserID={"1"} />}/>
+      <Route path = "Posts/:id" element ={<Posts currentUserID={"Annie"} />}/>
       <Route path = "Joinsession" element ={<JoinSession/>}/>
-      <Route path="Archposts" element={<ArchPosts currentUserID={"1"}/>}/>
-      <Route path="Home" element={<Home currentUserID={"1"}/>}/>
+      <Route path="Archposts" element={<ArchPosts currentUserID={"Annie"}/>}/>
+      <Route path="Home" element={<Home currentUserID={"Annie"}/>}/>
       <Route path="Sessions" element={<Sessions/>}/>
       <Route path="Courses" element={<Courses/>}/>
       <Route path="Signup" element={<Signup/>}/>
       <Route path="OurCalendar" element={<OurCalendar/>}/>
       <Route path="Settings" element={<UserProfile/>}/>
+      <Route path="Profile" element={<Profile currentUserID={"Annie"}/>}/>
     </Routes>
     </BrowserRouter>
   );
