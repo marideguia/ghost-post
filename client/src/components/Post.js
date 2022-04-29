@@ -23,9 +23,9 @@ const Post = ({
   // Can only reply if user has a user id
   const canReply= Boolean(currentUserID)
   // Can only edit post if user is the creator of the post 
-  const canEdit = currentUserID === post.UserID 
+  const canEdit = currentUserID == post.UserID 
   // Can only delete post if user is the creator of the post 
-  const canDelete = currentUserID === post.UserID 
+  const canDelete = currentUserID == post.UserID 
   // length of Upvotes array
   const numUpvotes = post.Upvotes.length
   // True if user can upvote post - userID is not already in the upvotes array

@@ -102,26 +102,26 @@ export const getCourses = async () => {
         }
     ]
 }
-
+ 
 export const getSessions = async () => {
     return [
         {
             SessionID: "1",
-            CreatorID: "1",
+            creatorID: "1",
             Title: "Senior Capstone - Feb, 12 2022",
             Students: ["1","2","3","4",],
             CreatedAt: "2022-02-12T23:00:33.010"             
         },
         {
             SessionID: "2",
-            CreatorID: "1",
+            creatorID: "1",
             Title: "Neural Networks - ReLU Activation",
             Students: ["1","2","3","4",],
             CreatedAt: "2021-09-16T23:00:33.010"
         },
         {
             SessionID: "3",
-            CreatorID: "3",
+            creatorID: "3",
             Title: "PHYS 2401 - Magnetic Fields pt. 1",
             Students: ["1","2","3","4","5"],
             CreatedAt: "2021-10-16T23:00:33.010"

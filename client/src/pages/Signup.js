@@ -36,13 +36,28 @@ function Signup() {
     firstName: Yup.string().min(3).max(255).required('First name is required'),
     lastName: Yup.string().min(3).max(255).required('Last name is required'),
 
-  });
+  }); 
 
   const onSubmit = (data)=>{
   
-    axios.post("http://localhost:3000/auth/createUser",data).then(()=>{
-      navigate('/Home');
+    axios.post("http://localhost:3000/auth/createUser",data).then((res)=>{
+      if(res.data.error){
+        alert(res.data.error);
+      }else{
+       //localStorage.setItem("accessToken",res.data);
+       localStorage.setItem('UserID',res.data.UserID);
+       localStorage.setItem('UserName',res.data.firstName);
+       console.log(res.data);
+       navigate('/Home');
+ 
+    
+    }
+
     });
+    // const info = {email:data.email}
+   
+    
+
 
   };
 

@@ -50,7 +50,7 @@ function CreateSession({setSessionTitle}) {
     axios.post('http://localhost:3000/sessions/create',{
       code: codeVal,
       title: sessionTitle,
-      creatorID: 130
+      creatorID: localStorage.getItem('UserID')
     }).then(res=>{
       console.log(res.data);
       //navigate(`/Posts/${id}`);

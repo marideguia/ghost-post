@@ -15,6 +15,7 @@ import Sessions from './components/Sessions';
 import Courses from './components/Courses';
 import Signup from './pages/Signup';
 import OurCalendar from './pages/Calendar';
+import RandomCode from "./components/RandomCode";
 
 function App(){
    
@@ -23,11 +24,11 @@ function App(){
     <Routes>
       <Route path = "/" element = {<Login/>}/>
       <Route path = "CreateSession" element={<CreateSession />}/>
-      <Route path = "App" element ={<App/>}/>
+      <Route path = "App" element ={<RandomCode/>}/>
       <Route path = "Login" element ={<Login/>}/>
       <Route path = "Posts/:id" element ={<Posts currentUserID={"1"} />}/>
       <Route path = "Joinsession" element ={<JoinSession/>}/>
-      <Route path="Archposts" element={<ArchPosts currentUserID={"1"}/>}/>
+      <Route path="Archposts/:id" element={<ArchPosts currentUserID={"1"}/>}/>
       <Route path="Home" element={<Home currentUserID={"1"}/>}/>
       <Route path="Sessions" element={<Sessions/>}/>
       <Route path="Courses" element={<Courses/>}/>

@@ -52,9 +52,17 @@ function Login() {
    // const userData = database.find((user) => user.username === uname.value);4
    const data = {email:email,password:userPWD}
    axios.post('http://localhost:3000/auth/login',data).then((res)=>{
-     console.log(res.data);
-     navigate('/Home');
-   })
+     if(res.data.error){
+       alert(res.data.error);
+     }else{
+       //localStorage.setItem("accessToken",res.data);
+       localStorage.setItem('UserID',res.data.UserID);
+       localStorage.setItem('UserName',res.data.name);
+       console.log(res.data);
+       navigate('/Home');
+     }
+     
+   });
 
   };
 

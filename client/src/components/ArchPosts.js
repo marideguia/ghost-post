@@ -11,11 +11,15 @@ import Post from "./Post.js"
 import PostForm from "./PostForm.js"
 import Header from "./Header.js"
 import Sidebar from "./Sidebar.js"
+import axios from "axios";
+import {useParams} from "react-router-dom";
 
-
-const Posts = ({currentUserID}) => {
+const Posts = () => {
+  let { id } = useParams();
   // Store and set posts
   const [posts, setPosts] = useState([])
+  const [sessionObject, setSessionObject]= useState({});
+  let currentUserID = localStorage.getItem('UserID')
   // Store and set active (editing or replying to) posts
   const[activePost, setActivePost] = useState(null)
   // Get root posts only - ParentID is null. Sort by upvotes in descending order
@@ -31,17 +35,30 @@ const Posts = ({currentUserID}) => {
   }
 
   // Store newly created post***
-  const addPost= (text, parentID) => (
-    createPostApi(text, parentID).then(post => {
-      setPosts([post, ...posts])
+  const addPost= (text, parentID) => {
+    parentID = parentID || null;
+    axios.post("http://localhost:3000/posts/ask", { UserID: currentUserID, Text: text,  SessionID: id, ParentID:parentID,Upvotes:[] }).then(response=>{
+      //const postToAdd = { Text:text};
+      const postToAdd = {
+      UserID: currentUserID,
+      SessionID: String(id),
+      PostID: String(response.data.PostID),
+      Text: text,
+      ParentID: parentID,
+      Upvotes: [],
+      CreatedAt: response.data.CreatedAt}
+
+      setPosts([...posts, postToAdd])
       setActivePost(null)
+      console.log(response.data)
     })
-  )
+
+  }
 
   // Prompt user to confirm  and remove post from display
   const deletePost = (postID) => {
     if (window.confirm('Are you sure you want to remove post?')) {
-      deletePostApi(postID).then( () => {
+      axios.delete(`http://localhost:3000/posts/delete/${postID}`).then( ()=>{
         const updatedPosts = posts.filter( 
           (post) => post.PostID !== postID
         )
@@ -50,41 +67,46 @@ const Posts = ({currentUserID}) => {
     }
   }
 
-  // Update post's Upvote list with user like ***
   const upvotePost = (postID, userID) => {
-    upvotePostApi(postID, userID).then( () => {
-      const updatedPosts = posts.map(post => {
-        if (post.PostID === postID) {          
-          const newUpvotes = post.Upvotes
-          newUpvotes.push(userID)
-          console.log('post upvoted', userID, postID,newUpvotes)
-          return {...post, Upvotes: newUpvotes}
-        }
-        return post
-      })
-      setPosts(updatedPosts)
-    })
-  }
+    // userID = String(localStorage.getItem('UserID'))
+     upvotePostApi(postID, userID).then( () => {
+       const updatedPosts = posts.map(post => {
+         if (post.PostID === postID) {          
+           const newUpvotes = post.Upvotes
+           newUpvotes.push(userID)
+           axios.put(`http://localhost:3000/posts/upvote/${postID}`, { Upvotes: newUpvotes });
+           console.log('post upvoted', userID, postID,newUpvotes)
+           return {...post, Upvotes: newUpvotes}
+         }
+         return post
+       })
+       setPosts(updatedPosts)
+     })
+   } 
 
   // Filter out upvote and update posts
   const removeUpvote=(postID, userID) => {
-    removeUpvoteApi(postID, userID).then( () => {
-      // find post
-      const updatedPosts = posts.map(post => {
-        if (post.PostID === postID) {
-          // remove upvote from list
-          const newUpvotes = post.Upvotes.filter( (upvote) => upvote !== userID)
-          // console.log('post upvote removed', userID, postID, newUpvotes)
-          return {...post, Upvotes: newUpvotes}
-        }
-        return post
-      })
-      setPosts(updatedPosts)
-    })
-  }
+    // userID = String(localStorage.getItem('UserID'))
+     removeUpvoteApi(postID, userID).then( () => {
+       // find post
+       const updatedPosts = posts.map(post => {
+         if (post.PostID === postID) {
+           // remove upvote from list
+           const newUpvotes = post.Upvotes.filter( (upvote) => upvote !== userID)
+           axios.put(`http://localhost:3000/posts/upvote/${postID}`, { Upvotes: newUpvotes });
+           // console.log('post upvote removed', userID, postID, newUpvotes)
+           return {...post, Upvotes: newUpvotes}
+         }
+         return post
+       })
+       setPosts(updatedPosts)
+       console.log(updatedPosts)
+     })
+   }
 
   // Update post after editing
   const updatePost =(text,postID) => {
+    axios.put(`http://localhost:3000/posts/edit`, { Text: text , id: postID });
     updatePostApi(text,postID).then( () => {
       const updatedPosts = posts.map(post => {
         if (post.PostID === postID) {
@@ -99,10 +121,26 @@ const Posts = ({currentUserID}) => {
   }
 
   // call getposts and set posts to display at every re-render
+  let theArray = []
   useEffect(() => {
-    getPostsApi().then(data => {
-      setPosts(data)
-    })
+    axios.get(`http://localhost:3000/sessions/${id}`).then((response)=>{
+      setSessionObject(response.data);
+    });
+    axios.get(`http://localhost:3000/posts/${id}`).then((response)=>{
+      //setPostList(response.data);
+    console.log(response.data)
+    for(let i in response.data){
+      const newVal= response.data[i];
+     newVal.PostID = String(response.data[i].PostID);
+     newVal.UserID = String(response.data[i].UserID);
+     theArray.push(newVal)
+    }
+  //console.log(theArray);
+  setPosts(theArray)
+  console.log(theArray)
+  });
+  
+
   }, [])
 
   return (
@@ -110,10 +148,10 @@ const Posts = ({currentUserID}) => {
     <div className = "p-column-container">
       <Sidebar/>      
       <div className = "p-container">
-        <Header title="Senior Capstone Session 1"/> 
+        <Header title={sessionObject.title}/> 
     
         <div className="posts">
-          <h3 className="posts-title">Posts</h3>            
+          <h3 className="posts-title">Archive</h3>            
           
           {/* Submitted posts */}
           <div className="a-posts-container">

@@ -9,6 +9,7 @@ import Header from './Header'
 import Course from './Course';
 import Image1 from './kevin-gonzalez-unsplash.jpg'
 import Image2 from './william-moreland-unsplash.jpg'
+import axios from "axios";
 import {
   getCourses as getCoursesApi,
   getSessions as getSessionsApi,
@@ -28,23 +29,31 @@ const Home = ( {currentUserID} ) => {
   // const yourCourses = userCourses
 
   const [userSessions, setUserSessions] = useState([]);
+  const [userName,setUserName]=useState("Unknown");
 
+  let theArray = []
   useEffect(() => {
-    getSessionsApi().then(data => {
-      setUserSessions(data)
-    })    
+    setUserName(localStorage.getItem('UserName'));
+    const data = {UserID:localStorage.getItem('UserID')}
+    axios.post('http://localhost:3000/sessions/getUserSession',data).then((res)=>{ 
+      setUserSessions(res.data) 
+    });
+    // getSessionsApi().then(data => {
+    //   setUserSessions(data)
+    //   setUserName(localStorage.getItem('UserName'));
+    // })    
   }, [])
 
   const userID = String(currentUserID)
   let yourIndex = 0  
-
+  
   const yourSessions = userSessions
 
   return (    
     <div className="column-cont">
       <SideBar />
       <div className="home-dash">  
-        <Header title={`Hi ${userID}, What questions do you have today?`}/>
+        <Header title={`Hi ${userName}, What questions do you have today?`}/>
 
 
 
