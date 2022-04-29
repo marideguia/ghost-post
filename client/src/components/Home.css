@@ -224,6 +224,11 @@ height: 100%;
 display: none;
 }
 
+.calendar-div{
+  align-items:center;
+  height: 100%;
+}
+
 /* .content h2 {
 padding: 0px 0 5px 0px;
 } */
