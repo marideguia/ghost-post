@@ -1,0 +1,53 @@
+.pr-col-cont {
+    display: flex;
+    height: 100vh;
+    background-color: whitesmoke;
+}
+
+.pru-cont, .prp-cont {
+    margin: 10px 20px;
+    text-transform: none;
+}
+
+.prp-cont {
+    margin-top: 50px;
+}
+
+.pr-text {
+    text-transform: none;
+}
+
+.pr-field {
+    margin-right: 10px;
+}
+
+.pr-tcont {
+    margin: 10px 0;
+}
+
+.pr-text::-webkit-input-placeholder {
+    opacity: 100;
+}
+
+.pr-btn-cont {
+    margin: 20px;
+}
+
+.pr-btn {
+cursor: pointer;
+  font-size: 15px;
+  background: #0049c6;
+  border: none;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 25px;
+  box-shadow: 5px 5px 5px darkblue;
+}
+
+.pr-btn:hover {
+  background-color: #519ef5;
+  border: none;
+}
+
+
+
