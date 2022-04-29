@@ -225,8 +225,9 @@ display: none;
 }
 
 .calendar-div{
-  align-items:center;
-  height: 100%;
+  position:relative;
+  right:0;
+  bottom:-50%;
 }
 
 /* .content h2 {
