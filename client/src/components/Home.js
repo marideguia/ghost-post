@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import SearchBar from "./SearchBar"
 import { useState, useEffect } from "react";
 import SideBar from './Sidebar'
+import Calendar from 'react-calendar'
 import "./Home.css"
 // import Carousel from './Carousel'
 import Header from './Header'
@@ -30,6 +31,7 @@ const Home = ( {currentUserID} ) => {
   // const yourCourses = userCourses
 
   const [userSessions, setUserSessions] = useState([]);
+  const [value, onChange] = useState(new Date());
 
   useEffect(() => {
     getSessionsApi().then(data => {
@@ -124,8 +126,9 @@ const Home = ( {currentUserID} ) => {
             }
         </div>            
       </div>
-      
-      {/* <SearchBar/> */}
+      <div className='calendar-div'>
+            <Calendar onChange={onChange} value={value} />
+      </div> 
     </div>
   )
 }
