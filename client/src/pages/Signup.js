@@ -58,18 +58,19 @@ function Signup() {
       <h1 className="signup-header">Create an Account</h1>
       
       <div class="inputContainer">
-        <label className="input">Email: </label>
-          <ErrorMessage name="email" component="span" />
+        <label className="input">Email: 
+        <ErrorMessage name="email" component="span" />
           <Field className = "input"
             id="inputRegister"
             name="email"
             placeholder="Your Email"
             type = "email"
           />
+          </label>
         </div>
 
         <div class ="inputContainer">
-          <label>First Name: </label>
+          <label>First Name: 
           <ErrorMessage name="firstName" component="span" />
           <Field className = "input"
             id="inputRegister"
@@ -77,21 +78,23 @@ function Signup() {
             placeholder="Your First Name"
             type = "name"
           />
+          </label>
         </div>
 
            <div class="inputContainer">
-           <label>Last Name: </label>
-          <ErrorMessage name="lastName" component="span" />
+           <label>Last Name: 
+           <ErrorMessage name="lastName" component="span" />
           <Field className = "input"
             id="inputRegister"
             name="lastName"
             placeholder="Your Last Name"
             type = "name"
           />
+           </label>
         </div>
 
            <div class="inputContainer">
-          <label >Password: </label>
+          <label >Password: 
           <ErrorMessage name="password" component="span" />
           <Field className = "input"
             type="password"
@@ -99,6 +102,7 @@ function Signup() {
             name="password"
             placeholder="Your Password..."
           />
+          </label>
         </div>
 
           <button type="submit" className="submitBtn"> Sign Up </button>
