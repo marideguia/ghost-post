@@ -10,7 +10,9 @@ GhostPost is an anonymous learning engagement tool that allows audiences to comm
 ```
 git clone https://github.com/marideguia/ghost-post.git
 cd ghos-post/server
+npm install
 npm install mysql2 jsonwebtoken bcrypt sequelize cors mongoose knex nodemon body-parser express mysql
+npm start
 ```
 
 3. Open separate terminal and Run:
