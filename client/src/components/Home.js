@@ -98,7 +98,7 @@ const Home = ( {currentUserID} ) => {
         </div>
 
         <div className='h-courses-cont'>
-          <h2>Your Sessions</h2>
+          <h2>Joined Sessions</h2>
             {/* <div className="course-list" >
               {yourCourses.map( (yourCourse) => (
                 <Course
