@@ -4,8 +4,10 @@ GhostPost is an anonymous learning engagement tool that allows audiences to comm
 
 ## SET UP PROJECT
 
-1.  Install Node.js
+1.  Install [Node.js](https://nodejs.org/en/download/)
 2.  Run: 
-   ```git clone https://github.com/marideguia/ghost-post.git
+   ```
+   git clone https://github.com/marideguia/ghost-post.git
    npm install
-   npm start```
+   npm start
+   ```
