@@ -102,7 +102,7 @@ export const getCourses = async () => {
         }
     ]
 }
-
+ 
 export const getSessions = async () => {
     return [
         {

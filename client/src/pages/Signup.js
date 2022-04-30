@@ -35,13 +35,29 @@ function Signup() {
     password: Yup.string().min(5).max(255).required('Password is required'),
     firstName: Yup.string().min(3).max(255).required('First name is required'),
     lastName: Yup.string().min(3).max(255).required('Last name is required'),
-  });
+
+  }); 
 
   const onSubmit = (data)=>{
   
-    axios.post("http://localhost:3000/auth/createUser",data).then(()=>{
-      navigate('/Home');
+    axios.post("http://localhost:3000/auth/createUser",data).then((res)=>{
+      if(res.data.error){
+        alert(res.data.error);
+      }else{
+       //localStorage.setItem("accessToken",res.data);
+       localStorage.setItem('UserID',res.data.UserID);
+       localStorage.setItem('UserName',res.data.firstName);
+       console.log(res.data);
+       navigate('/Home');
+ 
+    
+    }
+
     });
+    // const info = {email:data.email}
+   
+    
+
 
   };
 
@@ -58,51 +74,51 @@ function Signup() {
       <h1 className="signup-header">Create an Account</h1>
       
       <div class="inputContainer">
-        <label className="input">Email: 
-        <ErrorMessage name="email" component="span" />
+        <label className="input">Email:
+          </label>
+          <ErrorMessage name="email" component="span" />
           <Field className = "input"
             id="inputRegister"
             name="email"
-            placeholder="Your Email"
+            placeholder=""
             type = "email"
           />
-          </label>
         </div>
 
         <div class ="inputContainer">
           <label>First Name: 
+          </label>
           <ErrorMessage name="firstName" component="span" />
-          <Field className = "input"
+          <Field className = "inputName"
             id="inputRegister"
             name="firstName"
-            placeholder="Your First Name"
-            type = "name"
+            placeholder=""
+            type = "text"
           />
-          </label>
         </div>
 
            <div class="inputContainer">
            <label>Last Name: 
+           </label>
            <ErrorMessage name="lastName" component="span" />
           <Field className = "input"
             id="inputRegister"
             name="lastName"
-            placeholder="Your Last Name"
-            type = "name"
+            placeholder=""
+            type = "text"
           />
-           </label>
         </div>
 
            <div class="inputContainer">
-          <label >Password: 
+          <label >Password:
+          </label>
           <ErrorMessage name="password" component="span" />
           <Field className = "input"
             type="password"
             id="inputRegister"
             name="password"
-            placeholder="Your Password..."
+            placeholder=""
           />
-          </label>
         </div>
 
           <button type="submit" className="submitBtn"> Sign Up </button>

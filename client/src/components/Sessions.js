@@ -10,12 +10,14 @@ import JoinSession2 from "./JoinSession2"
 import CreateSession2 from "./CreateSession2"
 import Sidebar from "./Sidebar"
 import SearchBar from "./SearchBar"
+import axios from "axios";
 // https://github.com/Ziratsu/yt-react-tabs
 // https://www.youtube.com/watch?v=mZvKPtH9Fzo
 
 const Sessions = () => {
   const [activeTab, setActiveTab] = useState(1);
   const [userSessions, setUserSessions] = useState([]);
+  const [creatorSessions, setCreatorSessions] = useState([]);
   const [searchTerm, setSearchTerm] = useState('')
   const [searchTerm2, setSearchTerm2] = useState('')
 
@@ -24,9 +26,13 @@ const Sessions = () => {
   };
 
   useEffect(() => {
-    getSessionsApi().then(data => {
-      setUserSessions(data)
-    })    
+    const data = {UserID:localStorage.getItem('UserID')}
+    axios.post('http://localhost:3000/sessions/getUserSession',data).then((res)=>{ 
+      setUserSessions(res.data) 
+    });
+    axios.post('http://localhost:3000/sessions/getCreatorSession',data).then((res)=>{ 
+      setCreatorSessions(res.data) 
+    });
   }, [])
 
   let yourIndex = 0
@@ -34,8 +40,8 @@ const Sessions = () => {
   // courses user is in. how to filter correct sessions?
   const yourSessions = userSessions
   // courses user has created. how to filter correct sessions?
-  const createdSessions = userSessions.filter((userSession) => userSession.CreatorID === "1")
-
+  const createdSessions = creatorSessions
+ 
   return (
     <div className='s-col-container'> 
       <Sidebar />  
@@ -75,7 +81,7 @@ const Sessions = () => {
           <div className="content-tabs">
             <div className={activeTab === 1 ? "content  active-content" : "content"}>
               <div className="s-tabs">
-                <input className="s-search" type="text" placeholder="Search Sessions" onChange={event => {setSearchTerm(event.target.value)}}/>
+                <input className="s-search" type="searchText" placeholder="Search Sessions" onChange={event => {setSearchTerm(event.target.value)}}/>
                 <div className="session-list" >
                   {yourSessions.filter( (yourSession) => {
                     if (searchTerm === "") {
@@ -96,7 +102,7 @@ const Sessions = () => {
 
             <div className={activeTab === 2 ? "content  active-content" : "content"}>
               <div className="s-tabs">
-                <input className="s-search" type="text" placeholder="Search Sessions" onChange={event => {setSearchTerm2(event.target.value)}}/>
+                <input className="s-search" type="searchText" placeholder="Search Sessions" onChange={event => {setSearchTerm2(event.target.value)}}/>
                 <div className="session-list" >
                   {createdSessions.filter( (createdSession) => {
                     if (searchTerm2 === "") {

@@ -1,12 +1,13 @@
 import React from "react"
+import { useNavigate } from 'react-router-dom';
 const Session = ({
     index,
     session
 }) => {
-
-  const createdAt = new Date(session.CreatedAt).toLocaleDateString()
-  const onClick = () => console.log(`session ${session.SessionID} clicked`)
-
+  let navigate = useNavigate();
+  const createdAt = new Date(session.createdAt).toLocaleDateString()
+  const onClick = () => navigate(`/ArchPosts/${session.SessionID}`);
+ 
   return (
     <div className='s-cont'>
       {index % 2 === 0 ? 

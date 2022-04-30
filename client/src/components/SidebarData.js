@@ -40,13 +40,13 @@ export const SidebarData = [
   {
     title: "Settings",
     icon: <SettingsIcon />,
-    link: "../Settings",
+    link: "../Profile",
     clssname: 'nav-text'
   },
   {
     title: "Log Out",
     icon: <ExitToAppIcon />,
-    link: "../",
+    link: "../Login",
     clssname: 'nav-text'
   }
 ]

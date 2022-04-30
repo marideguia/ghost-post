@@ -25,7 +25,7 @@ code {
 }
 
 .container {
-  background-image: url("./pages/background.png");
+ 
   background-size: cover;
   background-repeat: no-repeat;
   display: flex;

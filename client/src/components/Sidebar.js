@@ -12,6 +12,15 @@ function SideBar() {
   const nonMobileSidebar = useState(true)
   const showSidebar = () => setSidebar(!sidebar)
   const keepSidebar = () => setSidebar(!nonMobileSidebar)
+
+  function logOut(name) {
+    if(name === "Log Out")
+    {
+      alert("You've been logged out")
+      localStorage.clear();
+    }
+  }
+  
   if (window.innerWidth <= 600){
     return (
       <>
@@ -29,14 +38,18 @@ function SideBar() {
               <ArrowBackIosIcon/>
             </Link>
           </li>
+          
           {SidebarData.map((item, index) => {
             return (
+              <div>
               <li key = {index} className={item.clssname}>
-                <Link to={item.link}>
+                <Link to={item.link} onClick={() => logOut(item.title)}>
                   {item.icon}
                   <span>{item.title}</span>
                 </Link>
               </li>
+              
+              </div>
             )
           })}
         </ul>
@@ -54,7 +67,7 @@ function SideBar() {
           {SidebarData.map((item, index) => {
             return (
               <li key = {index} className={item.clssname}>
-                <Link to={item.link}>
+                <Link to={item.link} onClick={() => logOut(item.title)} >
                   {item.icon}
                   <span>{item.title}</span>
                 </Link>
@@ -69,5 +82,9 @@ function SideBar() {
   }
   
 }
-
+{/* <Link href="/" style={{ color: "white" }}>
+<button color="inherit" onClick={archiveSession}>
+   Logout
+</button>
+</Link> */}
 export default SideBar

@@ -11,6 +11,7 @@ function JoinSession() {
   const [codeVal, setCodeVal] = useState("");
   
   let navigate = useNavigate();
+  let currentUserID = localStorage.getItem('UserID')
 
 
   const errors = {
@@ -28,10 +29,11 @@ function JoinSession() {
     event.preventDefault();
     console.log(codeVal);
 
-    axios.post('http://localhost:3000/sessions/join',{
-      code : codeVal
+    axios.post('http://localhost:3000/sessions/addUserSession',{
+      code : codeVal,
+      UserID: currentUserID 
     }).then(res=>{
-      const id = res.data;
+      const id = res.data.SessionID; //Update routes to take user to posts if session is active or to archive is session is inactive
       navigate(`/Posts/${id}`);
       
     })
@@ -51,7 +53,7 @@ function JoinSession() {
         <div className="input-container">
           <input 
           className="enter-code" 
-          type="text" 
+          type="searchText" 
           name="sesscode" 
           placeholder="Enter session code" required
           onChange={onCodeChange} />

@@ -11,6 +11,7 @@ import Header from './Header'
 // https://create.vista.com/unlimited/stock-photos/219684892/stock-photo-african-american-lecturer-talking-audience/
 import Image1 from './stock-photo-african-american-lecturer-talking-audience.jpg'
 import Image2 from './william-moreland-unsplash.jpg'
+import axios from "axios";
 import {
   getCourses as getCoursesApi,
   getSessions as getSessionsApi,
@@ -19,24 +20,24 @@ import SessionSquare from './SessionSquare';
 import {isMobile} from 'react-device-detect';
 
 const Home = ( {currentUserID} ) => {
-  // const [userCourses, setUserCourses] = useState([]);
 
-  // useEffect(() => {
-  //   getCoursesApi().then(data => {
-  //     setUserCourses(data)
-  //   })    
-  // }, [])
-
-  // courses user is in: filter through user/courses table
   // const yourCourses = userCourses
 
   const [userSessions, setUserSessions] = useState([]);
+  const [userName,setUserName]=useState("Unknown");
   const [value, onChange] = useState(new Date());
 
+  let theArray = []
   useEffect(() => {
-    getSessionsApi().then(data => {
-      setUserSessions(data)
-    })    
+    setUserName(localStorage.getItem('UserName'));
+    const data = {UserID:localStorage.getItem('UserID')}
+    axios.post('http://localhost:3000/sessions/getUserSession',data).then((res)=>{ 
+      setUserSessions(res.data) 
+    });
+    // getSessionsApi().then(data => {
+    //   setUserSessions(data)
+    //   setUserName(localStorage.getItem('UserName'));
+    // })    
   }, [])
 
   const userID = String(currentUserID)
@@ -46,13 +47,13 @@ const Home = ( {currentUserID} ) => {
     <div className={
       isMobile ? "column-cont" : 
       "web-column-cont" }
-    >
+    > 
       <SideBar />
       <div className={
         isMobile ? "home-dash" : 
         "web-home-dash"
       }>  
-        <Header title={`Hi ${userID}, What questions do you have?`}/>
+        <Header title={`Hi ${userName}, What questions do you have?`}/>
 
         {/* <Carousel /> */}
 
@@ -109,7 +110,7 @@ const Home = ( {currentUserID} ) => {
               ))}
             </div> */}
             
-            { userSessions ? 
+            { userSessions.length !=0 ? 
               <div className={isMobile ? "sq-list" : "web-sq-list" }>
                 { userSessions.map( (yourSession) => (
                   <SessionSquare
@@ -126,9 +127,6 @@ const Home = ( {currentUserID} ) => {
             }
         </div>            
       </div>
-      <div className='calendar-div'>
-            <Calendar onChange={onChange} value={value} />
-      </div> 
     </div>
   )
 }

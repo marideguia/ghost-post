@@ -15,18 +15,6 @@ function Login() {
   let navigate = useNavigate();
   
 
-  // User Login info
-  const database = [
-    {
-      username: "user1",
-      password: "pass1"
-    },
-    {
-      username: "user2",
-      password: "pass2"
-    }
-  ];
-
   const errors = {
     uname: "invalid username",
     pass: "invalid password"
@@ -50,9 +38,16 @@ function Login() {
    // const userData = database.find((user) => user.username === uname.value);4
    const data = {email:email,password:userPWD}
    axios.post('http://localhost:3000/auth/login',data).then((res)=>{
-     console.log(res.data);
-     navigate('/Home');
-   })
+     if(res.data.error){
+       alert(res.data.error);
+     }else{
+       //localStorage.setItem("accessToken",res.data);
+       localStorage.setItem('UserID',res.data.UserID);
+       localStorage.setItem('UserName',res.data.name);
+       console.log(res.data);
+       navigate("/Home");
+     }
+   });
 
   };
 
@@ -69,7 +64,7 @@ function Login() {
           <div className="input-container">
             <label className="login-label">Email </label>
             <input 
-            type="text" 
+            type="emailText" 
             name="uname"
             style={{textTransform:'none'}}
             onChange={onUserChange} required />
@@ -94,7 +89,7 @@ function Login() {
           
          
             <div className="l-button-container2">              
-              <Link to="Signup" >
+              <Link to="/Signup" >
                 <button className="lp-button">
                   Sign up
                 </button>
@@ -143,6 +138,7 @@ function Login() {
   );
 
   return (
+    
     <div className="app">
       <h1 className="login-header1">Welcome to GhostPost</h1>
       <div className="login-form">
