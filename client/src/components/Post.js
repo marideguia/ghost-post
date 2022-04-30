@@ -23,9 +23,9 @@ const Post = ({
   // Can only reply if user has a user id
   const canReply= Boolean(currentUserID)
   // Can only edit post if user is the creator of the post 
-  const canEdit = currentUserID === post.UserID 
+  const canEdit = currentUserID == post.UserID 
   // Can only delete post if user is the creator of the post 
-  const canDelete = currentUserID === post.UserID 
+  const canDelete = currentUserID == post.UserID 
   // length of Upvotes array
   const numUpvotes = post.Upvotes.length
   // True if user can upvote post - userID is not already in the upvotes array
@@ -64,21 +64,21 @@ const Post = ({
                 onClick={arch ? {} : () => upvotePost(post.PostID, currentUserID)} 
               >
                 <FaArrowUp />     
-                <label className="upvote-lbl">{numUpvotes}</label> 
+                <label data-testid="postUpvotes2" className="upvote-lbl">{numUpvotes}</label> 
               </div>                  
              : 
               <div className={arch ? "a-post-upvote" :"post-upvoted" }
                 onClick={arch ? {} :() => removeUpvote(post.PostID, currentUserID)}
               >
                 <FaArrowUp /> 
-                <label className="upvote-lbl">{numUpvotes}</label> 
+                <label data-testid="postUpvotes" className="upvote-lbl">{numUpvotes}</label> 
               </div>              
           }     
 
           {/* Post content - date, text, & see replies, reply, edit, delete functions*/}
           <div className="post-content">
             <div className = "top-row">
-              <div className="created-at">{createdAt}</div>
+              <div data-testid="postDate" className="created-at">{createdAt}</div>
               {/* <div className = "report" 
                 onClick={() => setActivePost( {id:post.PostID, type: "reporting"}) }
               >
@@ -88,7 +88,7 @@ const Post = ({
 
             {/* Render post text */}
             {!isEditing && (
-              <div className="post-text">{post.Text}</div>
+              <div data-testid="postText" className="post-text">{post.Text}</div>
             )}
 
             {/* Render post editing form if editing*/}
