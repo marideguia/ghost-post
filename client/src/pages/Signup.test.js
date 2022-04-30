@@ -10,25 +10,25 @@ describe("Signup Test Component", () => {
         expect(input).toBeTruthy()
     })
 
-    it("Signup email field should have label", () => {
+    it("Email field should have label", () => {
         const component = render(<Signup />)
         const emailInput = component.getByLabelText("Email:")
         expect(emailInput.getAttribute("name")).toBe("email")
     })
 
-    it("Signup First name field should have label", () => {
+    it("First name field should have label", () => {
         const component = render(<Signup />)
         const fNameInput = component.getByLabelText("First Name:")
         expect(fNameInput.getAttribute("name")).toBe("firstName")
     })
     
-    it("Signup Last name field should have label", () => {
+    it("Last name field should have label", () => {
         const component = render(<Signup />)
         const lNameInput = component.getByLabelText("Last Name:")
         expect(lNameInput.getAttribute("name")).toBe("lastName")
     })
 
-    it("Signup Password field should have label", () => {
+    it("Password field should have label", () => {
         const component = render(<Signup />)
         const pwdInput = component.getByLabelText("Password:")
         expect(pwdInput.getAttribute("name")).toBe("password")
