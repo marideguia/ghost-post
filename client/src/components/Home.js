@@ -20,15 +20,7 @@ import SessionSquare from './SessionSquare';
 import {isMobile} from 'react-device-detect';
 
 const Home = ( {currentUserID} ) => {
-  // const [userCourses, setUserCourses] = useState([]);
 
-  // useEffect(() => {
-  //   getCoursesApi().then(data => {
-  //     setUserCourses(data)
-  //   })    
-  // }, [])
-
-  // courses user is in: filter through user/courses table
   // const yourCourses = userCourses
 
   const [userSessions, setUserSessions] = useState([]);
@@ -107,7 +99,7 @@ const Home = ( {currentUserID} ) => {
         </div>
 
         <div className='h-courses-cont'>
-          <h2>Your Sessions</h2>
+          <h2>Joined Sessions</h2>
             {/* <div className="course-list" >
               {yourCourses.map( (yourCourse) => (
                 <Course

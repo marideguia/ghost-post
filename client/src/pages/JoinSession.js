@@ -53,7 +53,7 @@ function JoinSession() {
         <div className="input-container">
           <input 
           className="enter-code" 
-          type="text" 
+          type="searchText" 
           name="sesscode" 
           placeholder="Enter session code" required
           onChange={onCodeChange} />

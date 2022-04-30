@@ -16,7 +16,6 @@ import Sidebar from "./Sidebar.js"
 import { useStore } from '../store/Store';
 import {useParams} from "react-router-dom";
 import axios from "axios";
-import SearchBar from "./SearchBar"
 import { useNavigate } from 'react-router-dom';
 import cloneDeep from "lodash/cloneDeep"
 // import SearchBar from "./SearchBar"

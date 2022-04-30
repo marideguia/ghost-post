@@ -19,6 +19,7 @@ import RandomCode from "./components/RandomCode";
 import UserProfile from './pages/UserProfile';
 import Protected from "./Protected";
 import PublicRoutes from "./PublicRoutes";
+import Profile from './components/Profile';
 function App(){
   //const [loggedIn, setValue] = React.useState();
  // let currentUserID = localStorage.getItem('UserID')
@@ -32,7 +33,7 @@ function App(){
     <Routes>
       <Route path = "/" element = {<Protected/>}>
         <Route path = "CreateSession" element={<CreateSession/> }/>
-        <Route path="/Login" element={<Login/>}/>
+        <Route path="Login" element={<Login/>}/>
         <Route path="Signup" element={<Signup/>}/>
         <Route path = "App" element ={<RandomCode/>}/>
         <Route path = "Posts/:id" element ={<Posts currentUserID={"1"}/>}/>
@@ -42,7 +43,7 @@ function App(){
         <Route path="Sessions" element={<Sessions/> }/>
         <Route path="Courses" element={<Courses/>}/>
         <Route path="OurCalendar" element={<OurCalendar/>}/>
-        <Route path="Settings" element={<UserProfile/>}/>
+        <Route path="Profile" element={<Profile currentUserID={"Annie"}/>}/>
       </Route>
 
       <Route path="Login" element={<PublicRoutes/>}>

@@ -53,7 +53,7 @@ const Sessions = () => {
               className={activeTab === 1 ? "tabs active-tabs" : "tabs"}
               onClick={() => toggleTab(1)}
             >
-              Your Sessions
+              Joined Sessions
             </button>
 
             <button

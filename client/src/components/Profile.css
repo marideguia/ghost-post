@@ -1,0 +1,88 @@
+.pr-col-cont {
+    display: flex;
+    
+    height: 100vh;
+    background-color: whitesmoke;
+}
+
+.pr-dash {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+}
+
+.pr-info {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+
+}
+
+.pru-cont, .prp-cont {
+    margin: 10px 20px;
+    text-transform: none;
+    display: flex;
+    flex-direction: column;
+    /* height: 100%; */
+    width: 100%;
+    align-items: center;
+}
+
+.prp-cont {
+    margin-top: 30px;
+}
+
+.prp-cont h3{
+    margin-top: none;
+}
+
+.prp-cont label {
+    display: block;
+    margin-top:5px;
+}
+
+.pr-text {
+    text-transform: none;
+}
+
+.pr-field {
+    margin-right: 10px;
+    height: 35px;
+  border: 0px solid rgb(0, 0, 0);
+  border-radius: 5px;
+  box-shadow: 4px 4px 4px darkblue;
+  text-indent: 10px;
+}
+
+.pr-tcont2 {
+    margin: 10px 0 0 0;
+}
+
+.pr-text::-webkit-input-placeholder {
+    opacity: 100;
+}
+
+.pr-btn-cont {
+    margin: 20px;
+}
+
+.pr-btn {
+cursor: pointer;
+  font-size: 15px;
+  background: #0049c6;
+  border: none;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 25px;
+  box-shadow: 5px 5px 5px darkblue;
+}
+
+.pr-btn:hover {
+  background-color: #519ef5;
+  border: none;
+}
+

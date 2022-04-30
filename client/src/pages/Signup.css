@@ -86,9 +86,7 @@ position: absolute;
     z-index: 1;
     text-transform: none;
   }
-  ::placeholder {
-    color: transparent;
-  }
+  
   .inputContainer label{
     position: absolute;
     top: -2px;

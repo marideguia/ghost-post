@@ -79,7 +79,7 @@ function Signup() {
           <Field className = "input"
             id="inputRegister"
             name="email"
-            placeholder="Your Email"
+            placeholder=""
             type = "email"
           />
         </div>
@@ -90,7 +90,7 @@ function Signup() {
           <Field className = "inputName"
             id="inputRegister"
             name="firstName"
-            placeholder="Your First Name"
+            placeholder=""
             type = "text"
           />
         </div>
@@ -101,7 +101,7 @@ function Signup() {
           <Field className = "inputName"
             id="inputRegister"
             name="lastName"
-            placeholder="Your Last Name"
+            placeholder=""
             type = "text"
           />
         </div>
@@ -113,7 +113,7 @@ function Signup() {
             type="password"
             id="inputRegister"
             name="password"
-            placeholder="Your Password..."
+            laceholder=""
           />
         </div>
 

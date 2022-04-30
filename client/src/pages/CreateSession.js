@@ -78,11 +78,12 @@ function CreateSession({setSessionTitle}) {
     <form onSubmit={handleSubmit}>
         <input 
         className='pa3 ba b--dark-gray ma2' 
-        type="text" 
+        type="createText" 
         placeholder="Name of Session" 
         disabled={disabled}
         onChange ={onTitleChange}
         style={{textTransform:'none'}}
+        required
         />
         <button className='f5 grow no-underline br-pill ph3 pv2 mb2 dib white bg-dark-blue' type="submit" disabled={disabled}>Submit</button>
       </form>
@@ -102,7 +103,7 @@ function CreateSession({setSessionTitle}) {
     show?<h3 className = "grow"><Link to ="/JoinSession">Go to session</Link></h3>:null
     }
     {
-    show?null:<h4 className = "grow"><Link to="/">Go back to login page</Link></h4>
+    show?null:<h4 className = "grow"><Link to="/Home">Go back to Home page</Link></h4>
     }
     </div>
    </div>  
