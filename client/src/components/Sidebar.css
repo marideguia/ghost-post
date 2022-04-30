@@ -4,7 +4,6 @@
   height: 500px;
   justify-content: start;
   align-items: center;
-
 }
 
 .menu-bars {
@@ -24,10 +23,28 @@
   left: -100%;
   transition: 850ms;
 }
+.nav-menu-web {
+  background-color: whitesmoke;
+  width: 240px;
+  height: 100vh;
+  display:flex;
+  justify-content: center;
+  /* position: fixed; */
+  top: 0;
+  left: -100%;
+  transition: 850ms;
+}
 
-.nav-menu.active{
+.nav-menu.active-web{
   left: 0;
   transition: 350ms;
+  position: relative;
+}
+
+.nav-menu.active {
+  left: 0;
+  transition: 350ms;
+  position: fixed;
 }
 
 .nav-text{
@@ -76,6 +93,15 @@
   align-items: center;
 }
 
-span{
-  margin-left: 16px;
+li{
+  width: 100%;
+  /* background-color: green; */
+  display: inline-block;
+  max-width:100%; /* limit width */
+  /* word-break:break-all; wrap extended text */
+  /* border:1px solid red */
+}
+
+span {
+  display: inline-block;
 }

@@ -1,5 +1,5 @@
 import React, {useEffect,useState } from "react";
-import "./Login.css";
+// import "./Login.css";
 import "./Signup.css";
 import {Formik,Form,Field,ErrorMessage} from "formik";
 import * as Yup from 'yup';
@@ -87,22 +87,22 @@ function Signup() {
         <div class ="inputContainer">
           <label>First Name: </label>
           <ErrorMessage name="firstName" component="span" />
-          <Field className = "input"
+          <Field className = "inputName"
             id="inputRegister"
             name="firstName"
             placeholder="Your First Name"
-            type = "name"
+            type = "text"
           />
         </div>
 
            <div class="inputContainer">
            <label>Last Name: </label>
           <ErrorMessage name="lastName" component="span" />
-          <Field className = "input"
+          <Field className = "inputName"
             id="inputRegister"
             name="lastName"
             placeholder="Your Last Name"
-            type = "name"
+            type = "text"
           />
         </div>
 
@@ -140,6 +140,7 @@ function Signup() {
     </div >
   </div>
   );
+
 }
 
 

@@ -1,5 +1,6 @@
 import { FaRegBell } from 'react-icons/fa'
-import React from "react"
+import React from 'react'
+
 // Session header
 const Header = ({title}) => {
   return (    

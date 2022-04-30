@@ -4,12 +4,13 @@ import SettingsIcon from '@material-ui/icons/Settings';
 import DateRangeIcon from '@material-ui/icons/DateRange';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import MenuBookIcon from '@material-ui/icons/MenuBook';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import Logo from './Ghost_Post_Logo.png'
 export const SidebarData = [
   {
     title: " ",
     icon: <img src={Logo}/>,
-    link: "../",
+    link: "../Home",
     clssname: "logo"
   },
   {
@@ -19,27 +20,33 @@ export const SidebarData = [
     clssname: 'nav-text'
   },
   {
-    title: "Session Log",
+    title: "Sessions",
     icon: <AssignmentIcon />,
-    link: "../ArchPosts",
+    link: "../Sessions",
     clssname: 'nav-text'
   },
-  {
-    title: "Courses",
-    icon: <MenuBookIcon />,
-    link: "../Posts",
-    clssname: 'nav-text'
-  },
-  {
-    title: "Calendar",
-    icon: <DateRangeIcon />,
-    link: "../OurCalendar",
-    clssname: 'nav-text'
-  },
+  // {
+  //   title: "Courses",
+  //   icon: <MenuBookIcon />,
+  //   link: "../Posts",
+  //   clssname: 'nav-text'
+  // },
+ // {
+   // title: "Calendar",
+  //  icon: <DateRangeIcon />,
+   // link: "../OurCalendar",
+   // clssname: 'nav-text'
+  //},
   {
     title: "Settings",
     icon: <SettingsIcon />,
     link: "../Settings",
+    clssname: 'nav-text'
+  },
+  {
+    title: "Log Out",
+    icon: <ExitToAppIcon />,
+    link: "../Login",
     clssname: 'nav-text'
   }
 ]

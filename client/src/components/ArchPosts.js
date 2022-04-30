@@ -8,11 +8,11 @@ import {
   removeUpvote as removeUpvoteApi
 } from "../api.js"
 import Post from "./Post.js"
-import PostForm from "./PostForm.js"
 import Header from "./Header.js"
 import Sidebar from "./Sidebar.js"
 import axios from "axios";
 import {useParams} from "react-router-dom";
+// import SearchBar from "./SearchBar.js"
 
 const Posts = () => {
   let { id } = useParams();
@@ -26,7 +26,7 @@ const Posts = () => {
   const rootPosts = posts.filter( (post) => post.ParentID === null)
     .sort( (a,b) => a.Upvotes.length - b.Upvotes.length)
     .reverse()
-
+  
   // Get replies, sort by upvotes in descending order
   const getReplies = (postID) => {
     return posts.filter( (post) => post.ParentID === postID)
@@ -157,7 +157,12 @@ const Posts = () => {
           <div className="a-posts-container">
             {/* Form to submit posts */}
             
-            {rootPosts.map( (rootPost) => (
+            {!posts ? 
+              <div className="no-posts">
+                No posts yet.
+              </div>
+            :
+              rootPosts.map( (rootPost) => (
               // <div key={rootPost.PostID}>{rootPost.Text}</div>
               <Post 
                 key={rootPost.PostID} 
@@ -187,7 +192,7 @@ const Posts = () => {
         {/* posts */}
       </div>
       {/* p-container */}
-      {/* <PSearch /> */}
+      {/* <SearchBar /> */}
     </div>
     // column-container
   )

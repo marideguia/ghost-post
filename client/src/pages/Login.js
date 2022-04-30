@@ -15,18 +15,6 @@ function Login() {
   let navigate = useNavigate();
   
 
-  // User Login info
-  const database = [
-    {
-      username: "user1",
-      password: "pass1"
-    },
-    {
-      username: "user2",
-      password: "pass2"
-    }
-  ];
-
   const errors = {
     uname: "invalid username",
     pass: "invalid password"
@@ -39,8 +27,6 @@ function Login() {
   const onPWDChange = (event) => {
     setPWD(event.target.value);
   }
-
-
 
   const handleSubmit = (event) => {
     //Prevent page reload
@@ -59,9 +45,8 @@ function Login() {
        localStorage.setItem('UserID',res.data.UserID);
        localStorage.setItem('UserName',res.data.name);
        console.log(res.data);
-       navigate('/Home');
+       navigate("/Home");
      }
-     
    });
 
   };
@@ -79,7 +64,7 @@ function Login() {
           <div className="input-container">
             <label className="login-label">Email </label>
             <input 
-            type="text" 
+            type="emailText" 
             name="uname"
             style={{textTransform:'none'}}
             onChange={onUserChange} required />
@@ -87,23 +72,24 @@ function Login() {
           </div>
 
           <div className="input-container">
-            <label className="login-label">Password</label>
+            <label className="login-label">Password </label>
             <input 
-            type="text" 
+            type="password" 
             name="pass" 
+            className="pwdBtn"
             style={{textTransform:'none'}}
             onChange={onPWDChange} required />
             {renderErrorMessage("pass")}
           </div>
 
           <div className="btns-container">
-          <div className="button-container">
+          <div className="l-button-container">
             <input className="lp-button" type="submit" value = "Login"/>
           </div>
           
          
-            <div className="button-container">              
-              <Link to="Signup" >
+            <div className="l-button-container2">              
+              <Link to="/Signup" >
                 <button className="lp-button">
                   Sign up
                 </button>
@@ -111,16 +97,15 @@ function Login() {
             </div>
           
 
-          <h3 className="login-header3"><center>OR</center></h3>
+          {/* <h3 className="login-header3"><center>OR</center></h3>
 
-          {/* <div className='dual-button-cont'> */}
             <div className="button-container" id="join-sess">              
               <Link to="Joinsession" >
                 <button className="lp-button" >
                   Join Session
                 </button>
               </Link> 
-            </div>
+            </div> */}
 
             {/* <div className="button-container">
             <Link to="CreateSession" >
@@ -153,6 +138,7 @@ function Login() {
   );
 
   return (
+    
     <div className="app">
       <h1 className="login-header1">Welcome to GhostPost</h1>
       <div className="login-form">

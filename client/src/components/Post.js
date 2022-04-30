@@ -151,14 +151,16 @@ const Post = ({
               // then display post action
               (!openReply ? 
                 <div id="see-replies" className="post-action" 
-                style={{cursor: 'pointer'}}
-                onClick={open}>
+                  style={{cursor: 'pointer'}}
+                  onClick={open}
+                >
                   See replies
                 </div> 
               :
                 <div id="see-replies" className="post-action" 
-                style={{cursor: 'pointer'}}
-                onClick={open}>
+                  style={{cursor: 'pointer'}}
+                  onClick={open}
+                >
                   Hide replies
                 </div>
               )

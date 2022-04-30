@@ -19,6 +19,7 @@ import axios from "axios";
 import SearchBar from "./SearchBar"
 import { useNavigate } from 'react-router-dom';
 import cloneDeep from "lodash/cloneDeep"
+// import SearchBar from "./SearchBar"
 
 const Posts = () => {
   let { id } = useParams();
@@ -43,16 +44,6 @@ const Posts = () => {
     .sort( (a,b) => a.Upvotes.length - b.Upvotes.length)
     .reverse()
 
-  
-  
-    //currentUserID = localStorage.getItem('UserID');
-  // useEffect(()=>{
-  //     if (isFirstRender.current){
-  //       isFirstRender.current = false;
-  //       return
-  //     }
-  //     myCallback()
-  //   },[postVal])
 
   // Get replies, sort by upvotes in descending order
   const getReplies = (postID) => {
@@ -219,7 +210,12 @@ const Posts = () => {
           <div className="posts-container">
             {/* Form to submit posts */}
             
-            {rootPosts.map( (rootPost) => (
+            { !posts ? 
+              <div className="no-posts">
+                <p>No posts yet.</p>
+              </div>
+              :
+              rootPosts.map( (rootPost) => (
               // <div key={rootPost.PostID}>{rootPost.Text}</div>
               <Post 
                 key={rootPost.PostID} 
@@ -235,7 +231,8 @@ const Posts = () => {
                 removeUpvote={removeUpvote}  
                 arch={false}           
               />
-            ))}
+              ))
+            }
           </div> {/* posts-container */}
           <div className="posts-form">
             <div className="posts-form-title">
@@ -251,7 +248,7 @@ const Posts = () => {
         
       </div>
       {/* p-container */}
-      {/* <PSearch /> */}
+      {/* <SearchBar /> */}
 
     </div>
     // column-container

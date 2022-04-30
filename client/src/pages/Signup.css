@@ -17,7 +17,7 @@
   
 }
 .container{
-    display: flex;
+  display: flex;
   justify-content: center;
   align-items: center;
 }
@@ -55,10 +55,20 @@ position: absolute;
   .inputContainer{
     position: relative;
     height: 50px;
-    width: 90%;
+    width: 95%;
     margin-bottom: 17px;
     background-color: white;
     border-radius: 7px;
+  }
+  .inputName{
+    border: transparent;
+    border-radius: 7px;
+    font-size: 14px;
+    padding: 0 20px;
+    outline: none;
+    background: none;
+    z-index: 1;
+    text-transform: none;
   }
 
   .inputContainer #inputRegister{
@@ -67,22 +77,23 @@ position: absolute;
     left: 0px;
     height: 100%;
     width: 100%;
-    border: 1px solid white;
+    border: transparent;
     border-radius: 7px;
-    font-size: 16px;
+    font-size: 14px;
     padding: 0 20px;
     outline: none;
     background: none;
     z-index: 1;
+    text-transform: none;
   }
   ::placeholder {
     color: transparent;
   }
   .inputContainer label{
     position: absolute;
-    top: 15px;
-    left: 15px;
-    padding: 0 4px;
+    top: -2px;
+    left: 5px;
+    padding: 0 5px;
     background-color:transparent;
     color: gray;
     font-size: 16px;
