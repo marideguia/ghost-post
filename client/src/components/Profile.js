@@ -85,7 +85,7 @@ const Profile = ( {currentUserID} ) => {
                             />
                             <label>Old Password</label>
                         </div>
-                        <div className='pr-tcont'>
+                        <div className='pr-tcont2'>
                             <input className='pr-field' 
                                 type="text" 
                                 placeholder="new password" 

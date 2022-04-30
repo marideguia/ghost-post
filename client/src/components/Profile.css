@@ -1,16 +1,48 @@
 .pr-col-cont {
     display: flex;
+    
     height: 100vh;
     background-color: whitesmoke;
+}
+
+.pr-dash {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+}
+
+.pr-info {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+
 }
 
 .pru-cont, .prp-cont {
     margin: 10px 20px;
     text-transform: none;
+    display: flex;
+    flex-direction: column;
+    /* height: 100%; */
+    width: 100%;
+    align-items: center;
 }
 
 .prp-cont {
-    margin-top: 50px;
+    margin-top: 30px;
+}
+
+.prp-cont h3{
+    margin-top: none;
+}
+
+.prp-cont label {
+    display: block;
+    margin-top:5px;
 }
 
 .pr-text {
@@ -21,8 +53,8 @@
     margin-right: 10px;
 }
 
-.pr-tcont {
-    margin: 10px 0;
+.pr-tcont2 {
+    margin: 10px 0 0 0;
 }
 
 .pr-text::-webkit-input-placeholder {
