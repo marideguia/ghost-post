@@ -1,5 +1,4 @@
 import {render} from "@testing-library/react";
-import Sessions from "./components/Sessions";
 import App from "./App";
 import '@testing-library/jest-dom';
 import BrowserRouter from "react-router-dom";
