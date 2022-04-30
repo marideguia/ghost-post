@@ -1,6 +1,6 @@
 import {act, render, fireEvent, getByText, getByLabelText} from "@testing-library/react"
 import React from "react"
-import Signup from ".//Signup"
+import Signup from "./Signup"
 
 describe("Signup Test Component", () => {
 
