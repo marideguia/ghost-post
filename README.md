@@ -5,8 +5,13 @@ GhostPost is an anonymous learning engagement tool that allows audiences to comm
 ## SET UP PROJECT
 
 1.  Install [Node.js](https://nodejs.org/en/download/)
-2.  Run:
 
+Download Mysql https://www.mysql.com/downloads/
+You may need to create a new user and grant them all permissions.
+Create a database called "GhostPost" 
+Add database user information in the GhostPost project server/config.json file 
+Change username and password in the development object to the log in credentials you specified for the user above
+2.  Run:
 ```
 git clone https://github.com/marideguia/ghost-post.git
 cd ghost-post/server
@@ -14,10 +19,6 @@ npm install
 npm install mysql2 jsonwebtoken bcrypt sequelize cors mongoose knex nodemon body-parser express mysql
 npm start
 ```
-Download Mysql then you may need to create a new user and grant them all permissions
-Then create database called "GhostPost" 
-Add database user information in the server/config.json file
-Change username and password in the development object to the log in credentials you specified for the user above
 
 3. Open separate terminal and Run:
 
