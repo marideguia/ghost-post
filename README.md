@@ -12,6 +12,10 @@ git clone https://github.com/marideguia/ghost-post.git
 cd ghost-post/server
 npm install
 npm install mysql2 jsonwebtoken bcrypt sequelize cors mongoose knex nodemon body-parser express mysql
+Download Mysql then you may need to create a new user and grant them all permissions
+Then create database called "GhostPost" 
+Add database user information in the server/config.json file
+Change username and password in the development object to the log in credentials you specified for the user above
 npm start
 ```
 
