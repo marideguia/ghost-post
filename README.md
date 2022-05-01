@@ -11,6 +11,7 @@ You may need to create a new user and grant them all permissions.
 Create a database called "GhostPost" 
 Add database user information in the GhostPost project server/config.json file 
 Change username and password in the development object to the log in credentials you specified for the user above
+
 2.  Run:
 ```
 git clone https://github.com/marideguia/ghost-post.git
