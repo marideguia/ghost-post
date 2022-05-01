@@ -5,7 +5,7 @@ import './CreateSession.css' //Additional Style Sheet for Component
 import axios from "axios";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 
-function CreateSession({setSessionTitle}) {
+function CreateSession() {
   
   const[sessionTitle,setTitle]=useState("");
   const[sessionCode,setCode]=useState("init")
@@ -81,11 +81,12 @@ function CreateSession({setSessionTitle}) {
         type="createText" 
         placeholder="Name of Session" 
         disabled={disabled}
+        value = {sessionTitle}
         onChange ={onTitleChange}
         style={{textTransform:'none'}}
         required
         />
-        <button className='f5 grow no-underline br-pill ph3 pv2 mb2 dib white bg-dark-blue' type="submit" disabled={disabled}>Submit</button>
+        <button className='f5 grow no-underline br-pill ph3 pv2 mb2 dib white bg-dark-blue' type="submit" disabled={(sessionTitle && disabled)}>Submit</button>
       </form>
       <h2 className="ma2">{text}</h2>
       <h2 class ="animate-character">{text2}</h2>

@@ -63,6 +63,7 @@ function JoinSession() {
           <input type="submit" />
         </div>
       </form>
+      
     </div>
   );
 
@@ -74,6 +75,20 @@ function JoinSession() {
         <div className="tc grow"><h1 className="login-header1">Join Session</h1></div>
         {isSubmitted ? <div>Joining Senior Capstone 1</div> : renderForm}
       </div>
+      <div class="area" >
+            <ul class="circles">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+            </ul>
+    </div >
     </div>
   );
 }
