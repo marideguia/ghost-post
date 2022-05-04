@@ -40,6 +40,6 @@ npm audit fix --force
 
 Here's a walkthrough of implemented user stories:
 
-<img src='https://imgur.com/a/4Ponyib' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://i.imgur.com/ZQo7BnQ.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
